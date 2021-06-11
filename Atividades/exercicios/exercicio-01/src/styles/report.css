@@ -1,0 +1,40 @@
+
+.report-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 4rem;
+}
+
+.table {
+  font-family: "Poppins", sans-serif;
+  border-collapse: collapse;
+  width: 50rem;
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3B75FC;
+  color: white;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tr:nth-child(even){
+  background-color: #B7C6D9;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}

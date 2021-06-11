@@ -1,0 +1,109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+
+div#container {
+  width: 100vw;
+  height: 100vh;
+}
+
+div#content {
+  width: 100vw;
+  height: 100vh;
+
+}
+
+div#content h1#title-profile {
+  text-align: center;
+  margin-top: 2.5rem;
+
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #0c020f;
+
+  margin-bottom: 2rem;
+}
+
+div#options-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #0c020f;
+  color: #fff;
+
+  box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+
+  
+}
+
+ul#options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul#options a {
+  text-decoration: none;
+}
+
+ul#options a.active {
+  background: #3B75FC;
+}
+
+ul#options a li {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #fff;
+}
+
+ul#options li {
+  margin: 1rem;
+  list-style-type: none;
+  transition: opacity 0.4s;
+}
+
+ul#options li:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+ul#profile-exit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul#profile-exit {
+  list-style-type: none;
+}
+
+ul#profile-exit a {
+  text-decoration: none;
+}
+
+ul#profile-exit a li {
+  margin-left: 1rem;
+
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+}
+
+ul#profile-exit li {
+  margin-right: 2rem;
+  transition: opacity 0.4s;
+}
+
+ul#profile-exit li:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+ul#profile-exit li .icon {
+  width: 16px;
+}

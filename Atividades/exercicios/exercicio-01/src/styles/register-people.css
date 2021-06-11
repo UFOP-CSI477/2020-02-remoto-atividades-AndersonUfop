@@ -1,0 +1,122 @@
+form#FormContainer {
+  display: flex;
+  flex-direction: row;
+  max-height: 100vh;
+  justify-content: center;
+}
+
+
+form#FormContainer #form-content {
+  padding: 2rem;
+}
+
+form#FormContainer #form-content fieldset {
+  width: 60rem;
+  height: 32rem;
+  border: none;
+}
+
+form#FormContainer #form-content fieldset legend {
+  font-family: Nunito, sans-serif;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+form#FormContainer #form-content label {
+  font-family: Nunito, sans-serif;
+  font-size: 0.9rem;
+  color: #3473fa;
+  font-weight: 300;
+}
+
+form#FormContainer #form-content input, select {
+  margin-top: 0.4rem;
+  height: 2rem;
+  border-radius: 0.4rem;
+  border: 1px solid #000;
+
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+
+  font-family: Nunito, sans-serif;
+  font-size: 1rem;
+  background-color: #FFF
+}
+
+form#FormContainer #form-content input:focus, select:focus {
+  background: #fafafa;
+  outline: 0;
+  border: solid 0.125rem #1d3c70;
+  height: 1.875rem;
+}
+
+form#FormContainer #form-content input[type='file'] {
+  border: none;
+  margin-left: -0.75rem;
+}
+
+
+
+form#FormContainer #form-content fieldset .row-1 {
+  padding: 0.5rem;
+  display: grid;
+}
+
+form#FormContainer #form-content fieldset .row-2 {
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem;
+
+  grid-gap: 6rem;
+}
+
+form#FormContainer #form-content fieldset .row-2 .col {
+  display: flex;
+  flex-direction: column;
+}
+
+form#FormContainer #form-content fieldset .row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0.5rem;
+
+  grid-gap: 6rem;
+}
+
+form#FormContainer #form-content fieldset .row-3 .col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+form#FormContainer #form-content fieldset .button-container {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 45%;
+  width: 6rem;
+}
+
+form#FormContainer #form-content fieldset .button-container .btn-submit {
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+
+  background: #4a964e;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+
+  font-family: Nunito, sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+
+  transition: opacity 0.2rem;
+}
+
+form#FormContainer #form-content fieldset .button-container .btn-submit:hover {
+  opacity: 0.9;
+}

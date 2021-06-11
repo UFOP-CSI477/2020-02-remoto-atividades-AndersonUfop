@@ -2,13 +2,13 @@
 
 ## Atualize os seus dados:
 
-- Nome:
-- Matrícula:
-- Curso:
-- Semestre/Ano correntes:
-- Link para o seu GitHub:
+- Nome: Anderson Fernandes Ferreira
+- Matrícula: 18.1.8068
+- Curso: Sistemas de Informação
+- Semestre/Ano correntes: 2020/2
+- Link para o seu GitHub: [https://github.com/AndersonUfop](https://github.com/AndersonUfop)
 
-## [Projeto final:](./Projeto/README.md) 
+## [Projeto final:](./Projeto/README.md)
 
-Apresente uma breve descrição do seu projeto.
-
+O projeto final consiste em uma aplicação de reserva de quartos em hotéis. Por meio dele as pessoas poderão buscar hotéis utilizando filtros, encontrar os quartos e realizar a sua reserva.
+Também será permitindo que os donos de hotéis cadastrem os seus estabelecimentos.
