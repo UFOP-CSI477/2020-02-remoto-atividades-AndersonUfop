@@ -4,168 +4,145 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/styles.css">
-  <link rel="stylesheet" href="../styles/register-people.css">
-  <link rel="stylesheet" href="../styles//mobile/mobile.css" width="(min-width: 768px)">
   <title>Cadastro de pessoas</title>
 </head>
 
 <body>
-  <div id="container">
-    <div id="menu">
-      <div id="options-menu">
-        <ul id="options">
+  <div>
+    <div>
+      <div>
+        <div>
+          <ul>
 
-          <a href="index.html">
-            <li>
-              Home
-            </li>
-          </a>
+            <a href="index.html">
+              <li>
+                Home
+              </li>
+            </a>
 
-          <a href="states.html">
-            <li>
-              Estados
-            </li>
-          </a>
+            <a href="states.html">
+              <li>
+                Estados
+              </li>
+            </a>
 
-          <a href="cities.html">
-            <li>
-              Cidades
-            </li>
-          </a>
+            <a href="cities.html">
+              <li>
+                Cidades
+              </li>
+            </a>
 
-          <a href="products.html">
-            <li>
-              Produtos
-            </li>
-          </a>
+            <a href="products.html">
+              <li>
+                Produtos
+              </li>
+            </a>
 
 
-          <a href="people.html">
-            <li>
-              Pessoas
-            </li>
-          </a>
+            <a href="people.html">
+              <li>
+                Pessoas
+              </li>
+            </a>
 
-          <a href="purchases.html">
-            <li>
-              Compras
-            </li>
-          </a>
+            <a href="purchases.html">
+              <li>
+                Compras
+              </li>
+            </a>
 
-          <a class="active" href="register-people.html">
-            <li>
-              Cadastro de pessoas
-            </li>
-          </a>
+            <a href="register-people.html">
+              <li>
+                Cadastro de pessoas
+              </li>
+            </a>
 
-          <a href="report.html">
-            <li>
-              Relatório
-            </li>
-          </a>
-        </ul>
-        </ul>
+            <a href="report.html">
+              <li>
+                Relatório
+              </li>
+            </a>
+          </ul>
+          </ul>
 
-        <ul id="profile-exit">
-          <a href="profile.html">
-            <li>
-              <img src="../assets/images/user.svg" class="icon" />
-              Perfil
-            </li>
-          </a>
+          <ul>
+            <a href="profile.html">
+              <li>
+                <img src="../assets/images/user.svg" width="24px" />
+                Perfil
+              </li>
+            </a>
 
-          <a href="#">
-            <li>
-              <img src="../assets/images/exit.svg" class="icon" />
-              Sair
-            </li>
-          </a>
-        </ul>
-        </ul>
+            <a href="#">
+              <li>
+                <img src="../assets/images/exit.svg" width="24px" />
+                Sair
+              </li>
+            </a>
+          </ul>
+          </ul>
+        </div>
       </div>
     </div>
-    <div id="content">
-      <form id="FormContainer" action="">
 
-        <div id="form-content">
+    <div>
+      <form action="index.html" method="GET">
+        <div>
           <fieldset>
             <legend>Cadastro de pessoas</legend>
-
-            <div class="row-2">
-              <div class="form-group col">
-                <label for="name" class="label-name">Nome completo</label>
-                <input type="text" name="name" class="name" placeholder="Digite o seu nome" />
+            <div>
+              <div>
+                <label for="name">Nome completo</label>
+                <input type="text" name="name" placeholder="Digite o seu nome" />
               </div>
-
-              <div class="form-group col">
-                <label for="name" class="label-name">Username</label>
-                <input type="text" name="username" class="username" placeholder="Digite seu username" />
+              <label for="name">Username</label>
+              <input type="text" name="username" placeholder="Digite seu username" />
+            </div>
+            <div>
+              <div>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" placeholder="Digite seu e-mail" />
+              </div>
+              <div>
+                <label for="password">Senha</label>
+                <input type="password" name="password" />
               </div>
             </div>
-
-            <div class="row-2">
-              <div class="form-group col">
-                <label for="email" id="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" />
-              </div>
-
-              <div class="form-group col">
-                <label for="password" id="password">Senha</label>
-                <input type="password" name="password" id="password" />
-              </div>
-            </div>
-
-            <div class="row-3">
-              <div class="form-group col">
+            <div>
+              <div>
                 <label for="nascimento">Data de nascimento</label>
-                <input type="date" name="nascimento" id="nascimento">
+                <input type="date" name="nascimento">
               </div>
-
-              <div class="form-group col">
-                <label for="rg" id="label-username">RG</label>
-                <input type="text" name="rg" id="rg" placeholder="XXX.XXX.XXX" />
+              <div>
+                <label for="rg">RG</label>
+                <input type="text" name="rg" placeholder="XXX.XXX.XXX" />
               </div>
-
-              <div class="form-group col">
-                <label for="cpf" id="label-username">CPF</label>
-                <input type="cpf" name="cpf" id="cpf" placeholder="XXX.XXX.XXX-XX" />
+              <div>
+                <label for="cpf">CPF</label>
+                <input type="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" />
               </div>
-
-
             </div>
-
-            <div class="row-2">
-
+            <div>
             </div>
-
-            <div class="row-2">
-              <div class="form-group col">
-                <label for="endereco" class="label-name">
+            <div>
+              <div>
+                <label for="endereco">
                   Endereço (Rua, nº, bairro, complemento)
                 </label>
-                <input type="text" name="name" class="name" placeholder="Digite o seu endereço" />
+                <input type="text" name="name" placeholder="Digite o seu endereço" />
               </div>
-
-              <div class="form-group col">
-                <label for="city" id="label-username">Cidade</label>
-                <input type="text" name="city" id="city" placeholder="Digite a cidade" />
+              <div>
+                <label for="city">Cidade</label>
+                <input type="text" name="city" placeholder="Digite a cidade" />
               </div>
-
             </div>
-
-            <div class="row-3">
-
-
-              <div class="form-group col">
-                <label for="cep" id="cep">CEP</label>
+            <div>
+              <div>
+                <label for="cep">CEP</label>
                 <input type="name" name="cep" id="cep" placeholder="XXXXX-XXX" />
-
               </div>
-
-              <div class="form-group col">
-                <label for="estado" id="estado">Estado</label>
+              <div>
+                <label for="estado">Estado</label>
                 <select name="estados-brasil">
                   <option selected disabled value="disabled">Selecione uma opção</option>
                   <option value="AC">Acre</option>
@@ -196,33 +173,22 @@
                   <option value="SE">Sergipe</option>
                   <option value="TO">Tocantins</option>
                 </select>
-
               </div>
-
-              <div class="form-group col">
-                <label for="telephone" id="telephone">Telefone</label>
-                <input type="telephone" name="telephone" id="telephone" placeholder="(XX) XXXXX-XXXXX" />
-
+              <div>
+                <label for="telephone">Telefone</label>
+                <input type="telephone" placeholder="(XX) XXXXX-XXXXX" />
               </div>
             </div>
-            
-
-            <div class="row-1">
-              <label for="photo" id="photo">Foto de perfil</label>
-              <input type="file" name="photo" id="photo">
+            <div>
+              <label for="photo">Foto de perfil</label>
+              <input type="file" name="photo">
             </div>
-
-
-            <div class="button-container">
-              <button type="submit" class="btn-submit">Salvar</button>
+            <div>
+              <button type="submit">Salvar</button>
             </div>
-
-
-
           </fieldset>
-
-
         </div>
+
       </form>
     </div>
   </div>
