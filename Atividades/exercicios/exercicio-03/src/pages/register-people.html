@@ -12,115 +12,129 @@
 </head>
 
 <body>
-  <div id="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html"> Home </a>
-            </li>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
 
-            <li class="nav-item">
-              <a class="nav-link" href="states.html"> Estados </a>
-            </li>
+    <div class="collapse navbar-collapse justify-between" id="navbarText">
 
-            <li class="nav-item">
-              <a class="nav-link" href="cities.html"> Cidades </a>
-            </li>
+      <ul class="navbar-nav me-auto ms-2">
 
-            <li class="nav-item">
-              <a class="nav-link" href="products.html"> Produtos </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"> Home </a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="people.html"> Pessoas </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="states.html"> Estados </a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="purchases.html"> Compras </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cities.html"> Cidades </a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" href="register-people.html"> Cadastro de pessoas </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html"> Produtos </a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="report.html"> Relatório </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html"> Perfil </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="people.html"> Pessoas </a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="exit.html"> Sair </a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="purchases.html"> Compras </a>
+        </li>
 
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
+        <li class="nav-item">
+          <a class="nav-link active" href="register-people.html"> Cadastro de pessoas </a>
+        </li>
 
-  <div>
+        <li class="nav-item">
+          <a class="nav-link" href="report.html"> Relatório </a>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ms-auto me-4">
+
+        <li class="nav-item ">
+          <a class="nav-link" href="profile.html"> Perfil </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"> Sair </a>
+        </li>
+
+      </ul>
+
+  </nav>
+
+  <div class="ms-4 mt-4 me-4">
+    <h2 class="h2 font-weight-bold text-primary mb-4">Cadastro de pessoas</h2>
+    
+   
+
     <form action="index.html" method="GET">
-      <div>
-        <fieldset>
-          <legend class="display-4">Cadastro de pessoas</legend>
-          <div>
-            <div>
+
+          <div class="row mb-2">
+            <div class="col">
               <label for="name">Nome completo</label>
-              <input type="text" name="name" placeholder="Digite o seu nome" />
+              <input type="text" class="form-control" name="name" placeholder="Digite o seu nome" />
             </div>
-            <label for="name">Username</label>
-            <input type="text" name="username" placeholder="Digite seu username" />
+            <div class="col">
+              <label for="name">Username</label>
+              <input type="text" class="form-control" name="username" placeholder="Digite seu username" />
+            </div>
           </div>
-          <div>
-            <div>
+
+          <div class="row mb-2">
+            <div class="col">
               <label for="email">E-mail</label>
-              <input type="email" name="email" placeholder="Digite seu e-mail" />
+              <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail" />
             </div>
-            <div>
+            <div class="col">
               <label for="password">Senha</label>
-              <input type="password" name="password" />
+              <input type="password" class="form-control" name="password" />
             </div>
           </div>
-          <div>
-            <div>
+
+          <div class="row mb-2">
+            <div class="col-md-3">
               <label for="nascimento">Data de nascimento</label>
-              <input type="date" name="nascimento">
+              <input type="date" class="form-control" name="nascimento">
             </div>
-            <div>
+
+            <div class="col-md-4">
               <label for="rg">RG</label>
-              <input type="text" name="rg" placeholder="XXX.XXX.XXX" />
+              <input type="text" class="form-control" name="rg" placeholder="XXX.XXX.XXX" />
             </div>
-            <div>
+
+            <div class="col">
               <label for="cpf">CPF</label>
-              <input type="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" />
+              <input type="cpf" class="form-control" name="cpf" placeholder="XXX.XXX.XXX-XX" />
             </div>
           </div>
-          <div>
-          </div>
-          <div>
-            <div>
+
+          <div class="row mb-2">
+            <div class="col">
               <label for="endereco">
                 Endereço (Rua, nº, bairro, complemento)
               </label>
-              <input type="text" name="name" placeholder="Digite o seu endereço" />
+              <input type="text" class="form-control" name="name" placeholder="Digite o seu endereço" />
             </div>
-            <div>
+
+            <div class="col">
               <label for="city">Cidade</label>
-              <input type="text" name="city" placeholder="Digite a cidade" />
+              <input type="text" class="form-control" name="city" placeholder="Digite a cidade" />
             </div>
           </div>
-          <div>
-            <div>
+
+          <div class="row mb-2">
+            <div class="col">
               <label for="cep">CEP</label>
-              <input type="name" name="cep" id="cep" placeholder="XXXXX-XXX" />
+              <input type="name" class="form-control" name="cep" id="cep" placeholder="XXXXX-XXX" />
             </div>
-            <div>
+
+            <div class="col">
               <label for="estado">Estado</label>
-              <select name="estados-brasil">
+              <select name="estados-brasil" class="form-control">
                 <option selected disabled value="disabled">Selecione uma opção</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
@@ -151,20 +165,21 @@
                 <option value="TO">Tocantins</option>
               </select>
             </div>
-            <div>
+            <div class="col">
               <label for="telephone">Telefone</label>
-              <input type="telephone" placeholder="(XX) XXXXX-XXXXX" />
+              <input type="telephone" class="form-control" placeholder="(XX) XXXXX-XXXXX" />
             </div>
           </div>
-          <div>
+          
+          <div class="form-group">
             <label for="photo">Foto de perfil</label>
-            <input type="file" name="photo">
+            <input type="file" class="form-control" name="photo">
           </div>
-          <div>
-            <button type="submit">Salvar</button>
+          
+          <div class="form-group">
+            <button type="submit" class="btn mt-3 mb-3 btn-success">Salvar</button>
+            <button type="reset" class="btn mt-3 mb-3 btn-warning">Limpar</button>
           </div>
-        </fieldset>
-      </div>
 
     </form>
   </div>
