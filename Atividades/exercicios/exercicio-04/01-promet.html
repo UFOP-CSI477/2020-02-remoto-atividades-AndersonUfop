@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 01 JS</title>
+
+  <script>
+
+    function Pessoa(nome, sobrenome, idade, endereco, telefone) {
+      this.nome = nome;
+      this.sobrenome = sobrenome;
+      this.idade = idade;
+      this.endereco = endereco;
+      this.telefone = telefone;
+    }
+
+    function carregarDados() {
+      const nome = window.prompt("Digite o seu nome");
+      const sobrenome = window.prompt("Digite o seu sobrenome");
+      const idade = window.prompt("Digite a sua idade");
+      const endereco = window.prompt("Digite o seu endereco");
+      const telefone = window.prompt("Digite o seu telefone");
+
+      const pessoa = new Pessoa(nome, sobrenome, idade, endereco, telefone);
+
+      document.getElementById("nome").innerHTML = pessoa.nome;
+      document.getElementById("sobrenome").innerHTML = pessoa.sobrenome;
+      document.getElementById("idade").innerHTML = pessoa.idade;
+      document.getElementById("endereco").innerHTML = pessoa.endereco;
+      document.getElementById("telefone").innerHTML = pessoa.telefone;
+
+    }
+  </script>
+</head>
+<body>
+  <div id="dados">
+    <div id="nome"></div>
+    <div id="sobrenome"></div>
+    <div id="idade"></div>
+    <div id="endereco"></div>
+    <div id="telefone"></div>
+  </div>
+  <input type="button" value="Carregar" onclick="carregarDados();">
+</body>
+</html>
