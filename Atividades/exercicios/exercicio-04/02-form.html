@@ -11,11 +11,12 @@
   <title>Exercício 02 JS</title>
   <script>
 
-    function Pessoa(nome, sobrenome, idade, endereco) {
+    function Pessoa(nome, sobrenome, idade, endereco, telefone) {
       this.nome = nome;
       this.sobrenome = sobrenome;
       this.idade = idade;
       this.endereco = endereco;
+      this.telefone = telefone;
     }
 
     function gravarDadosForm() {
@@ -23,8 +24,9 @@
       const sobrenome = document.formDados.sobrenome.value;
       const idade = document.formDados.idade.value;
       const endereco = document.formDados.endereco.value;
+      const telefone = document.formDados.telefone.value;
 
-      const pessoa = new Pessoa(nome, sobrenome, idade, endereco);
+      const pessoa = new Pessoa(nome, sobrenome, idade, endereco, telefone);
 
       window.alert("Dados salvos com sucesso");
 
@@ -34,6 +36,7 @@
       document.getElementById("sobrenome").innerHTML = `Sobrenome: ${pessoa.sobrenome}`;
       document.getElementById("idade").innerHTML = `Idade: ${pessoa.idade}`;
       document.getElementById("endereco").innerHTML = `Endereço: ${pessoa.endereco}`;
+      document.getElementById("telefone").innerHTML = `Telefone: ${pessoa.telefone}`;
     }
 
   </script>
@@ -54,14 +57,18 @@
         </div>
       </div>
 
-      <div class="row mt-4">
-        <div class="col-md-4">
+      <div class="row mt-2">
+        <div class="col-md-2">
           <label for="idade">Idade:</label>
           <input type="text" name="idade" class="form-control">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <label for="name">Endereço:</label>
           <input type="text" name="endereco" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" class="form-control">
         </div>
       </div>
 
@@ -77,6 +84,7 @@
           <div id="sobrenome"></div>
           <div id="idade"></div>
           <div id="endereco"></div>
+          <div id="telefone"></div>
         </div>
       </div>
 
