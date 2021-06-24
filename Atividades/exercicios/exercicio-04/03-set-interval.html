@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./03-set-interval.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+  <title>Document</title>
+
+  <script>
+
+    let id;
+    let executando = false;
+
+    let seg = 0;
+    let min = 0;
+    let hour = 0;
+
+    function processo() {
+
+      if (seg === 60) {
+        seg = 0;
+        min++;
+      }
+
+      if (min === 60) {
+        seg = 0;
+        min = 0;
+        hour++;
+      }
+
+      document.getElementById("time").style.backgroundColor = "#292929";
+
+      if (hour < 10) {
+        document.getElementById("hora").innerHTML = ` &nbsp;0${hour} : `;
+      } else {
+        document.getElementById("hora").innerHTML = ` &nbsp;${hour} : `
+      }
+
+      if (min < 10) {
+        document.getElementById("minuto").innerHTML = ` &nbsp;0${min} : `;
+      } else {
+        document.getElementById("minuto").innerHTML = ` &nbsp;${min} : `;
+      }
+
+      if (seg < 10) {
+        document.getElementById("segundo").innerHTML = ` &nbsp;0${seg} `;
+      } else {
+        document.getElementById("segundo").innerHTML = ` &nbsp;${seg} `;
+      }
+
+      seg++;
+    }
+
+    function start() {
+      if (!executando) {
+        id = setInterval(processo, 500);
+        executando = true;
+        
+      }
+    }
+
+    function pause() {
+      clearInterval(id);
+      executando = false;
+    }
+
+    function stop() {
+      pause();
+      seg = 0;
+      min = 0;
+      hour = 0;
+      document.getElementById("hora").innerHTML = `&nbsp;00 : `
+      document.getElementById("minuto").innerHTML = `&nbsp;00 : `;
+      document.getElementById("segundo").innerHTML = `&nbsp;00 `;
+
+      var audio = new Audio('./assets/som.mp3');
+      audio.addEventListener('canplaythrough', function() {
+        audio.play();
+      });
+    }
+
+  </script>
+
+</head>
+
+<body>
+  <p class="title">Cronômetro</p>
+  <div class="imagem">
+    <img src="./assets/clock.jpg" alt="">
+  </div>
+
+  <div class="controllers">
+    <input type="button" value="Iniciar" onClick="start();">
+    <input type="button" value="Pausar" onClick="pause();">
+    <input type="button" value="Parar" onClick="stop()">
+  </div>
+
+
+
+  <div src="" id="time">
+    <h1 id="hora"></h1>
+    <h1 id="minuto"></h1>
+    <h1 id="segundo"></h1>
+  </div>
+
+</body>
+
+</html>
