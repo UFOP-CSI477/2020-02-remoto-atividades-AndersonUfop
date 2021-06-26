@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 05 JS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body onload="carregarRegioes()">
+  <div class="jumbotron">
+    <h1>Municípios por estado</h1>
+  </div>
+  <div class="row ml-2 mb-4">
+    <div class="col-md-2">
+      <label for="regioes">Escolha uma região</label>
+      <select name="regioes" id="regioes" class="form-control" onChange="carregarEstados()">
+        <option value="" default selected disabled>Selecione</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label for="estados">Escolha um estado</label>
+      <select name="estados" id="estados" class="form-control" onChange="carregarMesorregioes()">
+        <option value="" default selected disabled>Selecione</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label for="mesorregioes">Escolha uma mesorregião</label>
+      <select name="mesorregioes" id="mesorregioes" class="form-control" onChange="carregarMunicipios()">
+        <option value="" default selected disabled>Selecione</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label for="municipios">Escolha um município</label>
+      <select name="municipios" id="municipios" class="form-control">
+        <option value="" default selected disabled>Selecione</option>
+      </select>
+    </div>
+
+  </div>
+
+  <script src="api.js"></script>
+</body>
+
+</html>
