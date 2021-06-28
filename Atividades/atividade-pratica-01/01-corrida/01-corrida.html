@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competição de carrinhos de rolimã</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <script src="01-corrida.js"></script>
+
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1>Competição de carrinhos de rolimã</h1>
+    <p>Digite os dados dos competidores, conforme a posição de largada.</p>
+  </div>
+  <div class="form-container ml-4">
+    <form name="formCorrida">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="competidor">Competidor (a)</label>
+          <input type="text" class="form-control" name="competidor" id="competidor"
+            placeholder="Digite o nome do competidor">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="tempo">Tempo</label>
+          <input type="text" name="tempo" id="tempo" class="form-control" placeholder="Digite o tempo em segundos">
+        </div>
+      </div>
+    </form>
+
+    <div class="button-container">
+      <button type="button" id="botaoAdicionar" class="btn btn-primary" onClick="salvarDados()">Adicionar
+        competidor</button>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-striped ml-4 mt-4" id="table" style="display: none">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Largada</th>
+            <th scope="col">Competidor (a)</th>
+            <th scope="col">Tempo (s)</th>
+          </tr>
+        </thead>
+        <tbody id="divCompetidores">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <table class="table table-striped ml-4 mt-4" id="tabela-resultado" style="display: none">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Posição</th>
+            <th scope="col">Largada</th>
+            <th scope="col">Competidor</th>
+            <th scope="col">Tempo</th>
+            <th scope="col">Resultado</th>
+          </tr>
+        </thead>
+        <tbody id="ResultadoCorrida">
+
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+
+  <div class="mt-4 ml-4">
+    <input type="button" name="newInfos" id="newInfos" class="btn btn-warning" value="Inserir novos dados"
+      onclick="novosDados()" disabled style="display:none" />
+  </div>
+
+
+
+</body>
+
+</html>
