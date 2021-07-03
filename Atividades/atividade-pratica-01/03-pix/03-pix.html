@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>PIX</title>
+  <link rel="stylesheet" href="styles.css">
   <script src="03-pix.js"></script>
 </head>
 
@@ -18,60 +19,87 @@
         <div class="tipo">
           <p>Selecione o tipo da chave:</p>
           <div class="div-cpf">
-            <input type="radio" id="cpf" name="tipo" value="cpf">
+            <input type="radio" id="cpf" name="tipo" value="cpf" onchange="carregarFormPix()">
             <label for="cpf">CPF</label>
           </div>
           <div class="div-cnpj">
-            <input type="radio" id="cnpj" name="tipo" value="cnpj">
+            <input type="radio" id="cnpj" name="tipo" value="cnpj" onchange="carregarFormPix()">
             <label for="cnpj">CNPJ</label>
           </div>
           <div class="div-email">
-            <input type="radio" id="email" name="tipo" value="email">
+            <input type="radio" id="email" name="tipo" value="email" onchange="carregarFormPix()">
             <label for="email">E-mail</label>
           </div>
           <div class="div-celular">
-            <input type="radio" id="celular" name="tipo" value="celular">
+            <input type="radio" id="celular" name="tipo" value="celular" onchange="carregarFormPix()">
             <label for="celular">Celular</label>
           </div>
           <div class="div-aleatoria">
-            <input type="radio" id="aleatoria" name="tipo" value="aleatoria">
+            <input type="radio" id="aleatoria" name="tipo" value="aleatoria" onchange="carregarFormPix()">
             <label for="aleatoria">Chave aleatória</label>
           </div>
         </div>
 
-        <div class="div-value-key">
-          <label for="valor-chave">Valor da chave:</label>
-          <input type="text" id="valor-chame">
-        </div>
-        <div class="div-banco">
-          <label for="bancos">Selecione um banco</label>
-          <select name="bancos" id="bancos">
-            <option value="null">Selecione um banco</option>
-          </select>
-        </div>
-        <div class="div-tipo-operacao">
-          <p>Tipo de operação:</p>
-          <div class="div-envio">
-            <input type="radio" id="envio" name="envio" value="envio">
-            <label for="Envio">Envio</label>
+        <div id="details-pix" style="display: none">
+          <div class="div-value-key">
+            <label for="valor-chave" id="valor_chave">Valor da chave:</label>
+            <input type="text" id="valor-chave" placeholder="Informe o valor da sua chave do PIX">
           </div>
+          <div class="div-banco">
+            <label for="bancos">Selecione um banco</label>
+            <select name="bancos" id="bancos">
+              <option value="null">Selecione um banco</option>
+            </select>
+          </div>
+          <div class="div-tipo-operacao">
+            <p>Tipo de operação:</p>
 
-          <div class="div-recebimento">
-            <input type="radio" id="recebimento" name="recebimento" value="recebimento">
-            <label for="recebimento">Recebimento</label>
+            <div class="div-envio">
+              <input type="radio" id="envio" name="operacao" value="Envio">
+              <label for="Envio">Envio</label>
+            </div>
+
+            <div class="div-recebimento">
+              <input type="radio" id="recebimento" name="operacao" value="Recebimento">
+              <label for="recebimento">Recebimento</label>
+            </div>
           </div>
 
           <div class="div-valor">
             <label for="valor">Valor: ($)</label>
-            <input type="text" id="valor">
+            <input type="text" id="valor" placeholder="R$ 00.00">
           </div>
           <div class="div-data">
             <label for="data">Data:</label>
             <input type="date" id="data">
           </div>
-          <button type="button" id="finalizar"> Finalizar </button>
+          <button type="button" id="salvar" onclick="salvarTransacao()"> Salvar </button>
         </div>
       </form>
+      <div class="btn-finish" id="button-finalizar" style="display: none">
+        <button type="button" id="finalizar" onclick="finalizarTransacao()">Finalizar</button>
+      </div>
+    </div>
+
+    <div class="resumo" id="resume" style="display: none">
+      <h2>RESUMO DAS TRANSAÇÕES</h2>
+      <div class="op-envio">
+        <strong>Envio:</strong>
+        <span id="total-envio">R$ 0,00</span>
+      </div>
+      <div class="op-recebimento">
+        <strong>Recebimento:</strong>
+        <span id="total-recebimento">R$ 0,00</span>
+      </div>
+      <div class="saldo">
+        <strong>Saldo final:</strong>
+        <span id="final">R$ 0,00</span>
+      </div>
+
+    </div>
+
+    <div class="btn-new-transactions" id="button-new-transactions" style="display: none">
+      <button type="button" id="transactions" onclick="realizarNovasTransacoes()">Realizar novas transações</button>
     </div>
   </div>
 </body>

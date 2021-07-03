@@ -1,0 +1,198 @@
+.container {
+  padding: 0.8rem;
+}
+
+h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 32pt;
+  color: #111E42;
+}
+
+.tipo p, label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14pt;
+}
+
+label {
+  font-size: 12pt;
+  color: #1C1C1C;
+  margin-bottom: 0.4rem;
+}
+
+input[type="radio"] {
+  cursor: pointer;
+  margin-right: 0.8rem;
+}
+
+.tipo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#details-pix {
+  margin-top: 2rem;
+  padding: 1.6rem;
+  background-color: #F5F7F7;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 0.4rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.div-value-key {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  width: 36rem;
+  height: 2rem;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 12pt;
+  margin-bottom: 2.5rem;
+  outline-color: #4286FC;
+}
+
+.div-banco {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  width: 38rem;
+  height: 2rem;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 12pt;
+  outline-color: #4286FC;
+}
+
+.div-tipo-operacao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.div-tipo-operacao p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12pt;
+  color: #1C1C1C;
+  margin-bottom: 0.4rem;
+}
+
+.div-valor {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 2rem;
+}
+
+.div-data {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="date"] {
+  width: 36rem;
+  height: 2rem;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 12pt;
+  margin-bottom: 2.5rem;
+  outline-color: #4286FC;
+}
+
+#salvar, #finalizar, #transactions {
+  width: 38rem;
+  height: 2rem;
+  border-radius: 0.4rem;
+  border: solid 1px #B0B0B0;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14pt;
+
+  transition: filter 0.2s;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+#salvar {
+  background-color: #43B03F;
+}
+
+#salvar:disabled, #finalizar:disabled {
+  background-color: #F0F0F0;
+  color:rgba(0, 0, 0, 0.5);
+  cursor: not-allowed;
+}
+
+#finalizar {
+  background-color: #4286FC;
+}
+
+#transactions {
+  background-color: #4691E6;
+}
+
+.btn-finish, .btn-new-transactions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.resumo {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18pt;
+}
+
+strong, span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14pt;
+}
+
+span {
+  font-size: 12pt;
+  font-weight: 300;
+}
+
+.resumo > div {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+@media (max-width: 768px) {
+
+  input {
+    max-width: 14rem;
+  }
+
+  select, button {
+    max-width: 16rem;
+  }
+}
