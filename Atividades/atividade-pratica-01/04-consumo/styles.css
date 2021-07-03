@@ -1,0 +1,153 @@
+body {
+  padding: 2rem;
+}
+
+h1 {
+  margin-top: 1.5rem;
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-size: 12pt;
+  font-weight: 300;
+}
+
+#dadosContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-quatidade {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-quilometros {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+label {
+  font-family: 'Lato', sans-serif;
+  font-size: 12pt;
+  color: #0F74AB;
+  margin-bottom: 0.2rem;
+  margin-top: 0.8rem;
+}
+
+
+.btnSalvarVeiculo,
+.btnRegistrarVeiculo
+{
+  margin-top: 1.2rem;
+  margin-right: 1rem;
+  width: 10rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.4rem;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 12pt;
+  color: #FFF;
+}
+
+.btnRegistrarVeiculo {
+  background: #5496BF;
+
+  transition: background 0.2s;
+}
+
+.btnRegistrarVeiculo:enabled:hover {
+  border: 2px solid blue;
+  color: #000000;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.btnSalvarVeiculo {
+  background: #274227;
+
+  transition: background 0.2s;
+}
+
+.btnSalvarVeiculo:enabled:hover {
+  border: 2px solid greenyellow;
+  color: #000000;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+input {
+  width: 20rem;
+  height: 1.4rem;
+  border: 1px solid #4C5557;
+  border-radius: 0.4rem;
+
+  padding-left: 0.8rem;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+button:disabled {
+  filter: brightness(0.4);
+  cursor: not-allowed;
+}
+
+.buttons-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.finish,
+.clear {
+  display: flex;
+  width: 10rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.4rem;
+  background: #75B871;
+  color: #000;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 14pt;
+
+  margin-top: 2rem;
+
+  transition: background 0.2s;
+
+}
+
+.finish {
+  margin-right: 1rem;
+}
+
+.clear {
+  background: #E6883E;
+}
+
+.finish:enabled:hover,
+.clear:enabled:hover {
+  cursor: pointer;
+  border: 2px solid green;
+  background: transparent;
+}
+
+.clear:enabled:hover {
+  border: 2px solid #E6BE3E;
+}
+

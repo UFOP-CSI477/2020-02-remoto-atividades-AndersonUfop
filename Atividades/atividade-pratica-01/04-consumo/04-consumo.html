@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumo de combustível</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="04-consumo.js"></script>
+</head>
+
+<body>
+  <h1>Consumo de combustível</h1>
+  <div class="registro">
+
+    <div class="container" id="dadosContainer">
+      <form name="veiculos">
+        <div class="container-quatidade">
+          <label for="quantidade_combustivel">
+            Quantidade de compustível
+          </label>
+          <input type="text" id="quantidade_combustivel" onchange="validarSalvarVeiculo()" />
+        </div>
+
+        <div class="container-quilometros">
+          <label for="quantidade_quilometros">
+            Quantidade de quilômetros rodados
+          </label>
+          <input type="text" id="quantidade_quilometros" onchange="validarSalvarVeiculo()" />
+        </div>
+      </form>
+      <div class="container-buttons">
+        <button class="btnRegistrarVeiculo" id="registrar" onClick="registrarVeiculo()">
+          Registrar veículo
+        </button>
+        <button class="btnSalvarVeiculo" id="salvar" onClick="carregarDados()">
+          Salvar veículo
+        </button>
+      </div>
+
+      <div class="desempenho">
+        <p id="desempenho"></p>
+      </div>
+
+      <div id="resultados-finais">
+
+      </div>
+
+      <div class="buttons-footer">
+        <button type="button" id="btn-finish" class="finish" onClick="finalizar()">Finalizar</button>
+        <button type="button" id="btn-clear" class="clear" onClick="limpar()">Limpar</button>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

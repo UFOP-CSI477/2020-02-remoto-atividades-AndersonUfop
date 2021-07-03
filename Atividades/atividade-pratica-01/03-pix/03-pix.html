@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="03-pix.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>PIX</h1>
+    <!-- <img src="" alt=""> -->
+    <div class="form-container">
+      <form name="form-pix">
+        <div class="tipo">
+          <p>Selecione o tipo da chave:</p>
+          <div class="div-cpf">
+            <input type="radio" id="cpf" name="tipo" value="cpf">
+            <label for="cpf">CPF</label>
+          </div>
+          <div class="div-cnpj">
+            <input type="radio" id="cnpj" name="tipo" value="cnpj">
+            <label for="cnpj">CNPJ</label>
+          </div>
+          <div class="div-email">
+            <input type="radio" id="email" name="tipo" value="email">
+            <label for="email">E-mail</label>
+          </div>
+          <div class="div-celular">
+            <input type="radio" id="celular" name="tipo" value="celular">
+            <label for="celular">Celular</label>
+          </div>
+          <div class="div-aleatoria">
+            <input type="radio" id="aleatoria" name="tipo" value="aleatoria">
+            <label for="aleatoria">Chave aleatória</label>
+          </div>
+        </div>
+
+        <div class="div-value-key">
+          <label for="valor-chave">Valor da chave:</label>
+          <input type="text" id="valor-chame">
+        </div>
+        <div class="div-banco">
+          <label for="bancos">Selecione um banco</label>
+          <select name="bancos" id="bancos">
+            <option value="null">Selecione um banco</option>
+          </select>
+        </div>
+        <div class="div-tipo-operacao">
+          <p>Tipo de operação:</p>
+          <div class="div-envio">
+            <input type="radio" id="envio" name="envio" value="envio">
+            <label for="Envio">Envio</label>
+          </div>
+
+          <div class="div-recebimento">
+            <input type="radio" id="recebimento" name="recebimento" value="recebimento">
+            <label for="recebimento">Recebimento</label>
+          </div>
+
+          <div class="div-valor">
+            <label for="valor">Valor: ($)</label>
+            <input type="text" id="valor">
+          </div>
+          <div class="div-data">
+            <label for="data">Data:</label>
+            <input type="date" id="data">
+          </div>
+          <button type="button" id="finalizar"> Finalizar </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
