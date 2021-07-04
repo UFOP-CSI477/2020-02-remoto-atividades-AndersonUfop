@@ -202,6 +202,7 @@ function realizarNovasTransacoes() {
   }
 
   document.getElementById("cpf").checked = true;
+  document.getElementById("valor_chave").innerHTML = "CPF:";
 
   document.getElementById("resume").style.display = "none";
 
