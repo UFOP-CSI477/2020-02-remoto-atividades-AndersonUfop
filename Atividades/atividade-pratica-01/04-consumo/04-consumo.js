@@ -137,6 +137,16 @@ function limpar() {
     array_veiculos = [];
   }
 
+  total_combustivel = 0;
+  total_km = 0;
+  total_dsp = 0;
+  media_comb = 0;
+  media_km = 0;
+  media_dsp = 0;
+  combustivel = 0;
+  quilometros = 0;
+  desempenho = 0;
+
   const myNode = document.getElementById("resultados-finais");
   if (myNode.childElementCount > 0) {
     while (myNode.lastElementChild) {
