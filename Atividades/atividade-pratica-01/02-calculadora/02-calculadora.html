@@ -12,48 +12,46 @@
 <body>
   <div class="content">
     <div class="display-calculator">
-      <input id="display" type="text" value="" readonly />
+      <input id="display" type="text" value="0" readonly />
     </div>
     <div class="numbers">
       <div class="row-1">
-        <button type="button" class="btn" id="value7">7</button>
-        <button type="button" class="btn" id="value8">8</button>
-        <button type="button" class="btn" id="value9">9</button>
-        <button type="button" class="btn" id="addition" onClick="exibirValor()">+</button>
-        <button type="button" class="btn" id="open">&#40;</button>
+        <button type="button" class="btn" id="value7" value="7" onclick="capturarValor('7')">7</button>
+        <button type="button" class="btn" id="value8" value="8" onclick="capturarValor('8')">8</button>
+        <button type="button" class="btn" id="value9" value="9" onclick="capturarValor('9')">9</button>
+        <button type="button" class="btn" id="addition" onclick="operator('+')">+</button>
+        <button type="clear" class="btn" id="clear" onclick="limparVisor()">C</button>
+    
       </div>
 
       <div class="row-2">
-        <button type="button" class="btn" id="value4">4</button>
-        <button type="button" class="btn" id="value5">5</button>
-        <button type="button" class="btn" id="value6">6</button>
-        <button type="button" class="btn" id="subtraction">-</button>
-        <button type="button" class="btn" id="closed"></button>&#41; </button>
-
-
+        <button type="button" class="btn" id="value4" onclick="capturarValor('4')">4</button>
+        <button type="button" class="btn" id="value5" onclick="capturarValor('5')">5</button>
+        <button type="button" class="btn" id="value6" onclick="capturarValor('6')">6</button>
+        <button type="button" class="btn" id="subtraction" onclick="operator('-')">-</button>
+        <button type="button" class="btn" id="square" onclick="raiz()">&#8730;</button>
       </div>
 
       <div class="row-3">
-        <button type="button" class="btn" id="value1">1</button>
-        <button type="button" class="btn" id="value2">2</button>
-        <button type="button" class="btn" id="value3">3</button>
-        <button type="button" class="btn" id="multiplication">x</button>
-        <button type="button" class="btn" id="potency">x&sup2;</button>
+        <button type="button" class="btn" id="value1" onclick="capturarValor('1')">1</button>
+        <button type="button" class="btn" id="value2" onclick="capturarValor('2')">2</button>
+        <button type="button" class="btn" id="value3" onclick="capturarValor('3')">3</button>
+        <button type="button" class="btn" id="multiplication" onclick="operator('x')">x</button>
+        <button type="button" class="btn" id="potency" onclick="potencia()">x&sup2;</button>
+     
+       
       </div>
 
       <div class="row-4">
-        <button type="button" class="btn" id="value0">0</button>
-        <button type="button" class="btn" id="virgula">,</button>
-        <button type="button" class="btn" id="percentage">%</button>
-        <button type="button" class="btn" id="division">&divide;</button>
-        <button type="button" class="btn" id="square">&#8730;</button>
+        <button type="button" class="btn" id="value0" onclick="capturarValor('0')">0</button>
+        <button type="button" class="btn" id="virgula" onclick="virgula()">.</button>
+        <button type="button" class="btn" id="percentage" onclick="porcentagem()">%</button>
+        <button type="button" class="btn" id="division" onclick="operator('/')">&divide;</button>
+        <button type="button" class="btn" id="equal" onclick="equal()">=</button>
+      
       </div>
     </div>
 
-    <div class="row-5">
-      <button type="button" class="btn" id="equal">=</button>
-      <button type="clear" class="btn" id="clear">C</button>
-    </div>
   </div>
 
 

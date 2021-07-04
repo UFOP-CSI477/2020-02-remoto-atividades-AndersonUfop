@@ -1,84 +1,123 @@
-let calculo = {
-  n1: 0,
-  n2: 0,
-  funcaoCalcular: null
-}
+let calculo = [];
+let valueString = '';
+let value = 0;
+let functionoperator = '';
+let result = 0;
+let cont_operator = 0;
 
-function atribuirEventos() {
-  document.getElementById("value0").addEventListener("click", inserirNumero);
-  document.getElementById("value1").addEventListener("click", inserirNumero);
-  document.getElementById("value2").addEventListener("click", inserirNumero);
-  document.getElementById("value3").addEventListener("click", inserirNumero);
-  document.getElementById("value4").addEventListener("click", inserirNumero);
-  document.getElementById("value5").addEventListener("click", inserirNumero);
-  document.getElementById("value6").addEventListener("click", inserirNumero);
-  document.getElementById("value7").addEventListener("click", inserirNumero);
-  document.getElementById("value8").addEventListener("click", inserirNumero);
-  document.getElementById("value9").addEventListener("click", inserirNumero);
-}
-
-window.addEventListener("load", function() {
-  atribuirEventos()
-})
-
-function adicao(n1, n2) {
-  return n1 + n2;
-}
-
-function subtracao(n1, n2) {
-  return n1 - n2;
-}
-
-
-function multiplicacao(n1, n2) {
-  return n1 * n2;
-}
-
-function divisao(n1, n2) {
-
-  if (n2 === 0) {
-    return "Não é possível dividir por 0";
+function capturarValor(num) {
+  if (document.getElementById("display").value === '0' && num ==='0') {
   } else {
-    return n1 / n2;
+    valueString += num;
+    document.getElementById("display").value = valueString;
   }
-  
+}
+
+function operator(op) {
+  if (cont_operator > 0) {
+    calculo = [];
+    value = Number(document.getElementById("display").value);
+    calculo.push(value);
+    calculo.push(op);
+    document.getElementById("display").value = "";
+    valueString = "";
+  }
+
+  else {
+    value = Number(document.getElementById("display").value);
+    calculo.push(value);
+    calculo.push(op);
+    valueString = '';
+  }
+
+}
+
+function equal() {
+  value = Number(document.getElementById("display").value);
+  calculo.push(value);
+
+  for (let i = 0; i < calculo.length; i++) {
+    if (isNaN(calculo[i])) {
+      if (calculo[i] === '+') {
+        if (cont_operator === 0) {
+          result += calculo[i - 1] + calculo[i + 1];
+
+        } else if (cont_operator > 0) {
+          result += calculo[i + 1];
+        }
+
+        cont_operator++;
+      }
+
+      if (calculo[i] === '-') {
+        if (cont_operator === 0) {
+          result += calculo[i - 1] - calculo[i + 1];
+
+        } else {
+          result += -calculo[i + 1];
+        }
+        cont_operator++;
+      }
+
+      if (calculo[i] === 'x') {
+        if (cont_operator === 0) {
+          result += calculo[i - 1] * calculo[i + 1];
+
+        } else {
+          result *= calculo[i + 1];
+        }
+        cont_operator++;
+      }
+
+      if (calculo[i] === '/') {
+        if (cont_operator === 0) {
+          result += calculo[i - 1] / calculo[i + 1];
+
+        } else {
+          result /= calculo[i + 1];
+        }
+        cont_operator++;
+      }
+    }
+  }
+
+  document.getElementById("display").value = result;
+
+}
+
+function raiz() {
+  value = Number(valueString);
+  result = Math.sqrt(value);
+  document.getElementById("display").value = result;
+
+}
+
+function potencia() {
+  value = Number(valueString);
+  result = Math.pow(value, 2);
+  document.getElementById("display").value = result;
+}
+
+function porcentagem() {
+  let value_display = Number(document.getElementById("display").value);
+  let percent = (value_display / 100);
+  document.getElementById("display").value = percent;
+
+}
+
+function virgula() {
+  valueString += '.';
+  document.getElementById("display").value = valueString;
 }
 
 function limparVisor() {
-  inputResultado.value = "";
+  calculo = [];
+  valueString = '';
+  value = 0;
+  functionoperator = '';
+  result = 0;
+  cont_operator = 0;
 
-  calculo.n1 = 0;
-  calculo.n2 = 0;
-  calculo.funcaoCalcular = null;
-
-}
-
-function inserirNumero() {
-
-  if (isNaN(document.getElementById("display").value)) {
-    document.getElementById("display").value = event.target.textContent;
-  } else {
-    if (document.getElementById("display").value === 0) {
-      document.getElementById("display").value = event.target.textContent;
-    } else {
-      document.getElementById("display").value += event.target.textContent;
-    }
-  }
-}
-
-function inserirPonto() {
-  if (document.getElementById("display").value === "" || isNaN(document.getElementById("display").value)) {
-    document.getElementById("display").value = "0.";
-  } else if (!document.getElementById("display").value.includes(".")) {
-    document.getElementById("display").value = document.getElementById("display").value + "."
-  }
-}
-
-
-
-function calculate() {
-
-  const calculate = Number(result);
-  console.log(calculate);
+  document.getElementById("display").value = '0';
 
 }
