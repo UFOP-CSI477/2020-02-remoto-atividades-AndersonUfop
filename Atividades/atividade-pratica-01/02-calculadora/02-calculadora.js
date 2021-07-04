@@ -86,14 +86,14 @@ function equal() {
 }
 
 function raiz() {
-  value = Number(valueString);
+  value = Number(document.getElementById("display").value);
   result = Math.sqrt(value);
   document.getElementById("display").value = result;
 
 }
 
 function potencia() {
-  value = Number(valueString);
+  value = Number(document.getElementById("display").value);
   result = Math.pow(value, 2);
   document.getElementById("display").value = result;
 }
