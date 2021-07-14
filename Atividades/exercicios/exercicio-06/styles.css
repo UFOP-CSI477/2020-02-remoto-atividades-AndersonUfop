@@ -1,0 +1,29 @@
+table, td, th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 24rem;
+  height: 3rem;
+  font-family: Roboto, sans-serif;
+}
+
+thead {
+  
+  background: rgb(102, 204, 255, 0.7);
+}
+
+td {
+  text-align: center;
+}
+
+tbody > tr:nth-child(even) {
+  background-color: #b7d4f0;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: #e8edf2;
+}
+
+tbody > tr:hover {
+  opacity: 0.9;
+}
+
