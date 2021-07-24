@@ -1,5 +1,3 @@
-import { User } from "../../users/entities/User";
-
 interface ICreateHotelDTO {
   id?: string;
   name_hotel: string;
@@ -11,7 +9,7 @@ interface ICreateHotelDTO {
   wifi: boolean;
   parking: boolean;
   breakfast: boolean;
-  owner_id: User;
+  owner_id: string;
 }
 
 export { ICreateHotelDTO };

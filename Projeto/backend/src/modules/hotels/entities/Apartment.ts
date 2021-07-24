@@ -1,32 +1,53 @@
-import { v4 as uuidV4 } from "uuid";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
+import { Hotel } from "./Hotel";
+
+@Entity("apartments")
 class Apartment {
-  id?: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
+  @ManyToOne(() => Hotel)
+  @JoinColumn({ name: "hotel_id" })
+  hotel: Hotel;
+
+  @Column()
   hotel_id: string;
 
+  @Column()
   room_number: number;
 
+  @Column()
   price: number;
 
+  @Column()
   suite: boolean;
 
+  @Column()
   tv: boolean;
 
-  air_conditioning: string;
+  @Column()
+  air_conditioning: boolean;
 
+  @Column()
   room_type: string;
 
+  @Column()
   availability: boolean;
 
+  @CreateDateColumn()
   created_at: Date;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-      this.availability = true;
-    }
-  }
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 
 export { Apartment };

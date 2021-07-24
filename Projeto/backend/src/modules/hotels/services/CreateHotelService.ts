@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../errors/AppError";
 import { User } from "../../users/entities/User";
+import { IUsersRepository } from "../../users/repositories/IUsersRepository";
 import { IHotelsRepository } from "../repositories/IHotelsRepository";
 
 interface IRequest {
@@ -14,14 +15,16 @@ interface IRequest {
   wifi: boolean;
   parking: boolean;
   breakfast: boolean;
-  owner_id: User;
+  owner_id: string;
 }
 
 @injectable()
 class CreateHotelService {
   constructor(
     @inject("HotelsRepository")
-    private hotelsRepository: IHotelsRepository
+    private hotelsRepository: IHotelsRepository,
+    @inject("UsersRepository")
+    private usersRepository: IUsersRepository
   ) {}
 
   async execute({
@@ -37,9 +40,14 @@ class CreateHotelService {
     owner_id,
   }: IRequest): Promise<void> {
     const hotelExists = await this.hotelsRepository.findByName(name_hotel);
+    const ownerExists = await this.usersRepository.findById(owner_id);
 
     if (hotelExists) {
       throw new AppError("Hotel already exists", 401);
+    }
+
+    if (!ownerExists) {
+      throw new AppError("Owner not exists", 401);
     }
 
     await this.hotelsRepository.create({

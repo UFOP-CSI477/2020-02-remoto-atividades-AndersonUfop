@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../errors/AppError";
 import { IApartmentsRepository } from "../repositories/IApartmentsRepository";
 
@@ -7,12 +9,18 @@ interface IRequest {
   price: number;
   suite: boolean;
   tv: boolean;
-  air_conditioning: string;
+  air_conditioning: boolean;
   room_type: string;
+  availability?: boolean;
 }
 
+@injectable()
 class CreateApartmentService {
-  constructor(private apartmentsRepository: IApartmentsRepository) {}
+  constructor(
+    @inject("ApartmentsRepository")
+    private apartmentsRepository: IApartmentsRepository
+  ) {}
+
   execute({
     hotel_id,
     room_number,
@@ -22,13 +30,6 @@ class CreateApartmentService {
     air_conditioning,
     room_type,
   }: IRequest): void {
-    const apartmentAlreadyExists =
-      this.apartmentsRepository.findByNumber(room_number);
-
-    if (apartmentAlreadyExists) {
-      throw new AppError("Apartment already exists", 401);
-    }
-
     this.apartmentsRepository.create({
       hotel_id,
       room_number,
@@ -37,6 +38,7 @@ class CreateApartmentService {
       tv,
       air_conditioning,
       room_type,
+      availability: true,
     });
   }
 }

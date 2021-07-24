@@ -1,38 +1,13 @@
 import { Router } from "express";
 
-import { ApartmentsRepository } from "../modules/hotels/repositories/implementations/ApartmentsRepository";
-import { CreateApartmentService } from "../modules/hotels/services/CreateApartmentService";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { CreateApartmentController } from "../modules/hotels/controllers/CreateApartmentController";
 
 const apartmentsRoutes = Router();
 
-const apartmentsRepository = new ApartmentsRepository();
+const createApartmentController = new CreateApartmentController();
 
-apartmentsRoutes.post("/", (request, response) => {
-  const {
-    hotel_id,
-    room_number,
-    price,
-    suite,
-    tv,
-    air_conditioning,
-    room_type,
-  } = request.body;
-
-  const createApartmentService = new CreateApartmentService(
-    apartmentsRepository
-  );
-
-  createApartmentService.execute({
-    hotel_id,
-    room_number,
-    price,
-    suite,
-    tv,
-    air_conditioning,
-    room_type,
-  });
-
-  return response.status(201).send();
-});
+apartmentsRoutes.use(ensureAuthenticated);
+apartmentsRoutes.post("/", createApartmentController.handle);
 
 export { apartmentsRoutes };

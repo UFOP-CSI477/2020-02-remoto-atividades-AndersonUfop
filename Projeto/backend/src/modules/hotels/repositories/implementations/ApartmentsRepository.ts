@@ -1,15 +1,17 @@
+import { getRepository, Repository } from "typeorm";
+
 import { ICreateApartmentDTO } from "../../dtos/ICreateApartmentDTO";
 import { Apartment } from "../../entities/Apartment";
 import { IApartmentsRepository } from "../IApartmentsRepository";
 
 class ApartmentsRepository implements IApartmentsRepository {
-  private apartments: Apartment[];
+  private repository: Repository<Apartment>;
 
   constructor() {
-    this.apartments = [];
+    this.repository = getRepository(Apartment);
   }
 
-  create({
+  async create({
     hotel_id,
     room_number,
     price,
@@ -17,10 +19,9 @@ class ApartmentsRepository implements IApartmentsRepository {
     tv,
     air_conditioning,
     room_type,
-  }: ICreateApartmentDTO): void {
-    const apartment = new Apartment();
-
-    Object.assign(apartment, {
+    availability,
+  }: ICreateApartmentDTO): Promise<Apartment> {
+    const apartment = this.repository.create({
       hotel_id,
       room_number,
       price,
@@ -28,16 +29,11 @@ class ApartmentsRepository implements IApartmentsRepository {
       tv,
       air_conditioning,
       room_type,
-      created_at: new Date(),
+      availability,
     });
 
-    this.apartments.push(apartment);
-  }
+    await this.repository.save(apartment);
 
-  findByNumber(room_number: number): Apartment {
-    const apartment = this.apartments.find(
-      (apartment) => apartment.room_number === room_number
-    );
     return apartment;
   }
 }

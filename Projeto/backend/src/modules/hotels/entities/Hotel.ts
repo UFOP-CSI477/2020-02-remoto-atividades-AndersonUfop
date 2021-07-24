@@ -44,7 +44,10 @@ class Hotel {
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "owner_id" })
-  owner_id: User;
+  owner: User;
+
+  @Column()
+  owner_id: string;
 
   @CreateDateColumn()
   created_at: Date;

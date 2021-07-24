@@ -43,12 +43,19 @@ class HotelsRepository implements IHotelsRepository {
 
   async list(): Promise<Hotel[]> {
     const hotels = await this.repository.find();
+
     return hotels;
   }
 
   async findByName(name_hotel: string): Promise<Hotel> {
     const hotel = await this.repository.findOne({ name_hotel });
     return hotel;
+  }
+
+  async findById(id: string): Promise<Hotel> {
+    const id_hotel = await this.repository.findOne({ id });
+
+    return id_hotel;
   }
 }
 
