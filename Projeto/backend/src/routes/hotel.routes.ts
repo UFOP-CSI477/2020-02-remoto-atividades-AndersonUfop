@@ -2,6 +2,7 @@ import { Router } from "express";
 import multer from "multer";
 
 import uploadConfig from "../config/upload";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { CreateHotelController } from "../modules/hotels/controllers/CreateHotelController";
 import { ListHotelsController } from "../modules/hotels/controllers/ListHotelsController";
 import { UploadHotelImagesController } from "../modules/hotels/controllers/UploadHotelImagesController";
@@ -14,7 +15,8 @@ const uploadHotelImagesController = new UploadHotelImagesController();
 
 const upload = multer(uploadConfig.upload("./tmp/hotel"));
 
-hotelsRoutes.post("/", createHotelsController.handle);
+hotelsRoutes.post("/", ensureAuthenticated, createHotelsController.handle);
+
 hotelsRoutes.get("/", listHotelsController.handle);
 
 hotelsRoutes.post(

@@ -36,6 +36,38 @@ class ApartmentsRepository implements IApartmentsRepository {
 
     return apartment;
   }
+
+  /* price: number,
+  suite: string,
+  tv: string,
+  air_conditioning: string,
+  room_type: string */
+
+  async list(): Promise<Apartment[]> {
+    const apartments = await this.repository.find();
+
+    console.log(apartments.length);
+
+    return apartments;
+  }
+
+  async findById(id: string): Promise<Apartment> {
+    const id_apartment = await this.repository.findOne({ id });
+
+    return id_apartment;
+  }
+
+  async findByNumber(ap: number): Promise<Apartment> {
+    const apartment = await this.repository.findOne(ap);
+
+    return apartment;
+  }
+
+  async findApartmentsByHotel(hotel_id: string): Promise<Apartment[]> {
+    const apartment = await this.repository.find({ where: { hotel_id } });
+
+    return apartment;
+  }
 }
 
 export { ApartmentsRepository };

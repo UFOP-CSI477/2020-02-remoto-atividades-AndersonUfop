@@ -49,7 +49,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        return view ('produtos.show', ['produto' => $produto]);
+        return view('produtos.show', ['produto' => $produto]);
     }
 
     /**
@@ -60,7 +60,7 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        return view ('produtos.edit', ['produto' => $produto ]);
+        return view('produtos.edit', ['produto' => $produto]);
     }
 
     /**
@@ -88,9 +88,12 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-
-        $produto->delete();
-        session()->flash('mensagem', 'Produto excluido com sucesso!');
+        if ($produto->compras->count() > 0) {
+            session()->flash('error', 'Exclusão não permitida! Existem compras associadas');
+        } else {
+            $produto->delete();
+            session()->flash('mensagem', 'Produto excluido com sucesso!');
+        }
         return redirect()->route('produtos.index');
     }
 }

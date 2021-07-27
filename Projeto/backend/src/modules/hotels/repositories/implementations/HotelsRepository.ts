@@ -41,8 +41,36 @@ class HotelsRepository implements IHotelsRepository {
     return hotel;
   }
 
-  async list(): Promise<Hotel[]> {
-    const hotels = await this.repository.find();
+  async list(
+    city?: string,
+    pool?: string,
+    wifi?: string,
+    parking?: string,
+    breakfast?: string
+  ): Promise<Hotel[]> {
+    const hotelsQuery = await this.repository.createQueryBuilder("h");
+
+    if (city) {
+      hotelsQuery.andWhere("city = :city", { city });
+    }
+
+    if (pool) {
+      hotelsQuery.andWhere("pool = :pool", { pool });
+    }
+
+    if (wifi) {
+      hotelsQuery.andWhere("wifi = :wifi", { wifi });
+    }
+
+    if (parking) {
+      hotelsQuery.andWhere("parking = :parking", { parking });
+    }
+
+    if (breakfast) {
+      hotelsQuery.andWhere("breakfast = :breakfast", { breakfast });
+    }
+
+    const hotels = await hotelsQuery.getMany();
 
     return hotels;
   }
