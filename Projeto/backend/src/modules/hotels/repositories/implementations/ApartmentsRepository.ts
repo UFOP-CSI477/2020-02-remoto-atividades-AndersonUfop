@@ -37,16 +37,38 @@ class ApartmentsRepository implements IApartmentsRepository {
     return apartment;
   }
 
-  /* price: number,
-  suite: string,
-  tv: string,
-  air_conditioning: string,
-  room_type: string */
+  async list(
+    hotel_id: string,
+    suite?: string,
+    tv?: string,
+    air_conditioning?: string,
+    room_type?: string
+  ): Promise<Apartment[]> {
+    const apartmentsQuery = await this.repository.createQueryBuilder("a");
 
-  async list(): Promise<Apartment[]> {
-    const apartments = await this.repository.find();
+    if (hotel_id) {
+      apartmentsQuery.andWhere("a.hotel_id = :hotel_id", { hotel_id });
+    }
 
-    console.log(apartments.length);
+    if (suite) {
+      apartmentsQuery.andWhere("suite = :suite", { suite });
+    }
+
+    if (tv) {
+      apartmentsQuery.andWhere("tv = :tv", { tv });
+    }
+
+    if (air_conditioning) {
+      apartmentsQuery.andWhere("air_conditioning = :air_conditioning", {
+        air_conditioning,
+      });
+    }
+
+    if (room_type) {
+      apartmentsQuery.andWhere("room_type = :room_type", { room_type });
+    }
+
+    const apartments = await apartmentsQuery.getMany();
 
     return apartments;
   }

@@ -21,6 +21,7 @@ hotelsRoutes.get("/", listHotelsController.handle);
 
 hotelsRoutes.post(
   "/images/:id",
+  ensureAuthenticated,
   upload.array("images"),
   uploadHotelImagesController.handle
 );

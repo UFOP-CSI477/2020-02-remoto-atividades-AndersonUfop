@@ -24,11 +24,15 @@ Route::get('/', function () {
     return view('principal');
 })->name('principal');
 
-Route::resource('/produtos', ProdutoController::class );
+Route::resource('/produtos', ProdutoController::class )->middleware
+('auth');
 Route::resource('/pessoas', PessoaController::class );
-Route::resource('/compras', CompraController::class );
-Route::resource('/cidades', CidadeController::class );
-Route::resource('/estados', EstadoController::class );
+Route::resource('/compras', CompraController::class )->middleware
+('auth');
+Route::resource('/cidades', CidadeController::class )->middleware
+('auth');
+Route::resource('/estados', EstadoController::class )->middleware
+('auth');
 
 
 /*
@@ -48,3 +52,7 @@ Route::get('/produtos/{id}', function($id) {
 
     return view('lista', ['dados' => $produto]);
 }); */
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
