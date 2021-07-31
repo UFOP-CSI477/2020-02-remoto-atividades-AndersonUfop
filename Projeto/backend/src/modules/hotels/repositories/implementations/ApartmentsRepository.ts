@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getManager, getRepository, Repository } from "typeorm";
 
 import { ICreateApartmentDTO } from "../../dtos/ICreateApartmentDTO";
 import { Apartment } from "../../entities/Apartment";
@@ -96,7 +96,9 @@ class ApartmentsRepository implements IApartmentsRepository {
   }
 
   async findApartmentsByHotel(hotel_id: string): Promise<Apartment[]> {
-    const apartment = await this.repository.find({ where: { hotel_id } });
+    const apartment = await this.repository.find({
+      where: { hotel_id },
+    });
 
     return apartment;
   }
@@ -107,6 +109,23 @@ class ApartmentsRepository implements IApartmentsRepository {
     });
 
     return apartmentAvailable;
+  }
+
+  async findByApartmentsHotelAvailable(hotel_id: string): Promise<Apartment[]> {
+    const apartments = await this.repository.find({
+      where: { hotel_id, availability: true },
+    });
+
+    return apartments;
+  }
+
+  async findByPrice(price: number): Promise<Apartment[]> {
+    const entityManager = getManager();
+    const someQuery = entityManager.query(`
+    select * from apartments where price < ${price}
+    `);
+
+    return someQuery;
   }
 }
 

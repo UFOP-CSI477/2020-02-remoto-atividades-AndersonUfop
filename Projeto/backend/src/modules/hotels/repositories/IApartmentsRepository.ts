@@ -16,6 +16,8 @@ interface IApartmentsRepository {
   findByNumber(ap: number): Promise<Apartment>;
   findApartmentsByHotel(hotel_id: string): Promise<Apartment[]>;
   findByAvailable(id: string): Promise<Apartment>;
+  findByApartmentsHotelAvailable(hotel_id: string): Promise<Apartment[]>;
+  findByPrice(price: number): Promise<Apartment[]>;
 }
 
 export { IApartmentsRepository };

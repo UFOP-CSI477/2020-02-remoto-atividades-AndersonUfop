@@ -1,5 +1,7 @@
-import { getRepository, Repository } from "typeorm";
+import { getManager, getRepository, Repository } from "typeorm";
 
+import { Apartment } from "../../../hotels/entities/Apartment";
+import { Hotel } from "../../../hotels/entities/Hotel";
 import { ICreateReserveDTO } from "../../dtos/ICreateReserveDTO";
 import { Reserve } from "../../entities/Reserve";
 import { IReservesRepository } from "../IReservesRepository";

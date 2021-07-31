@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { Apartment } from "../../hotels/entities/Apartment";
 import { IApartmentsRepository } from "../../hotels/repositories/IApartmentsRepository";
 import { Reserve } from "../entities/Reserve";
 import { IReservesRepository } from "../repositories/IReservesRepository";
