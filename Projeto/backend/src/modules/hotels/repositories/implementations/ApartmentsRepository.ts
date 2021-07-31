@@ -73,6 +73,16 @@ class ApartmentsRepository implements IApartmentsRepository {
     return apartments;
   }
 
+  async updateAvailable(id: string, availability: boolean): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update()
+      .set({ availability })
+      .where("id = :id")
+      .setParameters({ id })
+      .execute();
+  }
+
   async findById(id: string): Promise<Apartment> {
     const id_apartment = await this.repository.findOne({ id });
 
@@ -89,6 +99,14 @@ class ApartmentsRepository implements IApartmentsRepository {
     const apartment = await this.repository.find({ where: { hotel_id } });
 
     return apartment;
+  }
+
+  async findByAvailable(id: string): Promise<Apartment> {
+    const apartmentAvailable = await this.repository.findOne({
+      where: { id, availability: true },
+    });
+
+    return apartmentAvailable;
   }
 }
 

@@ -11,9 +11,11 @@ interface IApartmentsRepository {
     room_type?: string
   ): Promise<Apartment[]>;
 
+  updateAvailable(id: string, availability: boolean): Promise<void>;
   findById(id: string): Promise<Apartment>;
   findByNumber(ap: number): Promise<Apartment>;
   findApartmentsByHotel(hotel_id: string): Promise<Apartment[]>;
+  findByAvailable(id: string): Promise<Apartment>;
 }
 
 export { IApartmentsRepository };
