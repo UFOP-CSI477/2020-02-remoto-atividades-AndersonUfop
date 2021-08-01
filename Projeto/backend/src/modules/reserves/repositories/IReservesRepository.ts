@@ -1,5 +1,5 @@
 import { ICreateReserveDTO } from "../dtos/ICreateReserveDTO";
-import { Reserve } from "../entities/Reserve";
+import { Reserve } from "../infra/entities/Reserve";
 
 interface IReservesRepository {
   create(data: ICreateReserveDTO): Promise<Reserve>;

@@ -1,8 +1,8 @@
+import { IUsersRepository } from "@modules/users/repositories/IUsersRepository";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../errors/AppError";
-import { User } from "../../users/entities/User";
-import { IUsersRepository } from "../../users/repositories/IUsersRepository";
+import { AppError } from "@shared/errors/AppError";
+
 import { IHotelsRepository } from "../repositories/IHotelsRepository";
 
 interface IRequest {

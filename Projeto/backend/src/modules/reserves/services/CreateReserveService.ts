@@ -1,8 +1,9 @@
+import { IApartmentsRepository } from "@modules/apartments/repositories/IApartmentsRepository";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../errors/AppError";
-import { IDateProvider } from "../../../shared/container/providers/DateProvider/IDateProvider";
-import { IApartmentsRepository } from "../../hotels/repositories/IApartmentsRepository";
+import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
+import { AppError } from "@shared/errors/AppError";
+
 import { IReservesRepository } from "../repositories/IReservesRepository";
 
 interface IRequest {

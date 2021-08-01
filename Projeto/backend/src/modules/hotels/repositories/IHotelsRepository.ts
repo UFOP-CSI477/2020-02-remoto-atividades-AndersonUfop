@@ -1,5 +1,5 @@
 import { ICreateHotelDTO } from "../dtos/ICreateHotelDTO";
-import { Hotel } from "../entities/Hotel";
+import { Hotel } from "../infra/entities/Hotel";
 
 interface IHotelsRepository {
   create(data: ICreateHotelDTO): Promise<Hotel>;

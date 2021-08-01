@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { Hotel } from "../entities/Hotel";
+import { Hotel } from "../infra/entities/Hotel";
 import { IHotelsRepository } from "../repositories/IHotelsRepository";
 
 interface IRequest {

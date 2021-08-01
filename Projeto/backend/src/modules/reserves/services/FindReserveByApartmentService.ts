@@ -1,8 +1,8 @@
+import { IApartmentsRepository } from "@modules/apartments/repositories/IApartmentsRepository";
+import { IHotelsRepository } from "@modules/hotels/repositories/IHotelsRepository";
 import { inject, injectable } from "tsyringe";
 
-import { IApartmentsRepository } from "../../hotels/repositories/IApartmentsRepository";
-import { IHotelsRepository } from "../../hotels/repositories/IHotelsRepository";
-import { Reserve } from "../entities/Reserve";
+import { Reserve } from "../infra/entities/Reserve";
 import { IReservesRepository } from "../repositories/IReservesRepository";
 
 @injectable()
