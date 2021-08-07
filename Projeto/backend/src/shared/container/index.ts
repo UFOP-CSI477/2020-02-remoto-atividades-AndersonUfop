@@ -14,6 +14,8 @@ import { container } from "tsyringe";
 
 import { IDateProvider } from "./providers/DateProvider/IDateProvider";
 import { DayjsDateProvider } from "./providers/DateProvider/implementations/DayjsDateProvider";
+import { LocalStorageProvider } from "./providers/StorageProvider/implementations/LocalStorageProvider";
+import { IStorageProvider } from "./providers/StorageProvider/IStorageProvider";
 
 container.registerSingleton<IHotelsRepository>(
   "HotelsRepository",
@@ -48,4 +50,9 @@ container.registerSingleton<IReservesRepository>(
 container.registerSingleton<IDateProvider>(
   "DayjsDateProvider",
   DayjsDateProvider
+);
+
+container.registerSingleton<IStorageProvider>(
+  "StorageProvider",
+  LocalStorageProvider
 );

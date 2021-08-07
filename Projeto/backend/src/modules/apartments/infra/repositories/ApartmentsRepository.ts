@@ -83,7 +83,10 @@ class ApartmentsRepository implements IApartmentsRepository {
   }
 
   async findById(id: string): Promise<Apartment> {
-    const id_apartment = await this.repository.findOne({ id });
+    const id_apartment = await this.repository.findOne({
+      where: { id },
+      relations: ["images"],
+    });
 
     return id_apartment;
   }
@@ -97,6 +100,7 @@ class ApartmentsRepository implements IApartmentsRepository {
   async findApartmentsByHotel(hotel_id: string): Promise<Apartment[]> {
     const apartment = await this.repository.find({
       where: { hotel_id },
+      relations: ["images"],
     });
 
     return apartment;
@@ -105,6 +109,7 @@ class ApartmentsRepository implements IApartmentsRepository {
   async findByAvailable(id: string): Promise<Apartment> {
     const apartmentAvailable = await this.repository.findOne({
       where: { id, availability: true },
+      relations: ["images"],
     });
 
     return apartmentAvailable;
@@ -113,6 +118,7 @@ class ApartmentsRepository implements IApartmentsRepository {
   async findByApartmentsHotelAvailable(hotel_id: string): Promise<Apartment[]> {
     const apartments = await this.repository.find({
       where: { hotel_id, availability: true },
+      relations: ["images"],
     });
 
     return apartments;

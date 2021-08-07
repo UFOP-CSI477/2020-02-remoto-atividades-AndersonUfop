@@ -5,9 +5,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+
+import { ApartmentImage } from "./ApartmentImage";
 
 @Entity("apartments")
 class Apartment {
@@ -47,6 +50,12 @@ class Apartment {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => ApartmentImage, (image) => image.apartment, {
+    cascade: ["insert", "update"],
+  })
+  @JoinColumn({ name: "apartment_id" })
+  images: ApartmentImage[];
 }
 
 export { Apartment };

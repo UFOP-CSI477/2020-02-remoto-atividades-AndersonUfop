@@ -20,7 +20,7 @@ const findApartmentsByHotelAvailableController =
   new FindApartmentsByHotelAvailableController();
 const findByPriceApartmentsController = new FindByPriceApartmentsController();
 
-const upload = multer(uploadConfig.upload("./tmp/apartment"));
+const upload = multer(uploadConfig);
 
 apartmentsRoutes.post(
   "/",

@@ -1,4 +1,5 @@
 import { User } from "@modules/users/infra/entities/User";
+import { Expose } from "class-transformer";
 import {
   Column,
   CreateDateColumn,
@@ -7,7 +8,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
+
+import { HotelImage } from "./HotelImage";
 
 @Entity("hotels")
 class Hotel {
@@ -53,6 +57,12 @@ class Hotel {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => HotelImage, (image) => image.hotel, {
+    cascade: ["insert", "update"],
+  })
+  @JoinColumn({ name: "hotel_id" })
+  images: HotelImage[];
 }
 
 export { Hotel };

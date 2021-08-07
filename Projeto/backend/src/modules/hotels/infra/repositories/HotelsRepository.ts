@@ -3,6 +3,8 @@ import { Hotel } from "@modules/hotels/infra/entities/Hotel";
 import { IHotelsRepository } from "@modules/hotels/repositories/IHotelsRepository";
 import { getRepository, Repository } from "typeorm";
 
+import { HotelImage } from "../entities/HotelImage";
+
 class HotelsRepository implements IHotelsRepository {
   private repository: Repository<Hotel>;
 
@@ -74,13 +76,24 @@ class HotelsRepository implements IHotelsRepository {
     return hotels;
   }
 
+  async index(): Promise<Hotel[]> {
+    const hotels = this.repository.find({
+      relations: ["images"],
+    });
+
+    return hotels;
+  }
+
   async findByName(name_hotel: string): Promise<Hotel> {
     const hotel = await this.repository.findOne({ name_hotel });
     return hotel;
   }
 
   async findById(id: string): Promise<Hotel> {
-    const id_hotel = await this.repository.findOne({ id });
+    const id_hotel = await this.repository.findOne({
+      where: { id },
+      relations: ["images"],
+    });
 
     return id_hotel;
   }

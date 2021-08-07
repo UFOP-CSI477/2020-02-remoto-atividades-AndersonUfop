@@ -1,3 +1,4 @@
+import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -15,7 +16,7 @@ class FindApartmentsByHotelAvailableController {
       hotel_id
     );
 
-    return response.json(apartments);
+    return response.json({ apartments: classToClass(apartments) });
   }
 }
 
