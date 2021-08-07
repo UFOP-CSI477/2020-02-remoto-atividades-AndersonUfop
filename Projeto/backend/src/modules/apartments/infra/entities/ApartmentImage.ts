@@ -1,4 +1,3 @@
-import { Expose } from "class-transformer";
 import {
   Column,
   CreateDateColumn,
@@ -31,11 +30,6 @@ class ApartmentImage {
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  @Expose({ name: "apartment_url" })
-  getHotelUrl(): string {
-    return `http://localhost:3333/images/apartment/${this.image_name}`;
-  }
 }
 
 export { ApartmentImage };

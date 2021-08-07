@@ -100,6 +100,7 @@ class ApartmentsRepository implements IApartmentsRepository {
   async findApartmentsByHotel(hotel_id: string): Promise<Apartment[]> {
     const apartment = await this.repository.find({
       where: { hotel_id },
+
       relations: ["images"],
     });
 

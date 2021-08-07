@@ -19,20 +19,6 @@ class HotelsImagesRepository implements IHotelsImagesRepository {
 
     return hotelImage;
   }
-
-  async listImagesByHotels(hotel_id: string): Promise<HotelImage[]> {
-    const hotels = await this.repository.find({
-      where: { hotel_id },
-    });
-
-    return hotels;
-  }
-
-  async findById(id: string): Promise<HotelImage> {
-    const image = await this.repository.findOne({ id });
-
-    return image;
-  }
 }
 
 export { HotelsImagesRepository };

@@ -3,6 +3,7 @@ import { FindApartmentsByHotelController } from "@modules/apartments/controllers
 import { FindApartmentsByHotelAvailableController } from "@modules/apartments/controllers/FindApartmentsHotelAvailableController";
 import { FindByPriceApartmentsController } from "@modules/apartments/controllers/FindByPriceApartmentsController";
 import { ListApartmentsController } from "@modules/apartments/controllers/ListApartmentsController";
+import { ListImagesByApartmentController } from "@modules/apartments/controllers/ListImagesByApartmentController";
 import { UploadApartmentImagesController } from "@modules/apartments/controllers/UploadApartmentImagesController";
 import { Router } from "express";
 import multer from "multer";
@@ -19,6 +20,7 @@ const uploadApartmentImagesController = new UploadApartmentImagesController();
 const findApartmentsByHotelAvailableController =
   new FindApartmentsByHotelAvailableController();
 const findByPriceApartmentsController = new FindByPriceApartmentsController();
+const listImagesByApartmentController = new ListImagesByApartmentController();
 
 const upload = multer(uploadConfig);
 
@@ -33,6 +35,11 @@ apartmentsRoutes.get("/find/", listApartmentsController.handle);
 apartmentsRoutes.get("/filter/", findByPriceApartmentsController.handle);
 
 apartmentsRoutes.get("/:hotel_id", findApartmentsByHotelController.handle);
+
+apartmentsRoutes.get(
+  "/images/:apartment_id",
+  listImagesByApartmentController.handle
+);
 
 apartmentsRoutes.post(
   "/images/:id",

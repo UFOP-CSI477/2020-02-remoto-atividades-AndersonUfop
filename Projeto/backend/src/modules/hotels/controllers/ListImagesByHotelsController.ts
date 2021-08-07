@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { ListImagesByHotelsService } from "../services/ListImagesByHotelsService";
+import hotelsView from "../views/hotels.view";
 
 class ListImagesByHotelsController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -14,7 +15,7 @@ class ListImagesByHotelsController {
 
     const hotels = await listImagesByHotelsService.execute(hotel_id);
 
-    return response.json({ hotels: classToClass(hotels) });
+    return response.json(hotelsView.render(hotels));
   }
 }
 

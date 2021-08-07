@@ -1,8 +1,8 @@
-import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { FindApartmentsByHotelService } from "../services/FindApartmentsByHotelService";
+import apartmentsView from "../views/apartments.view";
 
 class FindApartmentsByHotelController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -14,7 +14,7 @@ class FindApartmentsByHotelController {
 
     const apartments = await findApartmentsByHotelService.execute(hotel_id);
 
-    return response.json({ apartments: classToClass(apartments) });
+    return response.json(apartmentsView.renderMany(apartments));
   }
 }
 

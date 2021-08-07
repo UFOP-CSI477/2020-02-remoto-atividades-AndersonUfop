@@ -23,7 +23,6 @@ class ListHotelsService {
   ) {}
 
   async execute(): Promise<Hotel[]> {
-    const arrayImages = [];
     const hotels = await this.hotelsRepository.index();
 
     /*  const hotels = await this.hotelsRepository.list(

@@ -34,7 +34,6 @@ class CreateApartmentService {
     room_type,
   }: IRequest): Promise<void> {
     const hotelExists = await this.hotelsRepository.findById(hotel_id);
-    // const apartment = await this.apartmentsRepository.findByNumber(room_number);
     const max_apartments = hotelExists.rooms_number;
     const total_apartments = await (
       await this.apartmentsRepository.findApartmentsByHotel(hotel_id)
@@ -44,10 +43,6 @@ class CreateApartmentService {
     if (!hotelExists) {
       throw new AppError("Hotel not exits!", 401);
     }
-
-    /* if (apartment) {
-      throw new AppError("Apartment already exists", 401);
-    } */
 
     // Verifica se a quantidade de quartos não excede a capacidade do hotel
     if (total_apartments >= max_apartments) {

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { ListUsersService } from "../services/ListUsersService";
+import usersView from "../views/users.view";
 
 class ListUsersController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -9,7 +10,7 @@ class ListUsersController {
 
     const all = await listUsersService.execute();
 
-    return response.json(all);
+    return response.json(usersView.renderMany(all));
   }
 }
 

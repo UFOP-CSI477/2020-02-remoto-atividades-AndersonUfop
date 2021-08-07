@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { ListHotelsService } from "../services/ListHotelsService";
+import hotelsView from "../views/hotels.view";
 
 class ListHotelsController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -20,7 +21,9 @@ class ListHotelsController {
 
     const hotels = await listHotelsService.execute();
 
-    return response.json({ hotels: classToClass(hotels) });
+    /* return response.json({ hotels: classToClass(hotels) }); */
+
+    return response.json(hotelsView.renderMany(hotels));
   }
 }
 

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 
 import { FindByReservesService } from "../services/FindByReservesService";
+import reservesView from "../views/reserves.view";
 
 class FindByReservesController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -9,7 +10,7 @@ class FindByReservesController {
 
     const reserves = await findByReservesService.execute();
 
-    return response.json(reserves);
+    return response.json(reservesView.renderMany(reserves));
   }
 }
 

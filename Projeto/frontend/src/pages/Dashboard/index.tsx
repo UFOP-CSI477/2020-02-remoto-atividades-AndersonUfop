@@ -48,6 +48,7 @@ const Dashboard: React.FC = () => {
             { hotel.wifi && <li>Wifi</li> }
             { hotel.parking && <li>Estacionamento</li> }
             { hotel.breakfast && <li>Café da manhã</li> }
+            
             <hr/>
 
           </ul>
