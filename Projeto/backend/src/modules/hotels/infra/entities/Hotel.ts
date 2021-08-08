@@ -22,13 +22,10 @@ class Hotel {
   name_hotel: string;
 
   @Column()
-  address: string;
+  latitude: number;
 
   @Column()
-  city: string;
-
-  @Column()
-  state: string;
+  longitude: number;
 
   @Column()
   rooms_number: number;

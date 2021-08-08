@@ -1,4 +1,3 @@
-import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -20,8 +19,6 @@ class ListHotelsController {
     }); */
 
     const hotels = await listHotelsService.execute();
-
-    /* return response.json({ hotels: classToClass(hotels) }); */
 
     return response.json(hotelsView.renderMany(hotels));
   }

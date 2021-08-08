@@ -1,9 +1,8 @@
 interface ICreateHotelDTO {
   id?: string;
   name_hotel: string;
-  address: string;
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
   rooms_number: number;
   pool: boolean;
   wifi: boolean;

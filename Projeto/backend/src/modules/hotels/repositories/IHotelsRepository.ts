@@ -6,7 +6,6 @@ interface IHotelsRepository {
   create(data: ICreateHotelDTO): Promise<Hotel>;
   index(): Promise<Hotel[]>;
   list(
-    city?: string,
     pool?: string,
     wifi?: string,
     parking?: string,

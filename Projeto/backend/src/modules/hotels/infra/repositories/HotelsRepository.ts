@@ -3,8 +3,6 @@ import { Hotel } from "@modules/hotels/infra/entities/Hotel";
 import { IHotelsRepository } from "@modules/hotels/repositories/IHotelsRepository";
 import { getRepository, Repository } from "typeorm";
 
-import { HotelImage } from "../entities/HotelImage";
-
 class HotelsRepository implements IHotelsRepository {
   private repository: Repository<Hotel>;
 
@@ -14,9 +12,8 @@ class HotelsRepository implements IHotelsRepository {
 
   async create({
     name_hotel,
-    address,
-    city,
-    state,
+    latitude,
+    longitude,
     rooms_number,
     pool,
     wifi,
@@ -26,9 +23,8 @@ class HotelsRepository implements IHotelsRepository {
   }: ICreateHotelDTO): Promise<Hotel> {
     const hotel = this.repository.create({
       name_hotel,
-      address,
-      city,
-      state,
+      latitude,
+      longitude,
       rooms_number,
       pool,
       wifi,
@@ -43,17 +39,12 @@ class HotelsRepository implements IHotelsRepository {
   }
 
   async list(
-    city?: string,
     pool?: string,
     wifi?: string,
     parking?: string,
     breakfast?: string
   ): Promise<Hotel[]> {
     const hotelsQuery = await this.repository.createQueryBuilder("h");
-
-    if (city) {
-      hotelsQuery.andWhere("city = :city", { city });
-    }
 
     if (pool) {
       hotelsQuery.andWhere("pool = :pool", { pool });

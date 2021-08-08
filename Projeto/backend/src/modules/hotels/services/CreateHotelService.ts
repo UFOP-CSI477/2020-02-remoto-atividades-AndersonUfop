@@ -7,9 +7,8 @@ import { IHotelsRepository } from "../repositories/IHotelsRepository";
 
 interface IRequest {
   name_hotel: string;
-  address: string;
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
   rooms_number: number;
   pool: boolean;
   wifi: boolean;
@@ -29,9 +28,8 @@ class CreateHotelService {
 
   async execute({
     name_hotel,
-    address,
-    city,
-    state,
+    latitude,
+    longitude,
     rooms_number,
     pool,
     wifi,
@@ -52,9 +50,8 @@ class CreateHotelService {
 
     await this.hotelsRepository.create({
       name_hotel,
-      address,
-      city,
-      state,
+      latitude,
+      longitude,
       rooms_number,
       pool,
       wifi,

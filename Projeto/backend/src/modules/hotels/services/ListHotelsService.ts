@@ -26,7 +26,6 @@ class ListHotelsService {
     const hotels = await this.hotelsRepository.index();
 
     /*  const hotels = await this.hotelsRepository.list(
-      city,
       pool,
       wifi,
       parking,

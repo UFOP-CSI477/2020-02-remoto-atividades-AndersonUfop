@@ -6,9 +6,8 @@ export default {
     return {
       id: hotel.id,
       name_hotel: hotel.name_hotel,
-      address: hotel.address,
-      city: hotel.city,
-      state: hotel.state,
+      latitude: hotel.latitude,
+      longitude: hotel.longitude,
       rooms_number: hotel.rooms_number,
       pool: hotel.pool,
       wifi: hotel.wifi,

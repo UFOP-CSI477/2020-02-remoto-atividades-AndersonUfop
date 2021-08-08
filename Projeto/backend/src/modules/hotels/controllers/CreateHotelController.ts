@@ -7,9 +7,8 @@ class CreateHotelController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
       name_hotel,
-      address,
-      city,
-      state,
+      latitude,
+      longitude,
       rooms_number,
       pool,
       wifi,
@@ -22,9 +21,8 @@ class CreateHotelController {
 
     await createHotelService.execute({
       name_hotel,
-      address,
-      city,
-      state,
+      latitude,
+      longitude,
       rooms_number,
       pool,
       wifi,
