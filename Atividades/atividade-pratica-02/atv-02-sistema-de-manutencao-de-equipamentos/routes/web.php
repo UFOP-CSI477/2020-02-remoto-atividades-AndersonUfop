@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Equipamento;
+use App\Http\Controllers\EquipamentoController;
+use App\Models\Registro;
+use App\Http\Controllers\RegistroController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +25,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('principal');
 })->name('principal');
+
+Route::resource('/equipamentos', EquipamentoController::class);
+Route::resource('/manutencaos', RegistroController::class);

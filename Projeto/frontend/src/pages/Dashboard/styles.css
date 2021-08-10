@@ -1,0 +1,42 @@
+#page-map {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+  display: flex;
+}
+
+#page-map aside {
+  width: 440px;
+  background-color: #4488ED;
+  background-position: center center;
+  padding: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#page-map aside img {
+  display: flex;
+  height: 120px;
+}
+
+#page-map aside h2 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 42px;
+  margin-top: 40px;
+  color: #FFF;
+}
+
+#page-map aside p {
+  line-height: 28px;
+  margin-top: 24px;
+  opacity: 0.8;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}

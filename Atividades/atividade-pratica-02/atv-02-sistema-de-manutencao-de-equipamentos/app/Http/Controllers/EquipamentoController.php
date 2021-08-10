@@ -14,7 +14,7 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        //
+        return view('equipamentos.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class EquipamentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('equipamentos.index');
     }
 
     /**
