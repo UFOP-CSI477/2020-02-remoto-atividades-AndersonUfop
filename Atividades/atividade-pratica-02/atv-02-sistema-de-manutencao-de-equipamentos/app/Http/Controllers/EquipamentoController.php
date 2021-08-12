@@ -14,7 +14,8 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        return view('equipamentos.index');
+        $equipamentos = Equipamento::orderBy('nome')->get();
+        return view('equipamentos.index', ['equipamentos' => $equipamentos]);
     }
 
     /**
@@ -24,7 +25,8 @@ class EquipamentoController extends Controller
      */
     public function create()
     {
-        return view('equipamentos.index');
+
+        return view('equipamentos.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Equipamento::create($request->all());
+        return redirect()->route('equipamentos.index');
     }
 
     /**
@@ -46,7 +49,7 @@ class EquipamentoController extends Controller
      */
     public function show(Equipamento $equipamento)
     {
-        //
+        return view('equipamentos.show', ['equipamento' => $equipamento]);
     }
 
     /**
@@ -57,7 +60,7 @@ class EquipamentoController extends Controller
      */
     public function edit(Equipamento $equipamento)
     {
-        //
+        return view('equipamentos.edit', ['equipamento' => $equipamento]);
     }
 
     /**
@@ -69,7 +72,10 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, Equipamento $equipamento)
     {
-        //
+        $equipamento->fill($request->all());
+        $equipamento->save();
+
+        return redirect()->route('equipamentos.index');
     }
 
     /**
@@ -80,6 +86,7 @@ class EquipamentoController extends Controller
      */
     public function destroy(Equipamento $equipamento)
     {
-        //
+        $equipamento->delete();
+        return redirect()->route('equipamentos.index');
     }
 }

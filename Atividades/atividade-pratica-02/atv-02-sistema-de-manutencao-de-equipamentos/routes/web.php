@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Equipamento;
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\UsuarioController;
 use App\Models\Registro;
 use App\Http\Controllers\RegistroController;
 
@@ -27,4 +28,9 @@ Route::get('/', function () {
 })->name('principal');
 
 Route::resource('/equipamentos', EquipamentoController::class);
-Route::resource('/manutencaos', RegistroController::class);
+Route::resource('/manutencaos', RegistroController::class)->middleware('auth');
+Route::resource('/usuarios', UsuarioController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

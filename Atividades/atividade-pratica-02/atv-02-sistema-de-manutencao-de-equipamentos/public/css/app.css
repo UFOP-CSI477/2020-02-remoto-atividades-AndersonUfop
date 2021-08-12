@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -8,8 +9,13 @@ body {
 }
 
 .navbar {
+    width: 100%;
     overflow: hidden;
     background-color: #333;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .navbar a {
@@ -68,3 +74,230 @@ body {
     display: block;
   }
 
+
+/* EQUIPAMENTOS */
+
+.container {
+    padding: 1.5rem;
+}
+
+.container button {
+    width: 12rem;
+    height: 2.5rem;
+
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #0066cc;
+    color: #FFF;
+    border: none;
+    border-radius: 0.4rem;
+
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.container button:hover {
+    filter: brightness(0.9);
+}
+
+.table {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.table thead tr {
+    background: #001a33;
+    color: #FFFFFF;
+}
+
+.table td, .table th {
+    padding: 1rem;
+    text-align: center;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #C5C5C5;
+}
+
+.table tbody tr td img {
+    width: 1rem;
+
+    cursor: pointer;
+}
+
+
+.title h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+
+.container .title-show {
+    margin-bottom: 1rem;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+form {
+    margin-top: 2rem;
+}
+
+form .col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+form .col input, form .col select, form .col textarea {
+    width: 32rem;
+    height: 1.6rem;
+    border: 2px solid #0066cc;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+form .col select {
+    height: 2.4rem;
+}
+
+form .col textarea {
+    width: 67.5rem;
+    height: 4rem;
+
+    font-family: 'Roboto', sans-serif;
+    resize: none;
+}
+
+form .col .row-1 {
+    margin-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+form .col .row-2 {
+    margin-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+form .button-submit {
+    margin-top: 1rem;
+}
+
+form .button-submit .btnSalvar {
+    width: 12rem;
+    height: 2.5rem;
+
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #009933;
+    color: #FFF;
+    border: none;
+    border-radius: 0.4rem;
+
+    cursor: pointer;
+    transition: filter 0.3s;
+
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+form .button-submit .btnSalvar:hover {
+    filter: brightness(0.9);
+}
+
+.container .buttons-container {
+    margin-top: 2rem;
+}
+
+.container .buttons-container .btn-editar {
+    background-color: #009933;
+}
+
+.container .buttons-container .btn-delete {
+    background-color: #ff6666;
+}
+
+/* TELA DE LOGIN */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px #C3C3C3;
+    border-radius: 0.8rem;
+}
+
+.card-header {
+    background-color: #0958A3;
+    color: #fff;
+    padding: 1.2rem;
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.forgot-password {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.invalid-feedback {
+    display: flex;
+    flex-direction: column;
+    color: red;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.back {
+    margin-left: 0.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.back img {
+    width: 12px;
+}
+
+a {
+    color: #0970A3;
+    text-decoration: none;
+
+    transition: opacity 0.2s;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+.form-group .btn-reset-password {
+    width: 100%;
+}
