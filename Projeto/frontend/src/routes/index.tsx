@@ -2,14 +2,14 @@ import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
-import Details from '../pages/Details';
+import Hotel from '../pages/Hotel';
 
 const Routes = () => {
 
   return (
     <BrowserRouter>
       <Route component={Dashboard} path="/" exact />
-      <Route component={Details} path="/details" />
+      <Route component={Hotel} path="/hotel" />
     </BrowserRouter>
   )
 }
