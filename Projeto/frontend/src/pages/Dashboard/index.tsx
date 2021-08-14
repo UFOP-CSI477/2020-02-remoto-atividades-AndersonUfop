@@ -9,10 +9,9 @@ import "leaflet/dist/leaflet.css";
 import mapIcon from '../../utils/mapIcon';
 
 
-import './styles.css';
+import { Container, Aside } from './styles';
 
 import HotelImage from '../../assets/hotel.png';
-import MarkerHotel from '../../assets/MarkerHotel.png';
 import api from '../../services/api';
 
 interface Hotels {
@@ -32,15 +31,15 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <div id="page-map">
-      <aside>
+    <Container>
+      <Aside>
         <header>
           <img src={HotelImage} alt="" />
 
           <h2>Escolha um hotel no mapa</h2>
           <p>Encontre o melhor serviço de hospedagem para você curtir as férias</p>
         </header>
-      </aside>
+      </Aside>
 
 
 
@@ -77,7 +76,7 @@ const Dashboard: React.FC = () => {
         })}
 
       </MapContainer>
-    </div>
+    </Container>
   );
 }
 
