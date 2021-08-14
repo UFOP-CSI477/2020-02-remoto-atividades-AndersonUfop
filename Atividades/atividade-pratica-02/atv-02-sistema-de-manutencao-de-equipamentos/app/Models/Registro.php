@@ -9,7 +9,13 @@ class Registro extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['equipamento_id', 'user_id', 'descricao', 'datalimite', 'tipo'];
+
     public function equipamento() {
         return $this->belongsTo(Equipamento::class);
+    }
+
+    public function usuario() {
+        return $this->belongsTo(User::class);
     }
 }

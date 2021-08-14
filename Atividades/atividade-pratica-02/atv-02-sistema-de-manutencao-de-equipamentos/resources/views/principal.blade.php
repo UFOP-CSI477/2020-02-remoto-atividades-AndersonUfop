@@ -31,7 +31,7 @@
                     <a href="">Área do administrador</a>
                     <a href="{{route('equipamentos.index')}}">Equipamentos</a>
                     <a href="{{route('manutencaos.index')}}">Manutenções</a>
-                    <a href="">Relatório de usuários</a>
+                    <a href="{{route('usuarios.index')}}">Relatório de usuários</a>
                     <a href="">Relatório de manutenções</a>
                 </div>
             </div>

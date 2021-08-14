@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::resource('/equipamentos', EquipamentoController::class);
 Route::resource('/manutencaos', RegistroController::class)->middleware('auth');
-Route::resource('/usuarios', UsuarioController::class);
+Route::resource('/usuarios', UsuarioController::class)->middleware('auth');
 
 Auth::routes();
 

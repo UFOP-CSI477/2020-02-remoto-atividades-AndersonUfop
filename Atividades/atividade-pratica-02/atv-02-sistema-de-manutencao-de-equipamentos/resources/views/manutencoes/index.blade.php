@@ -25,7 +25,11 @@
             <tbody>
                 @foreach($manutencoes as $m)
                 <tr>
-                   <td>{{$m->id}}</td>
+                   <td>{{$m->datalimite}}</td>
+                   <td>{{$m->equipamento->nome}}</td>
+                   <td></td>
+                   <td>{{$m->tipo}}</td>
+                   <td>{{$m->descricao}}</td>
                     <td>
                         <img src="{{ asset('assets/view.svg')}}" alt="">
 

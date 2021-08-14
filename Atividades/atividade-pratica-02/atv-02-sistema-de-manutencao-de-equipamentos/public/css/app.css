@@ -165,6 +165,7 @@ form .col input, form .col select, form .col textarea {
 
 form .col select {
     height: 2.4rem;
+    width: 33rem;
 }
 
 form .col textarea {
