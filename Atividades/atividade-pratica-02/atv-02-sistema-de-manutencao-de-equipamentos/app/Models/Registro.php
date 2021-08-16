@@ -15,7 +15,7 @@ class Registro extends Model
         return $this->belongsTo(Equipamento::class);
     }
 
-    public function usuario() {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Equipamento;
 use Illuminate\Http\Request;
 
@@ -25,8 +27,12 @@ class EquipamentoController extends Controller
      */
     public function create()
     {
-
-        return view('equipamentos.create');
+        if (Auth::check()) {
+            return view('equipamentos.create');
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('principal');
+        }
     }
 
     /**
@@ -38,6 +44,7 @@ class EquipamentoController extends Controller
     public function store(Request $request)
     {
         Equipamento::create($request->all());
+        session()->flash('mensagem', 'Equipamento cadastrado com sucesso');
         return redirect()->route('equipamentos.index');
     }
 
@@ -60,7 +67,12 @@ class EquipamentoController extends Controller
      */
     public function edit(Equipamento $equipamento)
     {
-        return view('equipamentos.edit', ['equipamento' => $equipamento]);
+        if (Auth::check()) {
+            return view('equipamentos.edit', ['equipamento' => $equipamento]);
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('principal');
+        }
     }
 
     /**
@@ -75,6 +87,8 @@ class EquipamentoController extends Controller
         $equipamento->fill($request->all());
         $equipamento->save();
 
+        session()->flash('mensagem', 'Equipamento atualizado com sucesso');
+
         return redirect()->route('equipamentos.index');
     }
 
@@ -86,7 +100,18 @@ class EquipamentoController extends Controller
      */
     public function destroy(Equipamento $equipamento)
     {
-        $equipamento->delete();
-        return redirect()->route('equipamentos.index');
+        if (Auth::check()) {
+            if ($equipamento->registros->count() > 0) {
+                session()->flash('erro', 'Exclusão não permitida! Existem registros associados');
+            } else {
+                $equipamento->delete();
+                session()->flash('mensagem', 'Equipamento excluido com sucesso');
+            }
+
+            return redirect()->route('equipamentos.index');
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('principal');
+        }
     }
 }

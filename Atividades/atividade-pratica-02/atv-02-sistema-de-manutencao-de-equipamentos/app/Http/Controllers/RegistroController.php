@@ -16,8 +16,8 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $manutencoes = Registro::orderby('equipamento_id')->get();
-        return view('manutencoes.index', ['manutencoes' => $manutencoes]);
+        $registros = Registro::orderby('equipamento_id')->get();
+        return view('registros.index', ['registros' => $registros]);
     }
 
     /**
@@ -28,13 +28,13 @@ class RegistroController extends Controller
     public function create()
     {
         $equipamentos = Equipamento::orderby('equipamento_id')->get();
-        $usuarios = User::orderby('name')->get();
+        $users = User::orderby('name')->get();
 
         return view(
-            'manutencoes.create',
+            'registros.create',
             [
                 'equipamentos' => $equipamentos,
-                'usuarios' => $usuarios
+                'users' => $users
             ]);
     }
 
@@ -47,7 +47,8 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         Registro::create($request->all());
-        return redirect()->route('manutencaos.index');
+        session()->flash('mensagem', 'Manutenção cadastrada com sucesso');
+        return redirect()->route('registros.index');
     }
 
     /**
@@ -58,7 +59,7 @@ class RegistroController extends Controller
      */
     public function show(Registro $registro)
     {
-        return view('manutencoes.show', ['manutencao' => $registro]);
+        return view('registros.show', ['registro' => $registro]);
     }
 
     /**
@@ -70,10 +71,14 @@ class RegistroController extends Controller
     public function edit(Registro $registro)
     {
         $equipamentos = Equipamento::orderby('equipamento_id')->get();
-        return view('manutencoes.edit', [
-            'manutencao' => $registro,
-            'equipamento' => $equipamentos,
-        ]);
+        $users = User::orderby('name')->get();
+        return view(
+            'registros.edit',
+            [
+                'registro' => $registro,
+                'equipamentos' => $equipamentos,
+                'users' => $users
+            ]);
     }
 
     /**
@@ -87,8 +92,8 @@ class RegistroController extends Controller
     {
         $registro->fill($request->all());
         $registro->save();
-
-        return redirect()->route('manutencoes.index');
+        session()->flash('mensagem', 'Manutenção atualizada com sucesso');
+        return redirect()->route('registros.index');
     }
 
     /**
@@ -100,6 +105,7 @@ class RegistroController extends Controller
     public function destroy(Registro $registro)
     {
         $registro->delete();
-        return redirect()->route('manutencoes.index');
+        session()->flash('mensagem', 'Manutenção excluida com sucesso');
+        return redirect()->route('registros.index');
     }
 }

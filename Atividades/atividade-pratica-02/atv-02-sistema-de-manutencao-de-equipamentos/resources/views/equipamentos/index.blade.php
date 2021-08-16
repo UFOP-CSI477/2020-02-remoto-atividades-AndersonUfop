@@ -35,8 +35,6 @@
                         <a href="{{route('equipamentos.edit', $e->id)}}">
                             <img src="{{ asset('assets/edit.svg')}}" alt="">
                         </a>
-
-                        <img src="{{ asset('assets/delete.svg')}}" alt="">
                     </td>
                 </tr>
                 @endforeach

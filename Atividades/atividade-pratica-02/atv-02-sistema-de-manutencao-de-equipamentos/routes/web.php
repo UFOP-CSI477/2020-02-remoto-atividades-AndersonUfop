@@ -28,7 +28,7 @@ Route::get('/', function () {
 })->name('principal');
 
 Route::resource('/equipamentos', EquipamentoController::class);
-Route::resource('/manutencaos', RegistroController::class)->middleware('auth');
+Route::resource('/registros', RegistroController::class)->middleware('auth');
 Route::resource('/usuarios', UsuarioController::class)->middleware('auth');
 
 Auth::routes();

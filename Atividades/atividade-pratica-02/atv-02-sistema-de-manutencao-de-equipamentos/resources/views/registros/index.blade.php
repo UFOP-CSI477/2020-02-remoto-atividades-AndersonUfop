@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="container">
-        <a href="{{route('manutencaos.create')}}">
+        <a href="{{route('registros.create')}}">
             <div class="button">
                 <button type="button" class="btn-add">
                     Cadastrar manutenções
@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Data limite</th>
                     <th>Nome do equipamento</th>
                     <th>Nome do usuário</th>
@@ -23,19 +24,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($manutencoes as $m)
+                @foreach($registros as $r)
                 <tr>
-                   <td>{{$m->datalimite}}</td>
-                   <td>{{$m->equipamento->nome}}</td>
-                   <td></td>
-                   <td>{{$m->tipo}}</td>
-                   <td>{{$m->descricao}}</td>
+                    <th>{{ $r->id }}</th>
+                    <td>{{$r->datalimite}}</td>
+                    <td>{{$r->equipamento->nome}}</td>
+                    <td>{{$r->user->name}}</td>
+                    <td>{{$r->tipo}}</td>
+                    <td>{{$r->descricao}}</td>
                     <td>
-                        <img src="{{ asset('assets/view.svg')}}" alt="">
+                        <a href="{{route('registros.show', $r->id)}}">
+                            <img src="{{ asset('assets/view.svg')}}" alt="">
+                        </a>
 
-                        <img src="{{ asset('assets/edit.svg')}}" alt="">
+                        <a href="{{route('registros.edit', $r->id)}}">
+                            <img src="{{ asset('assets/edit.svg')}}" alt="">
+                        </a>
 
-                        <img src="{{ asset('assets/delete.svg')}}" alt="">
                     </td>
                 </tr>
                 @endforeach

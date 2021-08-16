@@ -18,7 +18,7 @@
                 </button>
                 <div class="menu-content">
                     <a href="{{route('equipamentos.index')}}">Lista de equipamentos</a>
-                    <a href="{{route('manutencaos.index')}}">Manutenções</a>
+                    <a href="{{route('registros.index')}}">Manutenções</a>
                 </div>
             </div>
 
@@ -27,10 +27,9 @@
                     Área administrativa
                 </button>
                 <div class="menu-content">
-                    <a href="">Novo usuário</a>
-                    <a href="">Área do administrador</a>
+                    <a href="{{route('register')}}">Novo usuário</a>
                     <a href="{{route('equipamentos.index')}}">Equipamentos</a>
-                    <a href="{{route('manutencaos.index')}}">Manutenções</a>
+                    <a href="{{route('registros.index')}}">Manutenções</a>
                     <a href="{{route('usuarios.index')}}">Relatório de usuários</a>
                     <a href="">Relatório de manutenções</a>
                 </div>
@@ -69,6 +68,20 @@
             @endguest
         </div>
     </div>
+
+
+
+    @if(session('mensagem'))
+    <div class="message-alert">
+        <span>{{ session('mensagem') }}</span>
+    </div>
+    @endif
+
+    @if(session('erro'))
+    <div class="message-error">
+        <span>{{ session('erro') }}</span>
+    </div>
+    @endif
 
     @yield('conteudo')
 

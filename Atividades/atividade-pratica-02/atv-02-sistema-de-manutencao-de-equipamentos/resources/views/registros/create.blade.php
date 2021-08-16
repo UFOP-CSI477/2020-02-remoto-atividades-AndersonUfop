@@ -10,7 +10,7 @@
                 <span>Insira as informações necessárias</span>
             </div>
 
-            <form action="{{ route('manutencaos.store')}}" method="post">
+            <form action="{{ route('registros.store')}}" method="post">
 
                 @csrf
 
@@ -30,23 +30,12 @@
                         <label for="usuario">Usuário</label>
                         <select class="form-control" name="user_id" id="usuario">
 
-                            @foreach($usuarios as $u)
+                            @foreach($users as $u)
                             <option value="{{ $u->id}}">{{ $u->name }} </option>
                             @endforeach
 
                         </select>
                     </div>
-
-                    <!-- <div class="row-2">
-                        <label for="usuario">Usuário</label>
-                        <select class="form-control" name="usuario" id="usuario">
-                            @foreach($usuarios as $u)
-                            <option value="{{ $u->id}}">{{ $u->name }} </option>
-                            @endforeach
-                    </div> -->
-
-
-
 
                     <div class="row-2">
                         <label for="descricao">Descrição</label>

@@ -302,3 +302,21 @@ a:hover {
 .form-group .btn-reset-password {
     width: 100%;
 }
+
+.message-alert {
+    width: 100%;
+    height: 1.5rem;
+    background-color: #3C7035;
+    color: #FFF;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.message-error {
+    width: 100%;
+    height: 1.5rem;
+    background-color: #B63135;
+    color: #FFF;
+    font-weight: 500;
+    padding: 1rem;
+}
