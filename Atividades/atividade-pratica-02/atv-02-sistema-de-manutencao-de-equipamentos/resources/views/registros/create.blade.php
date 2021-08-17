@@ -39,12 +39,12 @@
 
                     <div class="row-2">
                         <label for="descricao">Descrição</label>
-                        <input type="text" class="form-control" name="descricao" id="descricao">
+                        <input type="text" class="form-control" name="descricao" id="descricao" required>
                     </div>
 
                     <div class="row-2">
                         <label for="datalimite">Data limite</label>
-                        <input type="date" class="form-control" name="datalimite" id="data_limite">
+                        <input type="date" class="form-control" name="datalimite" id="data_limite" required>
                     </div>
 
 

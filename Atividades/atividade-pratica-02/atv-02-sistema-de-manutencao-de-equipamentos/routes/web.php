@@ -28,8 +28,10 @@ Route::get('/', function () {
 })->name('principal');
 
 Route::resource('/equipamentos', EquipamentoController::class);
-Route::resource('/registros', RegistroController::class)->middleware('auth');
+Route::resource('/registros', RegistroController::class);
 Route::resource('/usuarios', UsuarioController::class)->middleware('auth');
+
+Route::get('/relatorio', 'App\Http\Controllers\EquipamentoController@relatorio')->name('equipamentos.relatorio');
 
 Auth::routes();
 

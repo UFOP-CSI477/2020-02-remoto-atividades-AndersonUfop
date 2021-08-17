@@ -31,7 +31,7 @@ class EquipamentoController extends Controller
             return view('equipamentos.create');
         } else {
             session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
-            return redirect()->route('principal');
+            return redirect()->route('login');
         }
     }
 
@@ -59,6 +59,17 @@ class EquipamentoController extends Controller
         return view('equipamentos.show', ['equipamento' => $equipamento]);
     }
 
+    public function relatorio()
+    {
+        if (Auth::check()) {
+            $equipamentos = Equipamento::orderBy('nome')->get();
+            return view('equipamentos.relatorio', ['equipamentos' => $equipamentos]);
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('login');
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,7 +82,7 @@ class EquipamentoController extends Controller
             return view('equipamentos.edit', ['equipamento' => $equipamento]);
         } else {
             session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
-            return redirect()->route('principal');
+            return redirect()->route('login');
         }
     }
 
@@ -111,7 +122,7 @@ class EquipamentoController extends Controller
             return redirect()->route('equipamentos.index');
         } else {
             session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
-            return redirect()->route('principal');
+            return redirect()->route('login');
         }
     }
 }

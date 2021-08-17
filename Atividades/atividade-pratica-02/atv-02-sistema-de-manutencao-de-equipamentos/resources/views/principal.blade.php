@@ -22,16 +22,16 @@
                 </div>
             </div>
 
+
             <div class="menu">
                 <button class="button">
                     Área administrativa
                 </button>
                 <div class="menu-content">
-                    <a href="{{route('register')}}">Novo usuário</a>
                     <a href="{{route('equipamentos.index')}}">Equipamentos</a>
                     <a href="{{route('registros.index')}}">Manutenções</a>
                     <a href="{{route('usuarios.index')}}">Relatório de usuários</a>
-                    <a href="">Relatório de manutenções</a>
+                    <a href="{{route('equipamentos.relatorio')}}">Relatório de manutenções</a>
                 </div>
             </div>
         </div>

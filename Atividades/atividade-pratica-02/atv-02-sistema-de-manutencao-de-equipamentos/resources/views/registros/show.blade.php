@@ -6,7 +6,7 @@
     <h1 class="title-show">Manutenção</h1>
     <div class="body">
         <p>ID: {{ $registro->id }}</p>
-        <p>Data limite: {{ $registro->datalimite }}</p>
+        <p>Data limite: {{\Carbon\Carbon::parse($registro->datalimite)->format('d/m/Y')}}</p>
         <p>Nome do equipamento: {{ $registro->equipamento->nome }}</p>
         <p>Nome do usuário: {{ $registro->user->name }}</p>
         <p>Tipo de manutenção: {{ $registro->tipo}} </p>

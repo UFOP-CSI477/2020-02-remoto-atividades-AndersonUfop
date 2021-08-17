@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{$e->id}}</td>
                     <td>{{$e->nome}}</td>
-                    <td>{{$e->created_at}}</td>
+                    <td>{{\Carbon\Carbon::parse($e->created_at)->format('d/m/Y')}}</td>
                     <td>
                         <a href="{{route('equipamentos.show', $e->id)}}">
                             <img src="{{ asset('assets/view.svg')}}" alt="">

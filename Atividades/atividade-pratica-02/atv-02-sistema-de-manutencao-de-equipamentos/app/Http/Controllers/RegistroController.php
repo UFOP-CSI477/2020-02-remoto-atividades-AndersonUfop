@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Registro;
 use App\Models\Equipamento;
 use App\Models\User;
@@ -27,15 +29,21 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        $equipamentos = Equipamento::orderby('equipamento_id')->get();
-        $users = User::orderby('name')->get();
+        if (Auth::check()) {
+            $equipamentos = Equipamento::orderby('equipamento_id')->get();
+            $users = User::orderby('name')->get();
 
-        return view(
-            'registros.create',
-            [
-                'equipamentos' => $equipamentos,
-                'users' => $users
-            ]);
+            return view(
+                'registros.create',
+                [
+                    'equipamentos' => $equipamentos,
+                    'users' => $users
+                ]
+            );
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -70,15 +78,21 @@ class RegistroController extends Controller
      */
     public function edit(Registro $registro)
     {
-        $equipamentos = Equipamento::orderby('equipamento_id')->get();
-        $users = User::orderby('name')->get();
-        return view(
-            'registros.edit',
-            [
-                'registro' => $registro,
-                'equipamentos' => $equipamentos,
-                'users' => $users
-            ]);
+        if (Auth::check()) {
+            $equipamentos = Equipamento::orderby('equipamento_id')->get();
+            $users = User::orderby('name')->get();
+            return view(
+                'registros.edit',
+                [
+                    'registro' => $registro,
+                    'equipamentos' => $equipamentos,
+                    'users' => $users
+                ]
+            );
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -90,6 +104,7 @@ class RegistroController extends Controller
      */
     public function update(Request $request, Registro $registro)
     {
+
         $registro->fill($request->all());
         $registro->save();
         session()->flash('mensagem', 'Manutenção atualizada com sucesso');
@@ -104,8 +119,13 @@ class RegistroController extends Controller
      */
     public function destroy(Registro $registro)
     {
-        $registro->delete();
-        session()->flash('mensagem', 'Manutenção excluida com sucesso');
-        return redirect()->route('registros.index');
+        if (Auth::check()) {
+            $registro->delete();
+            session()->flash('mensagem', 'Manutenção excluida com sucesso');
+            return redirect()->route('registros.index');
+        } else {
+            session()->flash('mensagem', 'Esta funcionalidade é exclusiva para os administradores. Caso você seja um administrador, faça login em sua conta. ');
+            return redirect()->route('login');
+        }
     }
 }

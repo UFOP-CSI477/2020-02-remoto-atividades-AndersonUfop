@@ -7,7 +7,7 @@
     <div class="body">
         <p>ID: {{ $equipamento->id }}</p>
         <p>Nome: {{ $equipamento->nome }}</p>
-        <p>Data de cadastro: {{ $equipamento->created_at }}</p>
+        <p>Data de cadastro: {{\Carbon\Carbon::parse($equipamento->created_at)->format('d/m/Y')}}</p>
     </div>
     <div class="buttons-container">
         <a href="{{ route('equipamentos.edit', $equipamento->id)}}">

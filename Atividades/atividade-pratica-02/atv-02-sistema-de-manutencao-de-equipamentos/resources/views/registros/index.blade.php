@@ -27,7 +27,7 @@
                 @foreach($registros as $r)
                 <tr>
                     <th>{{ $r->id }}</th>
-                    <td>{{$r->datalimite}}</td>
+                    <td>{{\Carbon\Carbon::parse($r->datalimite)->format('d/m/Y')}}</td>
                     <td>{{$r->equipamento->nome}}</td>
                     <td>{{$r->user->name}}</td>
                     <td>{{$r->tipo}}</td>

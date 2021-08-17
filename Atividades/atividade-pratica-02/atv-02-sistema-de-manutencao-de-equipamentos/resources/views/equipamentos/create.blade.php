@@ -15,7 +15,7 @@
         @csrf
             <div class="col">
                 <label for="nome">Nome do equipamento</label>
-                <input type="text" class="form-control" name="nome" id="nome">
+                <input type="text" class="form-control" name="nome" id="nome" required>
             </div>
 
             <div class="button-submit">
