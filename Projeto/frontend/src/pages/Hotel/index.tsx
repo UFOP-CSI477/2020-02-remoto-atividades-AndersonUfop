@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 import SimpleImageSlider from "react-simple-image-slider";
 
-
 import { Button } from '../../components/Button';
-
-import { FaArrowLeft } from 'react-icons/fa';
 
 import HotelImg from '../../assets/hotelImg.png';
 
@@ -21,7 +17,8 @@ import Img1 from '../../assets/hotel1.jpg';
 import Img2 from '../../assets/hotel2.jpg';
 import Img3 from '../../assets/hotel3.jpg';
 
-import { Container, Header, Content, Details, Items, Address } from './styles';
+import { Container, Content, Details, Items, Address } from './styles';
+import Header from '../../components/Header';
 
 interface HotelProps {
   name_hotel: string;
@@ -56,18 +53,8 @@ const Hotel: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <span className="login">
-          Login
-        </span>
-        <Link to="/">
-          <div className="back">
-            <FaArrowLeft size={24} />
-            <span>Voltar</span>
-          </div>
-        </Link>
-      </Header>
-
+      
+    <Header/>
       <Content>
 
         <div className="images-hotel" >
