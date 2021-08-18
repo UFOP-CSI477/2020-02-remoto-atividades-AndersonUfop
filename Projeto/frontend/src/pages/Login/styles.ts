@@ -12,7 +12,7 @@ export const Container = styled.div`
   opacity: 0.8;
 
   a {
-      span {
+    span {
       font-family: 'Montserrat', sans-serif;
       font-weight: 500;
       font-size: 1rem;
@@ -21,7 +21,6 @@ export const Container = styled.div`
       margin-top: 1.5rem;
     }
   }
-  
 `;
 
 export const FormContainer = styled.div`
@@ -31,7 +30,7 @@ export const FormContainer = styled.div`
 
   width: 39.063rem;
   height: 33.25rem;
-  background: rgba(255, 255,255, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 0.4rem;
 
   h1 {
@@ -47,7 +46,7 @@ export const Legend = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 0.85rem;
-  color: #7E02E0;
+  color: #7e02e0;
 
   margin-bottom: 0.5rem;
 

@@ -8,9 +8,7 @@ const Header: React.FC = () => {
   return (
     <Container>
       <Link to="/login">
-        <span className="login">
-          Login
-        </span>
+        <span className="login">Login</span>
       </Link>
       <Link to="/">
         <div className="back">
@@ -19,8 +17,7 @@ const Header: React.FC = () => {
         </div>
       </Link>
     </Container>
-  )
-}
+  );
+};
 
 export default Header;
-

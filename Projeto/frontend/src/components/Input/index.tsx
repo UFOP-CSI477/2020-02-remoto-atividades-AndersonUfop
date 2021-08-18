@@ -1,5 +1,10 @@
-import React, { InputHTMLAttributes, useRef, useState, useCallback } from 'react';
-import { useEffect } from 'react';
+import React, {
+  InputHTMLAttributes,
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 
 import { useField } from '@unform/core';
 import { IconBaseProps } from 'react-icons';
@@ -52,7 +57,7 @@ const Input: React.FC<InputProps> = ({
       isFocused={isFocused}
       data-testid="input-container"
     >
-      { Icon && <Icon size={20} />}
+      {Icon && <Icon size={20} />}
       <input
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
@@ -67,7 +72,7 @@ const Input: React.FC<InputProps> = ({
         </Error>
       )}
     </Container>
-  )
-}
+  );
+};
 
 export default Input;

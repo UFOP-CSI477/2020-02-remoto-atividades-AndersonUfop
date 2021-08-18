@@ -24,7 +24,7 @@ export const ButtonContainer = styled.button`
     filter: brightness(0.9);
   }
 
-  @media(max-width: 1000px) {
+  @media (max-width: 1000px) {
     width: 8rem;
     height: 2.4rem;
 

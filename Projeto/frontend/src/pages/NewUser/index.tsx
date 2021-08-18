@@ -5,14 +5,14 @@ import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import toast, { Toaster } from 'react-hot-toast';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 import api from '../../services/api';
 
 import getValidationErrors from '../../utils/getValidateErrors';
 
 import Input from '../../components/Input';
-import { Button } from '../../components/Button';
+import Button from '../../components/Button';
 
 import { Container, FormContainer, Legend, ButtonContainer } from './styles';
 
@@ -27,15 +27,10 @@ const NewUser: React.FC = () => {
   const history = useHistory();
 
   const messageSuccess = useCallback(() => {
-    Swal.fire(
-      "Mensagem",
-      "Usuário cadastrado com sucesso",
-      "success"
-    );
+    Swal.fire('Mensagem', 'Usuário cadastrado com sucesso', 'success');
   }, []);
 
   const handleSubmit = useCallback(
-
     async (data: NewUserFormData) => {
       try {
         console.log('ola');
@@ -57,8 +52,6 @@ const NewUser: React.FC = () => {
         history.push('/login');
 
         messageSuccess();
-
-
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -72,17 +65,12 @@ const NewUser: React.FC = () => {
       }
     },
 
-    [toast, history]
-
+    [toast, history],
   );
-
 
   return (
     <Container>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-      />
+      <Toaster position="top-right" reverseOrder={false} />
 
       <FormContainer>
         <Form ref={formRef} onSubmit={handleSubmit}>
@@ -104,19 +92,15 @@ const NewUser: React.FC = () => {
           </ButtonContainer>
 
           <Link to="/login">
-          <span>
-            
-          <AiOutlineArrowLeft />
-            Voltar
-          </span>
-        </Link>
-
+            <span>
+              <AiOutlineArrowLeft />
+              Voltar
+            </span>
+          </Link>
         </Form>
-
       </FormContainer>
-
     </Container>
   );
-}
+};
 
 export default NewUser;

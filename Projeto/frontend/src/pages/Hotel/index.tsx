@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SimpleImageSlider from 'react-simple-image-slider';
 import api from '../../services/api';
-import SimpleImageSlider from "react-simple-image-slider";
 
-import { Button } from '../../components/Button';
+import Button from '../../components/Button';
 
 import HotelImg from '../../assets/hotelImg.png';
 
@@ -34,12 +34,7 @@ interface HotelParams {
   id: string;
 }
 
-const images = [
-  { url: HotelImg },
-  { url: Img3 },
-  { url: Img1 },
-  { url: Img2 },
-];
+const images = [{ url: HotelImg }, { url: Img3 }, { url: Img1 }, { url: Img2 }];
 
 const Hotel: React.FC = () => {
   const params = useParams<HotelParams>();
@@ -53,20 +48,17 @@ const Hotel: React.FC = () => {
 
   return (
     <Container>
-      
-    <Header/>
+      <Header />
       <Content>
-
-        <div className="images-hotel" >
-
-              <SimpleImageSlider
-                width={517}
-                height={490}
-                images={images}
-                showBullets={true}
-                showNavs={true}
-              />
-            )
+        <div className="images-hotel">
+          <SimpleImageSlider
+            width={517}
+            height={490}
+            images={images}
+            showBullets
+            showNavs
+          />
+          )
         </div>
         {/* <img src={HotelImg} alt="Imagem do hotel" /> */}
 
@@ -99,11 +91,9 @@ const Hotel: React.FC = () => {
             <Button type="button">Reservar agora</Button>
           </div>
         </Details>
-
       </Content>
-
     </Container>
   );
-}
+};
 
 export default Hotel;

@@ -1,18 +1,15 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-
-  
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media(max-width: 1000px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
 
     img {
@@ -23,7 +20,7 @@ export const Content = styled.div`
   .images-hotel {
     padding: 4rem;
 
-    img { 
+    img {
       border-radius: 0.4rem;
     }
   }
@@ -34,7 +31,7 @@ export const Details = styled.div`
   flex-direction: column;
   margin: 4rem 8rem;
 
-  @media(max-width: 1000px) {
+  @media (max-width: 1000px) {
     margin: 1rem;
   }
 
@@ -44,7 +41,7 @@ export const Details = styled.div`
     justify-content: center;
     margin-top: 4rem;
 
-    @media(max-width: 1000px) {
+    @media (max-width: 1000px) {
       justify-content: flex-start;
     }
   }
@@ -54,11 +51,10 @@ export const Details = styled.div`
     font-weight: 700;
     font-size: 3.75rem;
 
-    @media(max-width: 1000px) {
+    @media (max-width: 1000px) {
       font-size: 2rem;
     }
   }
-
 `;
 
 export const Items = styled.div`
@@ -97,14 +93,12 @@ export const Address = styled.div`
 
   margin-top: 2.688rem;
 
-  
-
   p {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1rem;
 
-    @media(max-width: 1000px) {
+    @media (max-width: 1000px) {
       font-size: 0.5rem;
     }
   }

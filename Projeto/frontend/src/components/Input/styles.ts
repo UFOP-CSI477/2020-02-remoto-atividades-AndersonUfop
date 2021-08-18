@@ -9,7 +9,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #F0ECEC;
+  background: #f0ecec;
   border-radius: 0.4rem;
   padding: 1rem;
   width: 100%;
@@ -24,34 +24,32 @@ export const Container = styled.div<ContainerProps>`
     margin-top: 0.5rem;
   }
 
-
-  ${(props) =>
+  ${props =>
     props.isErrored &&
     css`
-        border-color: #C14242;
-      `}
-  
+      border-color: #c14242;
+    `}
 
-    ${(props) =>
+  ${props =>
     props.isFocused &&
     css`
-        color: #7E02E0;
-      `}
-      
+      color: #7e02e0;
+    `}
+
       input {
-        flex: 1;
-        background: transparent;
-        border: 0;
-        color: var(--dark);
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: var(--dark);
 
-        &::placeholder {
-          color: #666360;
-        }
-      }
+    &::placeholder {
+      color: #666360;
+    }
+  }
 
-      svg {
-        margin-right: 1rem;
-      }
+  svg {
+    margin-right: 1rem;
+  }
 `;
 
 export const Error = styled(Tooltip)`
@@ -62,12 +60,11 @@ export const Error = styled(Tooltip)`
   }
 
   span {
-    background: #C14242;
+    background: #c14242;
     color: var(--light);
 
     &::before {
-      border-color: #C14242 transparent;
+      border-color: #c14242 transparent;
     }
-
   }
 `;

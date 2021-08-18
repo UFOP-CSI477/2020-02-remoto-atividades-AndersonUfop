@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import "leaflet/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css';
 
 import mapIcon from '../../utils/mapIcon';
-
 
 import { Container, Aside } from './styles';
 
@@ -37,17 +36,17 @@ const Dashboard: React.FC = () => {
           <img src={HotelImage} alt="" />
 
           <h2>Escolha um hotel no mapa</h2>
-          <p>Encontre o melhor serviço de hospedagem para você curtir as férias</p>
+          <p>
+            Encontre o melhor serviço de hospedagem para você curtir as férias
+          </p>
         </header>
       </Aside>
-
-
 
       <MapContainer
         className="leaflet-container"
         center={[-19.4530787, -43.1068537]}
         zoom={13}
-        scrollWheelZoom={true}
+        scrollWheelZoom
         styles={{ width: '100%', height: '100%' }}
       >
         <TileLayer
@@ -57,27 +56,28 @@ const Dashboard: React.FC = () => {
 
         {hotels.map(hotel => {
           return (
-          <Marker
-            icon={mapIcon}
-            position={[hotel.latitude, hotel.longitude]}
-            key={hotel.id}
-          >
-            <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-              <span>
-                {hotel.name_hotel}
-              </span>
-              <Link to={`/hotel/${hotel.id}`}>
-                <FiArrowRight size={20} color="#FFF" />
-              </Link>
-            </Popup>
-
-          </Marker>
-          )
+            <Marker
+              icon={mapIcon}
+              position={[hotel.latitude, hotel.longitude]}
+              key={hotel.id}
+            >
+              <Popup
+                closeButton={false}
+                minWidth={240}
+                maxWidth={240}
+                className="map-popup"
+              >
+                <span>{hotel.name_hotel}</span>
+                <Link to={`/hotel/${hotel.id}`}>
+                  <FiArrowRight size={20} color="#FFF" />
+                </Link>
+              </Popup>
+            </Marker>
+          );
         })}
-
       </MapContainer>
     </Container>
   );
-}
+};
 
 export default Dashboard;
