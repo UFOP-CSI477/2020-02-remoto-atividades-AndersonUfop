@@ -18,9 +18,13 @@ export const Content = styled.div`
   }
 
   .images-hotel {
-    padding: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1rem;
 
     img {
+      height: 10rem;
       border-radius: 0.4rem;
     }
   }

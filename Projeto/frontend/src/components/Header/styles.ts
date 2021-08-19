@@ -17,6 +17,9 @@ export const Container = styled.div`
   justify-content: space-between;
 
   .login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
@@ -39,15 +42,30 @@ export const Container = styled.div`
 
     transition: color 0.2s;
 
-    span {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 1.2rem;
-    }
-
     &:hover {
       cursor: pointer;
       color: ${shade(0.2, '#F3EEEE')};
     }
   }
+`;
+
+export const UserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+`;
+
+export const UserLogOut = styled.div`
+  height: 2rem;
+  width: 100%;
+  color: var(--light);
+  cursor: pointer;
+
+  font-size: 0.8rem;
 `;

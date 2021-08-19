@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 0.4rem;
   padding: 1rem;
   width: 100%;
-  opacity: 0.6;
+  opacity: 0.8;
 
   color: var(--dark);
 
@@ -41,6 +41,7 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: var(--dark);
+    font-weight: 300;
 
     &::placeholder {
       color: #666360;

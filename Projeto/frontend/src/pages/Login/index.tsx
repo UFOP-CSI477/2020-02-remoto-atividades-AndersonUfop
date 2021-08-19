@@ -49,7 +49,6 @@ const Login: React.FC = () => {
 
         history.push('/dashboard');
       } catch (err) {
-        console.log(err.message);
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -67,12 +66,13 @@ const Login: React.FC = () => {
 
   return (
     <Container>
+      <Toaster position="top-right" reverseOrder={false} />
       <FormContainer>
         <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Faça login ou cadastre</h1>
 
           <Legend>E-mail</Legend>
-          <Input name="email" type="email" />
+          <Input name="email" />
 
           <Legend>Senha</Legend>
           <Input name="password" type="password" />

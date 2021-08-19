@@ -2,13 +2,13 @@ import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import { ButtonContainer } from './styles';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type SmallButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   type?: string;
   children?: ReactNode;
 };
 
-const Button: React.FC<ButtonProps> = ({ type, children }) => {
+const SmallButton: React.FC<SmallButtonProps> = ({ type, children }) => {
   return <ButtonContainer type={type}>{children}</ButtonContainer>;
 };
 
-export default Button;
+export default SmallButton;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SimpleImageSlider from 'react-simple-image-slider';
 import api from '../../services/api';
 
@@ -24,6 +24,10 @@ interface HotelProps {
   name_hotel: string;
   latitude: number;
   longitude: number;
+  pool: boolean;
+  wifi: boolean;
+  parking: boolean;
+  breakfast: boolean;
   images: Array<{
     id: string;
     image_name: string;
@@ -36,7 +40,7 @@ interface HotelParams {
 
 const images = [{ url: HotelImg }, { url: Img3 }, { url: Img1 }, { url: Img2 }];
 
-const Hotel: React.FC = () => {
+export const Hotel: React.FC = () => {
   const params = useParams<HotelParams>();
   const [hotel, setHotel] = useState<HotelProps>();
 
@@ -46,49 +50,60 @@ const Hotel: React.FC = () => {
     });
   }, [params.id]);
 
+  if (!hotel) {
+    return <p>Carregando ..</p>;
+  }
+
   return (
     <Container>
       <Header />
       <Content>
         <div className="images-hotel">
-          <SimpleImageSlider
-            width={517}
-            height={490}
-            images={images}
-            showBullets
-            showNavs
-          />
-          )
+          {hotel.images.map(image => {
+            return <img src={image.image_name} alt="" />;
+          })}
         </div>
         {/* <img src={HotelImg} alt="Imagem do hotel" /> */}
 
         <Details>
-          <h1>{hotel?.name_hotel}</h1>
+          <h1>{hotel.name_hotel}</h1>
           <Items>
-            <div className="item">
-              <PoolImg />
-              <span>Piscina</span>
-            </div>
-            <div className="item">
-              <CarImg />
-              <span>Estacionamento</span>
-            </div>
-            <div className="item">
-              <WifiImg />
-              <span>Wifi</span>
-            </div>
-            <div className="item">
-              <CoffeeImg />
-              <span>Café da manhã</span>
-            </div>
+            {hotel.pool && (
+              <div className="item">
+                <PoolImg />
+                <span>Piscina</span>
+              </div>
+            )}
+            {hotel.parking && (
+              <div className="item">
+                <CarImg />
+                <span>Estacionamento</span>
+              </div>
+            )}
+            {hotel.wifi && (
+              <div className="item">
+                <WifiImg />
+                <span>Wifi</span>
+              </div>
+            )}
+            {hotel.breakfast && (
+              <div className="item">
+                <CoffeeImg />
+                <span>Café da manhã</span>
+              </div>
+            )}
           </Items>
           <Address>
             <LocalizationImg />
-            <p>Rua Jardim, Bairro Liberdade, Belo Horizonte - MG</p>
+            <p>
+              Latitude: {hotel.latitude} , Longitude: {hotel.longitude}
+            </p>
           </Address>
 
           <div className="btn-reserve">
-            <Button type="button">Reservar agora</Button>
+            <Link to={`/apartments/${params.id}`}>
+              <Button type="button">Reservar agora</Button>
+            </Link>
           </div>
         </Details>
       </Content>
