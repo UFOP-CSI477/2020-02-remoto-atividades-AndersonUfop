@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Title = styled.div`
@@ -28,8 +31,8 @@ export const Title = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100rem;
-  height: 50rem;
+  width: 80rem;
+  height: 100%;
   margin: 3.125rem;
 
   border: 1px solid #000;
@@ -115,6 +118,7 @@ export const IconsHotelContainer = styled.div`
 export const Item = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 2rem;
 `;
 export const InfoApartment = styled.div`
   display: flex;

@@ -8,6 +8,7 @@ import Hotel from '../pages/Hotel';
 import Apartments from '../pages/Apartments';
 import Login from '../pages/Login';
 import NewUser from '../pages/NewUser';
+import Reserve from '../pages/Reserve';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -16,11 +17,18 @@ const Routes: React.FC = () => (
 
     <Route component={Hotel} path="/hotel/:id" isPrivate />
     <Route
+      component={Reserve}
+      path="/apartments/reserve/:apartment_id"
+      exact
+      isPrivate
+    />
+    <Route
       component={Apartments}
       path="/apartments/:hotel_id"
       exact
       isPrivate
     />
+
     <Route component={Dashboard} path="/" isPrivate />
   </Switch>
 );

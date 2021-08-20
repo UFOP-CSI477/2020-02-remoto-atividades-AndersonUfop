@@ -1,14 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, ChangeEvent } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Select from '../../components/Select';
 import Input from '../../components/InputNumber';
 import Checkbox from '../../components/Checkbox';
 import SmallButton from '../../components/SmallButton';
 
-import Image from '../../assets/hotel1.jpg';
+import BedRoomImage from '../../assets/bedroom.jpg';
 
 import api from '../../services/api';
 
@@ -60,8 +60,11 @@ interface HotelParams {
 
 const Apartments: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const [typeSelect, setTypeSelect] = useState('');
-  const [priceSelect, setPriceSelect] = useState('');
+
+  const [selectedType, setSelectedType] = useState('');
+  const [selectedPrice, setSelectedPrice] = useState('');
+
+  const [quantityPeople, setQuantityPeople] = useState(0);
 
   const params = useParams<HotelParams>();
   const [apartments, setApartments] = useState<ApartmentProps[]>([]);
@@ -72,8 +75,38 @@ const Apartments: React.FC = () => {
     });
   }, [params.hotel_id]);
 
-  function handleSubmit() {
-    console.log('Submit');
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    const quantity = event.target.value;
+
+    setQuantityPeople(Number(quantity));
+  }
+
+  function handleSelectedPrice(event: ChangeEvent<HTMLSelectElement>) {
+    const price = event.target.value;
+
+    setSelectedPrice(price);
+  }
+
+  function handleSelectedType(event: ChangeEvent<HTMLSelectElement>) {
+    const type = event.target.value;
+
+    setSelectedType(type);
+  }
+
+  async function handleSubmit() {
+    const { hotel_id } = params;
+    const quantity = quantityPeople;
+    const type = selectedType;
+    const price = selectedPrice;
+
+    const response = await api.get('apartments/find', {
+      params: {
+        hotel_id,
+        room_type: type,
+      },
+    });
+
+    setApartments(response.data);
   }
 
   if (!apartments) {
@@ -83,9 +116,9 @@ const Apartments: React.FC = () => {
   return (
     <Container>
       <Header />
-      <p />
       <Title>
         <h1>Reservar quarto</h1>
+
         <span>Primeiramente escolha o seu quarto</span>
       </Title>
       <Content>
@@ -95,10 +128,11 @@ const Apartments: React.FC = () => {
               <Legend>Tipo de Quarto</Legend>
               <Select
                 name="type"
-                value={typeSelect}
+                value={selectedType}
+                onChange={handleSelectedType}
                 options={[
                   { value: 'Casal', label: 'Casal' },
-                  { value: 'Solteiro Simples', label: 'Solteiro Simples' },
+                  { value: 'Solteiro', label: 'Solteiro' },
                   { value: 'Solteiro Duplo', label: 'Solteiro Duplo' },
                   { value: 'Solteiro Triplo', label: 'Solteiro Triplo' },
                   { value: 'Casal + Solteiro', label: 'Casal + Solteiro' },
@@ -107,16 +141,17 @@ const Apartments: React.FC = () => {
             </ColumnContainer>
             <ColumnContainer>
               <Legend>Quantidade de pessoas</Legend>
-              <Input name="quantity" />
+              <Input name="quantity" onChange={handleInputChange} />
             </ColumnContainer>
 
             <ColumnContainer>
               <Legend>Faixa de preço</Legend>
               <Select
-                name="type"
-                value={priceSelect}
+                name="price"
+                value={selectedPrice}
+                onChange={handleSelectedPrice}
                 options={[
-                  { value: 'Abaixo de 100', label: 'Casal' },
+                  { value: 'Abaixo de 100', label: 'Abaixo de 100' },
                   { value: 'Entre 100 e 200', label: 'Entre 100 e 200' },
                   { value: 'Entre 200 e 300', label: 'Entre 200 e 300' },
                   { value: 'Entre 300 e 400', label: 'Entre 300 e 400' },
@@ -128,14 +163,14 @@ const Apartments: React.FC = () => {
               <Legend>Serviços adicionais</Legend>
               <AdditionalContainer>
                 <Checkbox name="tv" label="TV" />
-                <Checkbox name="hidromassagem" label="Hidromassagem" />
+                <Checkbox name="suite" label="Suíte" />
                 <Checkbox name="air_conditioning" label="Ar Condicionado" />
               </AdditionalContainer>
             </ColumnContainer>
           </Search>
 
           <ButtonContainer>
-            <Button type="button">Buscar</Button>
+            <Button type="submit">Buscar</Button>
           </ButtonContainer>
         </Form>
         <Divisor />
@@ -145,7 +180,7 @@ const Apartments: React.FC = () => {
             return (
               <Item key={apartment.id}>
                 <HotelImageContainer>
-                  <img src={Image} alt="Hotel" />
+                  <img src={BedRoomImage} alt="Hotel" />
                   <IconsHotelContainer>
                     {apartment.room_type === 'Casal' && (
                       <img src={BedImg} alt="" />
@@ -165,7 +200,11 @@ const Apartments: React.FC = () => {
                   <PriceApartment>R$ {apartment.price}</PriceApartment>
                   <Description>{apartment.room_type}</Description>
 
-                  <SmallButton type="button">RESERVAR</SmallButton>
+                  <SmallButton type="button">
+                    <Link to={`/apartments/reserve/${apartment.id}`}>
+                      RESERVAR
+                    </Link>
+                  </SmallButton>
                 </InfoApartment>
               </Item>
             );
