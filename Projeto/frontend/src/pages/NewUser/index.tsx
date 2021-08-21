@@ -33,7 +33,6 @@ const NewUser: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: NewUserFormData) => {
       try {
-        console.log('ola');
         formRef.current?.setErrors({});
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),

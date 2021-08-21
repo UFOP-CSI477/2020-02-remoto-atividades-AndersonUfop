@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import SmallButton from '../../components/SmallButton';
+import api from '../../services/api';
 
 import {
   Container,
@@ -16,7 +17,23 @@ import {
   Tr,
 } from './styles';
 
+interface Hotels {
+  id: string;
+  latitude: number;
+  longitude: number;
+  name_hotel: string;
+  rooms_number: string;
+}
+
 const AdminArea: React.FC = () => {
+  const [hotels, setHotels] = useState<Hotels[]>([]);
+
+  useEffect(() => {
+    api.get('hotels').then(response => {
+      setHotels(response.data);
+    });
+  }, []);
+
   return (
     <Container>
       <Header />
@@ -27,32 +44,24 @@ const AdminArea: React.FC = () => {
         </Link>
         <Table>
           <THead>
-            <Th>ID</Th>
             <Th>Nome</Th>
             <Th>Localização</Th>
             <Th>Quantidade de quartos</Th>
           </THead>
           <TBody>
-            <Link to="/">
-              <Tr>
-                <Td>2</Td>
-                <Td>Hotel Maravilha</Td>
-                <Td>Sítio do Eden</Td>
-                <Td>20</Td>
-              </Tr>
-            </Link>
-            <Tr>
-              <Td>2</Td>
-              <Td>Hotel Maravilha</Td>
-              <Td>Sítio do Eden</Td>
-              <Td>20</Td>
-            </Tr>
-            <Tr>
-              <Td>2</Td>
-              <Td>Hotel Maravilha</Td>
-              <Td>Sítio do Eden</Td>
-              <Td>20</Td>
-            </Tr>
+            {hotels.map(hotel => {
+              return (
+                <Link to={`admin/apartments/${hotel.id}`}>
+                  <Tr key={hotel.id}>
+                    <Td>{hotel.name_hotel}</Td>
+                    <Td>
+                      {hotel.latitude}, {hotel.longitude}
+                    </Td>
+                    <Td>{hotel.rooms_number}</Td>
+                  </Tr>
+                </Link>
+              );
+            })}
           </TBody>
         </Table>
       </Content>

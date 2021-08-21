@@ -45,7 +45,7 @@ export const Hotel: React.FC = () => {
   const [hotel, setHotel] = useState<HotelProps>();
 
   useEffect(() => {
-    api.get(`hotels/images/${params.id}`).then(response => {
+    api.get(`hotels/${params.id}`).then(response => {
       setHotel(response.data);
     });
   }, [params.id]);

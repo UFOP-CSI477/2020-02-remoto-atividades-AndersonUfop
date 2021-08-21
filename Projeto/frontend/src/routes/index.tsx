@@ -37,7 +37,7 @@ const Routes: React.FC = () => (
     <Route component={NewHotel} path="/admin/hotels/new" exact isPrivate />
     <Route
       component={AdminAreaApartments}
-      path="/admin/apartments"
+      path="/admin/apartments/:hotel_id"
       exact
       isPrivate
     />

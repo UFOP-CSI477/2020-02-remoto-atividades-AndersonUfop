@@ -1,6 +1,7 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import React, { useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import * as Yup from 'yup';
 
 import { Link } from 'react-router-dom';
 import Header from '../../../components/Header';
@@ -9,13 +10,90 @@ import Input from '../../../components/Input';
 
 import { Container, Content, Title, InputContainer, FormInput } from './styles';
 import Checkbox from '../../../components/Checkbox';
+import api from '../../../services/api';
+import Select from '../../../components/Select';
+import { useAuth } from '../../../hooks/auth';
+
+interface NewHotelFormData {
+  name_hotel: string;
+  latitude: string;
+  longitude: number;
+  rooms_number: number;
+  pool: boolean;
+  wifi: boolean;
+  parking: boolean;
+  breakfast: boolean;
+  owner_id: string;
+}
+
+interface Users {
+  id: string;
+  name: string;
+}
 
 const NewHotel: React.FC = () => {
+  const [users, setUsers] = useState<Users[]>([]);
+  const [pool, setPool] = useState(false);
+  const [parking, setParking] = useState(false);
+  const [wifi, setWifi] = useState(false);
+  const [breakfast, setBreakfast] = useState(false);
+
   const formRef = useRef<FormHandles>(null);
 
-  function handleSubmit() {
-    console.log('a');
+  useEffect(() => {
+    api.get('users').then(response => {
+      setUsers(response.data);
+    });
+  }, []);
+
+  function handleSelectPull() {
+    setPool(!!pool);
   }
+
+  function handleSelectBreakfast() {
+    setBreakfast(!!breakfast);
+  }
+
+  function handleSelectParking() {
+    setParking(!!parking);
+  }
+
+  function handleSelectWifi() {
+    setWifi(!!wifi);
+  }
+
+  const handleSubmit = useCallback(async (data: NewHotelFormData) => {
+    console.log('oi');
+    try {
+      formRef.current?.setErrors({});
+      console.log(data);
+      const schema = Yup.object().shape({
+        name_hotel: Yup.string().required('Nome do hotel obrigatório'),
+        rooms_number: Yup.string().required(
+          'Quantidade de quartos obrigatória',
+        ),
+        latitude: Yup.string().required('Latitude obrigatória'),
+        longitude: Yup.string().required('Longitude obrigatória'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      await api.post('/hotels', {
+        name_hotel: data.name_hotel,
+        latitude: data.latitude,
+        longitude: data.longitude,
+        rooms_number: data.rooms_number,
+        pool,
+        wifi,
+        parking,
+        breakfast,
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, []);
 
   return (
     <Container>
@@ -30,7 +108,7 @@ const NewHotel: React.FC = () => {
           <InputContainer>
             <FormInput>
               <p>Nome do hotel:</p>
-              <Input name="name" type="text" />
+              <Input name="name_hotel" type="text" />
             </FormInput>
 
             <FormInput>
@@ -40,7 +118,7 @@ const NewHotel: React.FC = () => {
 
             <FormInput>
               <p>Quantidade de quartos:</p>
-              <Input name="bedrooms" type="text" />
+              <Input name="rooms_number" type="text" />
             </FormInput>
           </InputContainer>
 
@@ -57,10 +135,6 @@ const NewHotel: React.FC = () => {
 
           <InputContainer>
             <FormInput>
-              <p>Proprietário:</p>
-              <Input name="owner" type="text" />
-            </FormInput>
-            <FormInput>
               <p>E-mail do hotel:</p>
               <Input name="email" type="email" />
             </FormInput>
@@ -72,14 +146,23 @@ const NewHotel: React.FC = () => {
 
           <InputContainer>
             <p>Adicionais:</p>
-            <Checkbox name="pool" label="Piscina" />
-            <Checkbox name="breakfast" label="Café da manhã" />
-            <Checkbox name="parking" label="Estacionamento" />
-            <Checkbox name="Wifi" label="Wi-fi" />
-          </InputContainer>
-        </Form>
+            <Checkbox name="pool" label="Piscina" onChange={handleSelectPull} />
+            <Checkbox
+              name="breakfast"
+              label="Café da manhã"
+              onChange={handleSelectBreakfast}
+            />
 
-        <SmallButton type="button">Cadastrar hotel</SmallButton>
+            <Checkbox
+              name="parking"
+              label="Estacionamento"
+              onChange={handleSelectParking}
+            />
+            <Checkbox name="wifi" label="Wi-fi" onChange={handleSelectWifi} />
+          </InputContainer>
+
+          <SmallButton type="submit">Cadastrar hotel</SmallButton>
+        </Form>
       </Content>
     </Container>
   );

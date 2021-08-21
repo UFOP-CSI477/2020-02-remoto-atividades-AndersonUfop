@@ -21,7 +21,7 @@ hotelsRoutes.post("/", ensureAuthenticated, createHotelsController.handle);
 
 hotelsRoutes.get("/", listHotelsController.handle);
 
-hotelsRoutes.get("/images/:hotel_id", findHotelByIdController.handle);
+hotelsRoutes.get("/:hotel_id", findHotelByIdController.handle);
 
 hotelsRoutes.post(
   "/images/:id",

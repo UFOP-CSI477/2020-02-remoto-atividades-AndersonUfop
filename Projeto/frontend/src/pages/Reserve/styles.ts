@@ -192,17 +192,6 @@ export const IdentificationContainer = styled.div`
     padding: 0.5rem;
   }
 
-  .datepicker {
-    margin-left: 1rem;
-    margin-top: 1rem;
-    width: 98.5%;
-    border: 1px solid var(--dark);
-    color: var(--dark);
-
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-  }
-
   button {
     width: 18rem;
     height: 3.5rem;

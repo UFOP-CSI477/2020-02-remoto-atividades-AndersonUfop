@@ -48,7 +48,9 @@ class CreateHotelService {
       throw new AppError("Owner not exists", 401);
     }
 
-    await this.hotelsRepository.create({
+    console.log("teste");
+
+    const response = await this.hotelsRepository.create({
       name_hotel,
       latitude,
       longitude,
@@ -59,6 +61,8 @@ class CreateHotelService {
       breakfast,
       owner_id,
     });
+
+    console.log(response);
   }
 }
 
