@@ -41,8 +41,9 @@ interface HotelProps {
   longitude: number;
 }
 
-interface ApartmentProps {
+interface Apartment {
   hotel_id: string;
+  room_number: string;
   room_type: string;
   price: number;
 }
@@ -60,14 +61,20 @@ const Reserve: React.FC = () => {
 
   const params = useParams<ApartmentsParams>();
   console.log(params.apartment_id);
-  const [apartments, setApartments] = useState<ApartmentProps[]>([]);
+  const [apartment, setApartment] = useState<Apartment>();
 
   useEffect(() => {
-    api.get(`apartments/`);
-  }, []);
+    api.get(`apartments/${params.apartment_id}`).then(response => {
+      setApartment(response.data);
+    });
+  }, [params.apartment_id]);
 
   function handleSubmit() {
     console.log('test');
+  }
+
+  if (!apartment) {
+    return <p>Carregando...</p>;
   }
 
   return (
@@ -104,11 +111,13 @@ const Reserve: React.FC = () => {
                 </DateContainer>
               </DateInfo>
               <TextInfo>
-                <DescriptionApartment>Apartamento 18</DescriptionApartment>
-                <TypeApartment>Tipo: Casal</TypeApartment>
+                <DescriptionApartment>
+                  Apartamento {apartment.room_number}
+                </DescriptionApartment>
+                <TypeApartment>Tipo: {apartment.room_type}</TypeApartment>
                 <ValueTotal>
                   <span>Preço:</span>
-                  <p>R$ 1.000,00</p>
+                  <p>{apartment.price}</p>
                 </ValueTotal>
               </TextInfo>
             </InfoReserve>

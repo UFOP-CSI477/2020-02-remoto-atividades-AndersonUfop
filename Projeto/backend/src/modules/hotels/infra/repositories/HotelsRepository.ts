@@ -81,12 +81,14 @@ class HotelsRepository implements IHotelsRepository {
   }
 
   async findById(id: string): Promise<Hotel> {
-    const id_hotel = await this.repository.findOne({
+    const hotel = await this.repository.findOne({
       where: { id },
       relations: ["images"],
     });
 
-    return id_hotel;
+    console.log(hotel);
+
+    return hotel;
   }
 }
 
