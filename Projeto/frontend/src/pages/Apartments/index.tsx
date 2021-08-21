@@ -70,7 +70,7 @@ const Apartments: React.FC = () => {
   const [apartments, setApartments] = useState<ApartmentProps[]>([]);
 
   useEffect(() => {
-    api.get(`apartments/${params.hotel_id}`).then(response => {
+    api.get(`apartments/hotel/${params.hotel_id}`).then(response => {
       setApartments(response.data);
     });
   }, [params.hotel_id]);

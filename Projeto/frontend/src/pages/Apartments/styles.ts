@@ -32,7 +32,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 80rem;
-  height: 100%;
+  height: 100rem;
   margin: 3.125rem;
 
   border: 1px solid #000;

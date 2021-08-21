@@ -1,4 +1,5 @@
 import { CreateApartmentController } from "@modules/apartments/controllers/CreateApartmentController";
+import { FindApartmentByIdController } from "@modules/apartments/controllers/FindApartmentByIdController";
 import { FindApartmentsByHotelController } from "@modules/apartments/controllers/FindApartmentsByHotelController";
 import { FindApartmentsByHotelAvailableController } from "@modules/apartments/controllers/FindApartmentsHotelAvailableController";
 import { FindByPriceApartmentsController } from "@modules/apartments/controllers/FindByPriceApartmentsController";
@@ -21,6 +22,7 @@ const findApartmentsByHotelAvailableController =
   new FindApartmentsByHotelAvailableController();
 const findByPriceApartmentsController = new FindByPriceApartmentsController();
 const listImagesByApartmentController = new ListImagesByApartmentController();
+const findApartmentByIdController = new FindApartmentByIdController();
 
 const upload = multer(uploadConfig);
 
@@ -34,7 +36,12 @@ apartmentsRoutes.get("/find/", listApartmentsController.handle);
 
 apartmentsRoutes.get("/filter/", findByPriceApartmentsController.handle);
 
-apartmentsRoutes.get("/:hotel_id", findApartmentsByHotelController.handle);
+apartmentsRoutes.get("/:apartment_id", findApartmentByIdController.handle);
+
+apartmentsRoutes.get(
+  "/hotel/:hotel_id",
+  findApartmentsByHotelController.handle
+);
 
 apartmentsRoutes.get(
   "/images/:apartment_id",
@@ -49,7 +56,7 @@ apartmentsRoutes.post(
 );
 
 apartmentsRoutes.get(
-  "/hotel/:hotel_id",
+  "/hotel/available/:hotel_id",
   findApartmentsByHotelAvailableController.handle
 );
 
