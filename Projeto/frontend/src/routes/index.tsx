@@ -9,6 +9,10 @@ import Apartments from '../pages/Apartments';
 import Login from '../pages/Login';
 import NewUser from '../pages/NewUser';
 import Reserve from '../pages/Reserve';
+import AdminArea from '../pages/AdminArea';
+import NewHotel from '../pages/AdminArea/NewHotel';
+import AdminAreaApartments from '../pages/AdminArea/AdminAreaApartments';
+import NewApartment from '../pages/AdminArea/AdminAreaApartments/NewApartment';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -29,7 +33,22 @@ const Routes: React.FC = () => (
       isPrivate
     />
 
-    <Route component={Dashboard} path="/" isPrivate />
+    <Route component={AdminArea} path="/admin" exact isPrivate />
+    <Route component={NewHotel} path="/admin/hotels/new" exact isPrivate />
+    <Route
+      component={AdminAreaApartments}
+      path="/admin/apartments"
+      exact
+      isPrivate
+    />
+    <Route
+      component={NewApartment}
+      path="/admin/apartments/new"
+      exact
+      isPrivate
+    />
+
+    <Route component={Dashboard} path="/" exact isPrivate />
   </Switch>
 );
 

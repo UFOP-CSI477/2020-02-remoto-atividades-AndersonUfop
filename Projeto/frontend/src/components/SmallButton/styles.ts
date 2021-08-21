@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const ButtonContainer = styled.button`
-  height: 2rem;
+  height: 3.5rem;
+  width: 14.063rem;
   border-radius: 0.6rem;
   border: none;
   background-color: var(--blueLight);
