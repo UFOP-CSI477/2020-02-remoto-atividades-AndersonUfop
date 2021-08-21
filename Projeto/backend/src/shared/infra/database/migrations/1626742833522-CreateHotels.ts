@@ -26,6 +26,18 @@ export class CreateHotels1626742833522 implements MigrationInterface {
             type: "decimal",
           },
           {
+            name: "localization",
+            type: "varchar",
+          },
+          {
+            name: "email",
+            type: "varchar",
+          },
+          {
+            name: "telephone",
+            type: "varchar",
+          },
+          {
             name: "rooms_number",
             type: "numeric",
           },

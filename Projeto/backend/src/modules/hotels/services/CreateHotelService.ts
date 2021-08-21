@@ -9,12 +9,15 @@ interface IRequest {
   name_hotel: string;
   latitude: number;
   longitude: number;
+  localization: string;
+  email: string;
+  telephone: string;
   rooms_number: number;
   pool: boolean;
   wifi: boolean;
   parking: boolean;
   breakfast: boolean;
-  owner_id: string;
+  owner_id?: string;
 }
 
 @injectable()
@@ -30,6 +33,9 @@ class CreateHotelService {
     name_hotel,
     latitude,
     longitude,
+    localization,
+    email,
+    telephone,
     rooms_number,
     pool,
     wifi,
@@ -44,16 +50,13 @@ class CreateHotelService {
       throw new AppError("Hotel already exists", 401);
     }
 
-    if (!ownerExists) {
-      throw new AppError("Owner not exists", 401);
-    }
-
-    console.log("teste");
-
     const response = await this.hotelsRepository.create({
       name_hotel,
       latitude,
       longitude,
+      localization,
+      email,
+      telephone,
       rooms_number,
       pool,
       wifi,

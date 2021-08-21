@@ -22,6 +22,10 @@ export class CreateApartments1626744388236 implements MigrationInterface {
             type: "numeric",
           },
           {
+            name: "description",
+            type: "varchar",
+          },
+          {
             name: "price",
             type: "numeric",
           },

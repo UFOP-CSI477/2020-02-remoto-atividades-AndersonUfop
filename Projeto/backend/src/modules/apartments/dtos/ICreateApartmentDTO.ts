@@ -2,6 +2,7 @@ interface ICreateApartmentDTO {
   id?: string;
   hotel_id: string;
   room_number: number;
+  description: string;
   price: number;
   suite: boolean;
   tv: boolean;

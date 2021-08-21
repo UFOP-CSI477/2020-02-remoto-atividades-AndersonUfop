@@ -8,6 +8,7 @@ class CreateApartmentController {
     const {
       hotel_id,
       room_number,
+      description,
       price,
       suite,
       tv,
@@ -20,6 +21,7 @@ class CreateApartmentController {
     await createApartmentService.execute({
       hotel_id,
       room_number,
+      description,
       price,
       suite,
       tv,

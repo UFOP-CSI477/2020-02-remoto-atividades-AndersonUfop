@@ -25,23 +25,6 @@ class ListHotelsService {
   async execute(): Promise<Hotel[]> {
     const hotels = await this.hotelsRepository.index();
 
-    /*  const hotels = await this.hotelsRepository.list(
-      pool,
-      wifi,
-      parking,
-      breakfast
-    ); */
-
-    /* hotels.map(async (hotel) => {
-      
-
-      console.log(hotelsImages);
-
-      hotelsImages.map(async (image) => {
-        image.image_name = `http://localhost:3333/images/${image.image_name}`;
-      });
-    }); */
-
     return hotels;
   }
 }

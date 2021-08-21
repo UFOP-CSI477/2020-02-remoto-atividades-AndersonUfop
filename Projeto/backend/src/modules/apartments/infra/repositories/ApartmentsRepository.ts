@@ -13,6 +13,7 @@ class ApartmentsRepository implements IApartmentsRepository {
   async create({
     hotel_id,
     room_number,
+    description,
     price,
     suite,
     tv,
@@ -23,6 +24,7 @@ class ApartmentsRepository implements IApartmentsRepository {
     const apartment = this.repository.create({
       hotel_id,
       room_number,
+      description,
       price,
       suite,
       tv,

@@ -7,6 +7,7 @@ export default {
       id: apartment.id,
       hotel_id: apartment.hotel_id,
       room_number: apartment.room_number,
+      description: apartment.description,
       price: apartment.price,
       suite: apartment.suite,
       tv: apartment.tv,

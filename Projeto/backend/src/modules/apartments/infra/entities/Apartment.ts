@@ -28,6 +28,9 @@ class Apartment {
   room_number: number;
 
   @Column()
+  description: string;
+
+  @Column()
   price: number;
 
   @Column()

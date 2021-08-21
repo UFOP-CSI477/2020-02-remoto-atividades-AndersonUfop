@@ -7,6 +7,7 @@ import { IApartmentsRepository } from "../repositories/IApartmentsRepository";
 interface IRequest {
   hotel_id: string;
   room_number: number;
+  description: string;
   price: number;
   suite: boolean;
   tv: boolean;
@@ -27,6 +28,7 @@ class CreateApartmentService {
   async execute({
     hotel_id,
     room_number,
+    description,
     price,
     suite,
     tv,
@@ -52,6 +54,7 @@ class CreateApartmentService {
     this.apartmentsRepository.create({
       hotel_id,
       room_number,
+      description,
       price,
       suite,
       tv,

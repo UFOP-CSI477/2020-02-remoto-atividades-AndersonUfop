@@ -28,6 +28,15 @@ class Hotel {
   longitude: number;
 
   @Column()
+  localization: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  telephone: string;
+
+  @Column()
   rooms_number: number;
 
   @Column()
