@@ -44,13 +44,15 @@ import Back from '../../components/Back';
 interface Hotel {
   id: string;
   name_hotel: string;
-  latitude: number;
-  longitude: number;
+  localization: string;
+  telephone: string;
+  email: string;
 }
 
 interface Apartment {
   hotel_id: string;
   room_number: string;
+  description: string;
   room_type: string;
   price: number;
   availability: boolean;
@@ -184,11 +186,9 @@ const Reserve: React.FC = () => {
             <GeneralInfos>
               <InfoHotel>
                 <span>{hotel?.name_hotel}</span>
-                <p>
-                  {hotel?.latitude} , {hotel?.longitude}
-                </p>
-                <p>Telefone: (31) 3035-1235</p>
-                <p>E-mail: hotel@gmail.com</p>
+                <p>{hotel?.localization}</p>
+                <p>Telefone: {hotel?.telephone}</p>
+                <p>E-mail: {hotel?.email}</p>
               </InfoHotel>
               <InfoReserve>
                 <DateInfo>
@@ -205,7 +205,7 @@ const Reserve: React.FC = () => {
                   <DescriptionApartment>
                     Apartamento Nº {apartment.room_number}
                   </DescriptionApartment>
-                  <TypeApartment>Tipo: {apartment.room_type}</TypeApartment>
+                  <TypeApartment>Tipo: {apartment.description}</TypeApartment>
                   <ValueTotal>
                     <span>Preço:</span>
                     <p>{apartment.price}</p>

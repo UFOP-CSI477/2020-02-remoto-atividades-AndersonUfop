@@ -25,6 +25,7 @@ interface HotelProps {
   name_hotel: string;
   latitude: number;
   longitude: number;
+  localization: string;
   pool: boolean;
   wifi: boolean;
   parking: boolean;
@@ -65,7 +66,6 @@ export const Hotel: React.FC = () => {
             return <img src={image.image_name} alt="" />;
           })}
         </div>
-        {/* <img src={HotelImg} alt="Imagem do hotel" /> */}
 
         <Details>
           <h1>{hotel.name_hotel}</h1>
@@ -97,9 +97,7 @@ export const Hotel: React.FC = () => {
           </Items>
           <Address>
             <LocalizationImg />
-            <p>
-              Latitude: {hotel.latitude} , Longitude: {hotel.longitude}
-            </p>
+            <p>{hotel.localization}</p>
           </Address>
 
           <div className="btn-reserve">

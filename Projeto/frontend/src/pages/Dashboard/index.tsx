@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
 
       <MapContainer
         className="leaflet-container"
-        center={[-19.4530787, -43.1068537]}
+        center={[-19.6250058, -43.2214424]}
         zoom={13}
         scrollWheelZoom
         styles={{ width: '100%', height: '100%' }}

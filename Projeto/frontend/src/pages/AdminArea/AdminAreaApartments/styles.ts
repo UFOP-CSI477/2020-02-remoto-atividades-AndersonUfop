@@ -89,16 +89,7 @@ export const Td = styled.td`
   padding: 0.8rem;
 
   &:nth-child(2) {
-    margin-left: 7rem;
+    margin-left: 6rem;
+    margin-right: 2rem;
   }
-  /*
-  &:nth-child(3) {
-    margin-left: 12rem;
-    margin-right: 16rem;
-  }
-
-  &:nth-child(4) {
-    margin-left: 16rem;
-    margin-right: 16rem;
-  } */
 `;

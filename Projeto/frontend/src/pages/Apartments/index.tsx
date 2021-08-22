@@ -44,6 +44,7 @@ import Back from '../../components/Back';
 interface ApartmentProps {
   id: string;
   room_number: string;
+  description: string;
   price: number;
   suite: boolean;
   tv: boolean;
@@ -184,7 +185,7 @@ const Apartments: React.FC = () => {
                       Apartamento Nº {apartment.room_number}
                     </NameApartment>
                     <PriceApartment>R$ {apartment.price}</PriceApartment>
-                    <Description>{apartment.room_type}</Description>
+                    <Description>{apartment.description}</Description>
 
                     <SmallButton
                       type="button"

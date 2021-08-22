@@ -61,6 +61,7 @@ const AdminArea: React.FC = () => {
                     <Td>{hotel.name_hotel}</Td>
                     <Td>{String(hotel.localization)}</Td>
                     <Td>{hotel.telephone}</Td>
+                    <Td>{hotel.email}</Td>
                     <Td>{hotel.rooms_number}</Td>
                   </Tr>
                 </Link>
