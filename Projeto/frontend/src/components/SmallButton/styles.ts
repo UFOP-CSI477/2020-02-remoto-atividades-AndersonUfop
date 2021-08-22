@@ -9,7 +9,12 @@ export const ButtonContainer = styled.button`
   background-color: var(--blueLight);
   color: var(--light);
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: ${shade(0.2, '#F3EEEE')};
+  }
+
+  &:disabled {
+    background: #939090;
+    cursor: not-allowed;
   }
 `;

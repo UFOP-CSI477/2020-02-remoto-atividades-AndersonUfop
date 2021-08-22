@@ -19,6 +19,7 @@ import Img3 from '../../assets/hotel3.jpg';
 
 import { Container, Content, Details, Items, Address } from './styles';
 import Header from '../../components/Header';
+import Back from '../../components/Back';
 
 interface HotelProps {
   name_hotel: string;
@@ -57,6 +58,7 @@ export const Hotel: React.FC = () => {
   return (
     <Container>
       <Header />
+      <Back to="/" />
       <Content>
         <div className="images-hotel">
           {hotel.images.map(image => {

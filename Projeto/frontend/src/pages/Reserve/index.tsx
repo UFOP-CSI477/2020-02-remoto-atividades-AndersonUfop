@@ -5,8 +5,10 @@ import DatePicker from 'react-datepicker';
 
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
+import toast, { Toaster } from 'react-hot-toast';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import SmallButton from '../../components/SmallButton';
@@ -36,6 +38,8 @@ import {
 
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
+import getValidationErrors from '../../utils/getValidateErrors';
+import Back from '../../components/Back';
 
 interface Hotel {
   id: string;
@@ -49,6 +53,7 @@ interface Apartment {
   room_number: string;
   room_type: string;
   price: number;
+  availability: boolean;
 }
 
 interface ApartmentsParams {
@@ -64,16 +69,22 @@ interface ReserveFormData {
   date_checkout: Date;
 }
 
+interface Users {
+  id: string;
+  name: string;
+}
+
 const Reserve: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-
-  const [checkinDate, setCheckinDate] = useState<Date>(new Date());
-  const [checkoutDate, setCheckoutDate] = useState<Date>(new Date());
-  const [birthDate, setBirthDate] = useState<Date>(new Date());
 
   const params = useParams<ApartmentsParams>();
   const [apartment, setApartment] = useState<Apartment>();
   const [hotel, setHotel] = useState<Hotel>();
+  const [users, setUsers] = useState<Users[]>([]);
+
+  const history = useHistory();
+
+  const [userId, setUserId] = useState('');
 
   const { user } = useAuth();
 
@@ -89,47 +100,70 @@ const Reserve: React.FC = () => {
     });
   }, [apartment?.hotel_id]);
 
-  function selectCheckInDate(e: Date) {
-    setCheckinDate(e);
-    console.log(checkinDate);
-  }
-
-  function selectCheckOutDate(e: Date) {
-    setCheckoutDate(e);
-    console.log(checkoutDate);
-  }
-
-  function selectBirthDate(e: Date) {
-    setBirthDate(e);
-    console.log(birthDate);
-  }
-
-  const handleSubmit = useCallback(async (data: ReserveFormData) => {
-    try {
-      formRef.current?.setErrors({});
-
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório'),
-        email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('Digite um e-mail válido'),
-        cpf: Yup.string().required('CPF obrigatório'),
-        date_checkin: Yup.string().required('Data de nascimento obrigatória'),
-        date_checkout: Yup.string().required('Data de nascimento obrigatória'),
-        birth_date: Yup.string().required('Data de nascimento obrigatória'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      const response = await api.post('/reserves', data);
-
-      console.log(response);
-    } catch (err) {
-      console.log(err.message);
-    }
+  useEffect(() => {
+    api.get('users').then(response => {
+      setUsers(response.data);
+    });
   }, []);
+
+  useEffect(() => {
+    users.map(us => {
+      return us.name === user.name && setUserId(us.id);
+    });
+  });
+
+  const messageSuccess = useCallback(() => {
+    Swal.fire('Mensagem', 'Reserva realizada com sucesso', 'success');
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (data: ReserveFormData) => {
+      try {
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          email: Yup.string()
+            .required('E-mail obrigatório')
+            .email('Digite um e-mail válido'),
+          cpf: Yup.string().required('CPF obrigatório'),
+          date_checkin: Yup.string().required('Data de nascimento obrigatória'),
+          date_checkout: Yup.string().required(
+            'Data de nascimento obrigatória',
+          ),
+          birth_date: Yup.string().required('Data de nascimento obrigatória'),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        await api.post('/reserves', {
+          apartment_id: params.apartment_id,
+          user_id: userId,
+          cpf: data.cpf,
+          birth_date: data.birth_date,
+          date_checkin: data.date_checkin,
+          date_checkout: data.date_checkout,
+        });
+
+        history.push('/');
+
+        messageSuccess();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current?.setErrors(errors);
+
+          return;
+        }
+
+        toast.error('Erro ao realizar o cadastro!');
+      }
+    },
+    [history, messageSuccess, params.apartment_id, userId],
+  );
 
   if (!apartment) {
     return <p>Carregando...</p>;
@@ -137,7 +171,9 @@ const Reserve: React.FC = () => {
 
   return (
     <Container>
+      <Toaster position="top-right" reverseOrder={false} />
       <Header />
+      <Back to={`/apartments/${apartment?.hotel_id}`} />
       <Title>Finalizar reserva</Title>
       <Content>
         <Form ref={formRef} onSubmit={handleSubmit}>
@@ -177,9 +213,11 @@ const Reserve: React.FC = () => {
                 </TextInfo>
               </InfoReserve>
             </GeneralInfos>
-            <ButtonContainer>
-              <Button type="button">Editar</Button>
-            </ButtonContainer>
+            <Link to={`/apartments/${apartment?.hotel_id}`}>
+              <ButtonContainer>
+                <Button type="button">Editar</Button>
+              </ButtonContainer>
+            </Link>
           </DescriptionReserve>
           <Divisor />
 

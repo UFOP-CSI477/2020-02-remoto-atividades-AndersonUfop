@@ -5,10 +5,19 @@ import { ButtonContainer } from './styles';
 type SmallButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   type?: string;
   children?: ReactNode;
+  disabled?: boolean;
 };
 
-const SmallButton: React.FC<SmallButtonProps> = ({ type, children }) => {
-  return <ButtonContainer type={type}>{children}</ButtonContainer>;
+const SmallButton: React.FC<SmallButtonProps> = ({
+  type,
+  disabled,
+  children,
+}) => {
+  return (
+    <ButtonContainer type={type} disabled={disabled}>
+      {children}
+    </ButtonContainer>
+  );
 };
 
 export default SmallButton;

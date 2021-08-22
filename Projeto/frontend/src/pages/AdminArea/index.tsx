@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import Back from '../../components/Back';
 import Header from '../../components/Header';
 import SmallButton from '../../components/SmallButton';
 import api from '../../services/api';
@@ -19,9 +20,10 @@ import {
 
 interface Hotels {
   id: string;
-  latitude: number;
-  longitude: number;
   name_hotel: string;
+  localization: string;
+  telephone: string;
+  email: string;
   rooms_number: string;
 }
 
@@ -37,6 +39,7 @@ const AdminArea: React.FC = () => {
   return (
     <Container>
       <Header />
+      <Back to="/" />
       <Content>
         <Title>Hóteis</Title>
         <Link to="/admin/hotels/new">
@@ -46,7 +49,9 @@ const AdminArea: React.FC = () => {
           <THead>
             <Th>Nome</Th>
             <Th>Localização</Th>
-            <Th>Quantidade de quartos</Th>
+            <Th>Telefone</Th>
+            <Th>E-mail</Th>
+            <Th>Qtd. de quartos</Th>
           </THead>
           <TBody>
             {hotels.map(hotel => {
@@ -54,9 +59,8 @@ const AdminArea: React.FC = () => {
                 <Link to={`admin/apartments/${hotel.id}`}>
                   <Tr key={hotel.id}>
                     <Td>{hotel.name_hotel}</Td>
-                    <Td>
-                      {hotel.latitude}, {hotel.longitude}
-                    </Td>
+                    <Td>{String(hotel.localization)}</Td>
+                    <Td>{hotel.telephone}</Td>
                     <Td>{hotel.rooms_number}</Td>
                   </Tr>
                 </Link>

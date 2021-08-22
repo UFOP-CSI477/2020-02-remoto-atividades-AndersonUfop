@@ -4,7 +4,7 @@ import { shade } from 'polished';
 export const Container = styled.div`
   width: 100vw;
   height: 4.063rem;
-  background: var(--blue);
+  background: var(--blueLight);
   padding: 1.5rem;
 
   @media (max-width: 1000px) {
@@ -33,7 +33,7 @@ export const Container = styled.div`
     }
   }
 
-  .back {
+  .exit {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -62,7 +62,6 @@ export const UserContainer = styled.div`
 `;
 
 export const UserLogOut = styled.div`
-  height: 2rem;
   width: 100%;
   color: var(--light);
   cursor: pointer;

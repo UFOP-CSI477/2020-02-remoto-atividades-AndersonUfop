@@ -65,3 +65,11 @@ export const FormInput = styled.div`
     height: 2.125rem;
   }
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+`;

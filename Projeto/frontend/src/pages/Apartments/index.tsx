@@ -22,6 +22,7 @@ import {
   Title,
   Search,
   Content,
+  ApartmentsContainer,
   ColumnContainer,
   Legend,
   AdditionalContainer,
@@ -38,6 +39,7 @@ import {
   Description,
 } from './styles';
 import Button from '../../components/Button';
+import Back from '../../components/Back';
 
 interface ApartmentProps {
   id: string;
@@ -47,7 +49,7 @@ interface ApartmentProps {
   tv: boolean;
   air_conditioning: boolean;
   room_type: string;
-  available: boolean;
+  availability: boolean;
   images: Array<{
     id: string;
     image_name: string;
@@ -62,9 +64,9 @@ const Apartments: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const [selectedType, setSelectedType] = useState('');
-  const [selectedPrice, setSelectedPrice] = useState('');
-
-  const [quantityPeople, setQuantityPeople] = useState(0);
+  const [selectedTV, setSelectedTV] = useState(false);
+  const [selectedSuite, setSelectedSuite] = useState(false);
+  const [selectedAirConditioning, setSelectedAirConditioning] = useState(false);
 
   const params = useParams<HotelParams>();
   const [apartments, setApartments] = useState<ApartmentProps[]>([]);
@@ -75,18 +77,6 @@ const Apartments: React.FC = () => {
     });
   }, [params.hotel_id]);
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const quantity = event.target.value;
-
-    setQuantityPeople(Number(quantity));
-  }
-
-  function handleSelectedPrice(event: ChangeEvent<HTMLSelectElement>) {
-    const price = event.target.value;
-
-    setSelectedPrice(price);
-  }
-
   function handleSelectedType(event: ChangeEvent<HTMLSelectElement>) {
     const type = event.target.value;
 
@@ -95,14 +85,15 @@ const Apartments: React.FC = () => {
 
   async function handleSubmit() {
     const { hotel_id } = params;
-    const quantity = quantityPeople;
     const type = selectedType;
-    const price = selectedPrice;
 
     const response = await api.get('apartments/find', {
       params: {
-        hotel_id,
+        suite: selectedSuite,
+        tv: selectedTV,
+        air_conditioning: selectedAirConditioning,
         room_type: type,
+        hotel_id,
       },
     });
 
@@ -116,100 +107,100 @@ const Apartments: React.FC = () => {
   return (
     <Container>
       <Header />
+      <Back to={`/hotel/${params.hotel_id}`} />
       <Title>
         <h1>Reservar quarto</h1>
 
         <span>Primeiramente escolha o seu quarto</span>
       </Title>
       <Content>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <Search>
-            <ColumnContainer>
-              <Legend>Tipo de Quarto</Legend>
-              <Select
-                name="type"
-                value={selectedType}
-                onChange={handleSelectedType}
-                options={[
-                  { value: 'Casal', label: 'Casal' },
-                  { value: 'Solteiro', label: 'Solteiro' },
-                  { value: 'Solteiro Duplo', label: 'Solteiro Duplo' },
-                  { value: 'Solteiro Triplo', label: 'Solteiro Triplo' },
-                  { value: 'Casal + Solteiro', label: 'Casal + Solteiro' },
-                ]}
-              />
-            </ColumnContainer>
-            <ColumnContainer>
-              <Legend>Quantidade de pessoas</Legend>
-              <Input name="quantity" onChange={handleInputChange} />
-            </ColumnContainer>
+        <ApartmentsContainer>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <Search>
+              <ColumnContainer>
+                <Legend>Tipo de Quarto</Legend>
+                <Select
+                  name="type"
+                  value={selectedType}
+                  onChange={handleSelectedType}
+                  options={[
+                    { value: 'Casal', label: 'Casal' },
+                    { value: 'Solteiro', label: 'Solteiro' },
+                    { value: 'Duplo', label: 'Solteiro Duplo' },
+                    { value: 'Solteiro Triplo', label: 'Solteiro Triplo' },
+                    { value: 'Casal + Solteiro', label: 'Casal + Solteiro' },
+                  ]}
+                />
+              </ColumnContainer>
 
-            <ColumnContainer>
-              <Legend>Faixa de preço</Legend>
-              <Select
-                name="price"
-                value={selectedPrice}
-                onChange={handleSelectedPrice}
-                options={[
-                  { value: 'Abaixo de 100', label: 'Abaixo de 100' },
-                  { value: 'Entre 100 e 200', label: 'Entre 100 e 200' },
-                  { value: 'Entre 200 e 300', label: 'Entre 200 e 300' },
-                  { value: 'Entre 300 e 400', label: 'Entre 300 e 400' },
-                  { value: 'Acima de 500', label: 'Acima de 500' },
-                ]}
-              />
-            </ColumnContainer>
-            <ColumnContainer>
-              <Legend>Serviços adicionais</Legend>
-              <AdditionalContainer>
-                <Checkbox name="tv" label="TV" />
-                <Checkbox name="suite" label="Suíte" />
-                <Checkbox name="air_conditioning" label="Ar Condicionado" />
-              </AdditionalContainer>
-            </ColumnContainer>
-          </Search>
+              <ColumnContainer>
+                <Legend>Serviços </Legend>
+                <AdditionalContainer>
+                  <Checkbox
+                    name="tv"
+                    label="TV"
+                    onChange={() => setSelectedTV(true)}
+                  />
+                  <Checkbox
+                    name="suite"
+                    label="Suíte"
+                    onChange={() => setSelectedSuite(true)}
+                  />
+                  <Checkbox
+                    name="air_conditioning"
+                    label="Ar Condicionado"
+                    onChange={() => setSelectedAirConditioning(true)}
+                  />
+                </AdditionalContainer>
+              </ColumnContainer>
+            </Search>
 
-          <ButtonContainer>
-            <Button type="submit">Buscar</Button>
-          </ButtonContainer>
-        </Form>
-        <Divisor />
-        <Results>{apartments.length} resultados encontrados</Results>
-        <ItemsContainer>
-          {apartments.map(apartment => {
-            return (
-              <Item key={apartment.id}>
-                <HotelImageContainer>
-                  <img src={BedRoomImage} alt="Hotel" />
-                  <IconsHotelContainer>
-                    {apartment.room_type === 'Casal' && (
-                      <img src={BedImg} alt="" />
-                    )}
-                    {apartment.suite && <img src={BathImg} alt="" />}
-                    {apartment.tv && <img src={TvImg} alt="" />}
-                    {apartment.air_conditioning && (
-                      <img src={AirConditioningImg} alt="" />
-                    )}
-                  </IconsHotelContainer>
-                </HotelImageContainer>
+            <ButtonContainer>
+              <Button type="submit">Buscar</Button>
+            </ButtonContainer>
+          </Form>
+          <Divisor />
+          <Results>{apartments.length} resultados encontrados</Results>
+          <ItemsContainer>
+            {apartments.map(apartment => {
+              return (
+                <Item key={apartment.id}>
+                  <HotelImageContainer>
+                    <img src={BedRoomImage} alt="Hotel" />
+                    <IconsHotelContainer>
+                      {apartment.room_type === 'Casal' && (
+                        <img src={BedImg} alt="" />
+                      )}
+                      {apartment.suite && <img src={BathImg} alt="" />}
+                      {apartment.tv && <img src={TvImg} alt="" />}
+                      {apartment.air_conditioning && (
+                        <img src={AirConditioningImg} alt="" />
+                      )}
+                    </IconsHotelContainer>
+                  </HotelImageContainer>
 
-                <InfoApartment>
-                  <NameApartment>
-                    Apartamento Nº {apartment.room_number}
-                  </NameApartment>
-                  <PriceApartment>R$ {apartment.price}</PriceApartment>
-                  <Description>{apartment.room_type}</Description>
+                  <InfoApartment>
+                    <NameApartment>
+                      Apartamento Nº {apartment.room_number}
+                    </NameApartment>
+                    <PriceApartment>R$ {apartment.price}</PriceApartment>
+                    <Description>{apartment.room_type}</Description>
 
-                  <SmallButton type="button">
-                    <Link to={`/apartments/reserve/${apartment.id}`}>
-                      RESERVAR
-                    </Link>
-                  </SmallButton>
-                </InfoApartment>
-              </Item>
-            );
-          })}
-        </ItemsContainer>
+                    <SmallButton
+                      type="button"
+                      className={apartment.availability ? 'btn-reserved' : ''}
+                      disabled={!apartment.availability}
+                    >
+                      <Link to={`/apartments/reserve/${apartment.id}`}>
+                        {apartment.availability ? 'RESERVAR' : 'RESERVADO'}
+                      </Link>
+                    </SmallButton>
+                  </InfoApartment>
+                </Item>
+              );
+            })}
+          </ItemsContainer>
+        </ApartmentsContainer>
       </Content>
     </Container>
   );

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import { BiExit } from 'react-icons/bi';
 
-import { Container, UserContainer, UserLogOut } from './styles';
+import { Container, UserContainer } from './styles';
 import { useAuth } from '../../hooks/auth';
 
 const Header: React.FC = () => {
@@ -17,17 +16,13 @@ const Header: React.FC = () => {
   return (
     <Container>
       <UserContainer onClick={openExit}>
-        <span className="login">
-          {user ? user.name : 'Login'}
-          <MdKeyboardArrowDown />
-        </span>
-        {exit && <UserLogOut onClick={signOut}>Sair</UserLogOut>}
+        <span className="login">{user ? user.name : 'Login'}</span>
       </UserContainer>
 
       <Link to="/">
-        <div className="back">
-          <FaArrowLeft size={24} />
-          <span>Voltar</span>
+        <div className="exit" onClick={signOut}>
+          <BiExit size={24} />
+          <span>Sair</span>
         </div>
       </Link>
     </Container>

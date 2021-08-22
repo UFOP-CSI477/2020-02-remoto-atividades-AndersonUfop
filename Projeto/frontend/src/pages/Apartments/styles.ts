@@ -5,7 +5,6 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Title = styled.div`
@@ -31,8 +30,14 @@ export const Title = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+`;
+
+export const ApartmentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 80rem;
-  height: 100rem;
+  height: 100%;
   margin: 3.125rem;
 
   border: 1px solid #000;

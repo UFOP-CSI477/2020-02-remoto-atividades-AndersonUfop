@@ -19,12 +19,22 @@ export const Title = styled.div`
   margin-bottom: 2rem;
 `;
 
+export const LimiteRoomsContainer = styled.div`
+  display: flex;
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: red;
+`;
+
 export const Table = styled.table`
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 0.5rem;
 `;
 
@@ -79,22 +89,16 @@ export const Td = styled.td`
   padding: 0.8rem;
 
   &:nth-child(2) {
-    margin-left: 16rem;
-    margin-right: 4rem;
+    margin-left: 7rem;
   }
-
+  /*
   &:nth-child(3) {
     margin-left: 12rem;
-    margin-right: 2rem;
+    margin-right: 16rem;
   }
 
   &:nth-child(4) {
-    margin-left: 10rem;
-    margin-right: 12rem;
-  }
-
-  &:nth-child(5) {
-    margin-left: 2rem;
-    margin-right: 4rem;
-  }
+    margin-left: 16rem;
+    margin-right: 16rem;
+  } */
 `;

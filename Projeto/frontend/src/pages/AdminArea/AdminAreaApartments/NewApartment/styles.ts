@@ -58,10 +58,24 @@ export const FormInput = styled.div`
 
   input {
     border: 1px solid var(--dark);
-    border: 1px solid var(--dark);
     padding: 0.875rem;
     border-radius: 0.4rem;
     width: 12rem;
     height: 2.125rem;
   }
+
+  select {
+    width: 100%;
+    height: 2.125rem;
+    margin-top: 1rem;
+    background: transparent;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 `;
