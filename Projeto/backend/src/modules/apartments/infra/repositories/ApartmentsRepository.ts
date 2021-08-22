@@ -104,6 +104,7 @@ class ApartmentsRepository implements IApartmentsRepository {
       where: { hotel_id },
 
       relations: ["images"],
+      order: { room_number: "ASC" },
     });
 
     return apartment;

@@ -76,6 +76,9 @@ class HotelsRepository implements IHotelsRepository {
   async index(): Promise<Hotel[]> {
     const hotels = this.repository.find({
       relations: ["images"],
+      order: {
+        name_hotel: "ASC",
+      },
     });
 
     return hotels;

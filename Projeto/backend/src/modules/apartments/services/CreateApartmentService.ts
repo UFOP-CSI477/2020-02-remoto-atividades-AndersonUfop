@@ -55,7 +55,7 @@ class CreateApartmentService {
       hotel_id,
       room_number,
       description,
-      price,
+      price: Number(price),
       suite,
       tv,
       air_conditioning,
