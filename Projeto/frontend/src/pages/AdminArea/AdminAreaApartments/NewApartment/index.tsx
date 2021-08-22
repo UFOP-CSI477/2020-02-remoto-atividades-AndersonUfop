@@ -106,7 +106,15 @@ const NewApartment: React.FC = () => {
         toast.error('Erro ao realizar o cadastro!');
       }
     },
-    [airConditioning, history, params.hotel_id, suite, tv],
+    [
+      airConditioning,
+      history,
+      params.hotel_id,
+      suite,
+      tv,
+      messageSuccess,
+      selectedType,
+    ],
   );
 
   return (

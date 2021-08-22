@@ -5,7 +5,6 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
-import moment from 'moment';
 
 import Back from '../../components/Back';
 import Header from '../../components/Header';

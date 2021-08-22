@@ -8,7 +8,7 @@ interface BackProps {
   to: string;
 }
 
-const Back: React.FC<BackProps> = ({ to, ...rest }) => {
+const Back: React.FC<BackProps> = ({ to }) => {
   return (
     <Container>
       <Link to={to}>

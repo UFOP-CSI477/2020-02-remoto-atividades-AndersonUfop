@@ -64,7 +64,7 @@ const NewUser: React.FC = () => {
       }
     },
 
-    [toast, history],
+    [history, messageSuccess],
   );
 
   return (
