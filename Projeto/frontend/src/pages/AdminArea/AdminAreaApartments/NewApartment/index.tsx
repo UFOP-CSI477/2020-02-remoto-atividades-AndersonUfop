@@ -75,9 +75,6 @@ const NewApartment: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: newApartmentFormData) => {
       try {
-        console.log(data);
-        console.log(selectedType);
-        console.log(suite, tv, airConditioning);
         formRef.current?.setErrors({});
         const schema = Yup.object().shape({
           room_number: Yup.string().required(
