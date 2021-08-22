@@ -151,17 +151,19 @@ const Apartments: React.FC = () => {
                   <Checkbox
                     name="tv"
                     label="TV"
-                    onChange={() => setSelectedTV(true)}
+                    onChange={() => setSelectedTV(!selectedTV)}
                   />
                   <Checkbox
                     name="suite"
                     label="Suíte"
-                    onChange={() => setSelectedSuite(true)}
+                    onChange={() => setSelectedSuite(!selectedSuite)}
                   />
                   <Checkbox
                     name="air_conditioning"
                     label="Ar Condicionado"
-                    onChange={() => setSelectedAirConditioning(true)}
+                    onChange={() =>
+                      setSelectedAirConditioning(!selectedAirConditioning)
+                    }
                   />
                 </AdditionalContainer>
               </ColumnContainer>

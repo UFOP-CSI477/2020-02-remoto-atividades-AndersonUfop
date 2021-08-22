@@ -192,7 +192,7 @@ const Reserve: React.FC = () => {
                 <DateInfo>
                   <DateContainer>
                     <p>Data de check-in:</p>
-                    <Input name="date_checkin" type="date" value="01/08/2018" />
+                    <Input name="date_checkin" type="date" />
                   </DateContainer>
                   <DateContainer>
                     <p>Data de check-out:</p>
