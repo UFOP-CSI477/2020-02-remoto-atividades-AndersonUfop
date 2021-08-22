@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
-import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
-
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
+import moment from 'moment';
+
+import Back from '../../components/Back';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import SmallButton from '../../components/SmallButton';
@@ -37,9 +36,9 @@ import {
 } from './styles';
 
 import api from '../../services/api';
+
 import { useAuth } from '../../hooks/auth';
 import getValidationErrors from '../../utils/getValidateErrors';
-import Back from '../../components/Back';
 
 interface Hotel {
   id: string;
@@ -194,7 +193,7 @@ const Reserve: React.FC = () => {
                 <DateInfo>
                   <DateContainer>
                     <p>Data de check-in:</p>
-                    <Input name="date_checkin" type="date" />
+                    <Input name="date_checkin" type="date" value="01/08/2018" />
                   </DateContainer>
                   <DateContainer>
                     <p>Data de check-out:</p>
@@ -208,7 +207,7 @@ const Reserve: React.FC = () => {
                   <TypeApartment>Tipo: {apartment.description}</TypeApartment>
                   <ValueTotal>
                     <span>Preço:</span>
-                    <p>{apartment.price}</p>
+                    <p>R$ {apartment.price}</p>
                   </ValueTotal>
                 </TextInfo>
               </InfoReserve>

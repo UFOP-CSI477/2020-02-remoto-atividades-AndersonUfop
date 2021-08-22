@@ -16,10 +16,11 @@ import NewApartment from '../pages/AdminArea/AdminAreaApartments/NewApartment';
 
 const Routes: React.FC = () => (
   <Switch>
+    <Route component={Dashboard} path="/" exact isPrivate />
     <Route component={Login} path="/login" exact />
     <Route component={NewUser} path="/new-user" exact />
 
-    <Route component={Hotel} path="/hotel/:id" isPrivate />
+    <Route component={Hotel} path="/hotel/:id" exact isPrivate />
     <Route
       component={Reserve}
       path="/apartments/reserve/:apartment_id"
@@ -47,8 +48,6 @@ const Routes: React.FC = () => (
       exact
       isPrivate
     />
-
-    <Route component={Dashboard} path="/" exact isPrivate />
   </Switch>
 );
 

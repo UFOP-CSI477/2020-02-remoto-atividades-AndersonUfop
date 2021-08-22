@@ -6,9 +6,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+
+import Back from '../../../../components/Back';
+import Checkbox from '../../../../components/Checkbox';
 import Header from '../../../../components/Header';
-import SmallButton from '../../../../components/SmallButton';
 import Input from '../../../../components/Input';
+import Select from '../../../../components/Select';
+import SmallButton from '../../../../components/SmallButton';
 
 import {
   Container,
@@ -18,11 +22,9 @@ import {
   FormInput,
   ButtonContainer,
 } from './styles';
-import Checkbox from '../../../../components/Checkbox';
-import Select from '../../../../components/Select';
+
 import api from '../../../../services/api';
 import getValidationErrors from '../../../../utils/getValidateErrors';
-import Back from '../../../../components/Back';
 
 interface newApartmentFormData {
   hotel_id: string;
@@ -46,26 +48,14 @@ const NewApartment: React.FC = () => {
   const history = useHistory();
 
   const [selectedType, setSelectedType] = useState('');
-  const [suite, setSuite] = useState(true);
-  const [tv, setTV] = useState(true);
-  const [airConditioning, setAirConditioning] = useState(true);
+  const [suite, setSuite] = useState(false);
+  const [tv, setTV] = useState(false);
+  const [airConditioning, setAirConditioning] = useState(false);
 
   function handleSelectedType(event: ChangeEvent<HTMLSelectElement>) {
     const type = event.target.value;
 
     setSelectedType(type);
-  }
-
-  function handleSelectSuite() {
-    setSuite(!suite);
-  }
-
-  function handleSelectTV() {
-    setTV(!tv);
-  }
-
-  function handleSelectAirConditioning() {
-    setAirConditioning(!airConditioning);
   }
 
   const messageSuccess = useCallback(() => {
@@ -166,12 +156,16 @@ const NewApartment: React.FC = () => {
 
           <InputContainer>
             <p>Itens:</p>
-            <Checkbox name="suite" label="Suíte" onChange={handleSelectSuite} />
-            <Checkbox name="tv" label="TV" onChange={handleSelectTV} />
+            <Checkbox
+              name="suite"
+              label="Suíte"
+              onChange={() => setSuite(true)}
+            />
+            <Checkbox name="tv" label="TV" onChange={() => setTV(true)} />
             <Checkbox
               name="air_conditioning"
               label="Ar condicionado"
-              onChange={handleSelectAirConditioning}
+              onChange={() => setAirConditioning(true)}
             />
           </InputContainer>
           <ButtonContainer>

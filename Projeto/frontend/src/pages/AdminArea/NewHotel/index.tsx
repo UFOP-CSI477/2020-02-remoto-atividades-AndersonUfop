@@ -6,9 +6,12 @@ import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
+
+import Back from '../../../components/Back';
+import Checkbox from '../../../components/Checkbox';
 import Header from '../../../components/Header';
-import SmallButton from '../../../components/SmallButton';
 import Input from '../../../components/Input';
+import SmallButton from '../../../components/SmallButton';
 
 import {
   Container,
@@ -18,11 +21,10 @@ import {
   FormInput,
   ButtonContainer,
 } from './styles';
-import Checkbox from '../../../components/Checkbox';
+
 import api from '../../../services/api';
 import { useAuth } from '../../../hooks/auth';
 import getValidationErrors from '../../../utils/getValidateErrors';
-import Back from '../../../components/Back';
 
 interface NewHotelFormData {
   name_hotel: string;
@@ -46,10 +48,10 @@ interface Users {
 
 const NewHotel: React.FC = () => {
   const [users, setUsers] = useState<Users[]>([]);
-  const [pool, setPool] = useState(true);
-  const [parking, setParking] = useState(true);
-  const [wifi, setWifi] = useState(true);
-  const [breakfast, setBreakfast] = useState(true);
+  const [pool, setPool] = useState(false);
+  const [parking, setParking] = useState(false);
+  const [wifi, setWifi] = useState(false);
+  const [breakfast, setBreakfast] = useState(false);
 
   const [userId, setUserId] = useState('');
 
@@ -70,22 +72,6 @@ const NewHotel: React.FC = () => {
       return us.name === user.name && setUserId(us.id);
     });
   });
-
-  function handleSelectPull() {
-    setPool(pool);
-  }
-
-  function handleSelectBreakfast() {
-    setBreakfast(breakfast);
-  }
-
-  function handleSelectParking() {
-    setParking(parking);
-  }
-
-  function handleSelectWifi() {
-    setWifi(wifi);
-  }
 
   const messageSuccess = useCallback(() => {
     Swal.fire('Mensagem', 'Hotel cadastrado com sucesso', 'success');
@@ -218,19 +204,27 @@ const NewHotel: React.FC = () => {
 
           <InputContainer>
             <p>Adicionais:</p>
-            <Checkbox name="pool" label="Piscina" onChange={handleSelectPull} />
+            <Checkbox
+              name="pool"
+              label="Piscina"
+              onChange={() => setPool(true)}
+            />
             <Checkbox
               name="breakfast"
               label="Café da manhã"
-              onChange={handleSelectBreakfast}
+              onChange={() => setBreakfast(true)}
             />
 
             <Checkbox
               name="parking"
               label="Estacionamento"
-              onChange={handleSelectParking}
+              onChange={() => setParking(true)}
             />
-            <Checkbox name="wifi" label="Wi-fi" onChange={handleSelectWifi} />
+            <Checkbox
+              name="wifi"
+              label="Wi-fi"
+              onChange={() => setWifi(true)}
+            />
           </InputContainer>
           <ButtonContainer>
             <SmallButton type="submit">Cadastrar hotel</SmallButton>

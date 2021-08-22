@@ -1,17 +1,24 @@
-import React, { useRef, useState, useEffect, ChangeEvent } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  ChangeEvent,
+  useCallback,
+} from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Link, useParams } from 'react-router-dom';
+
+import Back from '../../components/Back';
+import Button from '../../components/Button';
+import Checkbox from '../../components/Checkbox';
 import Header from '../../components/Header';
 import Select from '../../components/Select';
-import Input from '../../components/InputNumber';
-import Checkbox from '../../components/Checkbox';
 import SmallButton from '../../components/SmallButton';
-
-import BedRoomImage from '../../assets/bedroom.jpg';
 
 import api from '../../services/api';
 
+import BedRoomImage from '../../assets/bedroom.jpg';
 import AirConditioningImg from '../../assets/air-conditioner.svg';
 import BathImg from '../../assets/bath.svg';
 import BedImg from '../../assets/bed.svg';
@@ -38,8 +45,6 @@ import {
   PriceApartment,
   Description,
 } from './styles';
-import Button from '../../components/Button';
-import Back from '../../components/Back';
 
 interface ApartmentProps {
   id: string;
@@ -84,7 +89,7 @@ const Apartments: React.FC = () => {
     setSelectedType(type);
   }
 
-  async function handleSubmit() {
+  const handleSubmit = useCallback(async () => {
     const { hotel_id } = params;
     const type = selectedType;
 
@@ -99,7 +104,13 @@ const Apartments: React.FC = () => {
     });
 
     setApartments(response.data);
-  }
+  }, [
+    params,
+    selectedType,
+    selectedAirConditioning,
+    selectedSuite,
+    selectedTV,
+  ]);
 
   if (!apartments) {
     return <p>Carregando...</p>;

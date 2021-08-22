@@ -34,7 +34,6 @@ Foram implementadas as seguintes funcionalidades no sistema:
 
 * Detalhes do hotel
   * Aparecerá as principais informações sobre o hotel, como nome, telefone, e-mail e localização.
-  * Ao clicar sobre a localização, será redirecionado para o mapa do Google.
   * Serão exibidas também imagens do hotel e serviços que ele oferece, como piscina, estacionamento, wifi e café da manhã.
   * Ao clicar em reservar agora, o usuário será redirecionado para a página de apertamentos.
 * Reservar quarto

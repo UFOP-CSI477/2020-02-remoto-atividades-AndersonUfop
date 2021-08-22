@@ -84,7 +84,7 @@ export const Divisor = styled.div`
 `;
 
 export const Results = styled.div`
-  margin-left: 10rem;
+  margin-left: 6rem;
   margin-top: 1rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
@@ -94,7 +94,7 @@ export const ItemsContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 3.5rem;
 
-  margin-left: 10rem;
+  margin-left: 6rem;
   margin-top: 2rem;
 `;
 

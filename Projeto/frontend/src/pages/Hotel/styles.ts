@@ -16,16 +16,25 @@ export const Content = styled.div`
       height: 10rem;
     }
   }
+`;
 
-  .images-hotel {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-left: 1rem;
+export const ImagesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 3.2rem;
+  margin-bottom: 12rem;
 
-    img {
-      height: 10rem;
-      border-radius: 0.4rem;
+  img {
+    height: 14rem;
+    border-radius: 0.4rem;
+
+    -webkit-transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+
+    &:hover {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
     }
   }
 `;
@@ -79,9 +88,8 @@ export const Items = styled.div`
       font-size: 1.2rem;
       color: var(--dark);
     }
-    svg {
+    img {
       transition: filter 0.2s;
-
       &:hover {
         filter: brightness(0.8);
       }
@@ -89,13 +97,22 @@ export const Items = styled.div`
   }
 `;
 
-export const Address = styled.div`
+export const ContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 4.8rem;
+`;
+
+export const Contact = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2.534rem;
 
-  margin-top: 2.688rem;
+  img {
+    height: 1.6rem;
+  }
 
   p {
     font-family: 'Montserrat', sans-serif;

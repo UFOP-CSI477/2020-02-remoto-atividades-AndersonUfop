@@ -7,10 +7,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import mapIcon from '../../utils/mapIcon';
+import HotelImage from '../../assets/hotel.png';
 
 import { Container, Aside } from './styles';
 
-import HotelImage from '../../assets/hotel.png';
 import api from '../../services/api';
 
 interface Hotels {
