@@ -7,7 +7,7 @@
 
 ### Resumo
 
-Para o trabalho prático da disciplina foi desenvolvido um sistema web para realização de reservas em hóteis, que possibilita o usuário encontrar um hotel, navegando pelo mapa que tem na página inicial, escolher o seu quarto e realizar sua reserva.
+Para o trabalho prático da disciplina foi desenvolvido um sistema web chamado "Onde Hospedar", que tem o objetivo principal a realização de reservas em hóteis, que possibilita o usuário encontrar um hotel, navegando pelo mapa que tem na página inicial, escolher o seu quarto e realizar sua reserva.
 
 ### 1. Funcionalidades implementadas
 
