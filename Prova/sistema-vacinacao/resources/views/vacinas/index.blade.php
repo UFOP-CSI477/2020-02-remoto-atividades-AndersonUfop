@@ -1,4 +1,4 @@
-@extends('principal')
+@extends('areaadministrativa')
 
 @section('conteudo')
 
@@ -6,8 +6,9 @@
 
     <h1 class="h1 m-3">Vacinas</h1>
 
+    <a href="{{route('vacinas.create')}}">
     <button type="button" class="btn btn-primary my-3">Adicionar vacina</button>
-
+    </a>
 
     <table class="table table-striped">
 
@@ -17,36 +18,18 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Fabricante</th>
                 <th scope="col">Doses</th>
-                <th scope="col">Ver</th>
-                <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody>
+            @foreach($vacinas as $v)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td scope="row">{{$v->id}}</td>
+                <td>{{$v->nome}}</td>
+                <td>{{$v->fabricante}}</td>
+                <td>{{$v->doses}}</td>
 
             </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+            @endforeach
 
             </tr>
         </tbody>

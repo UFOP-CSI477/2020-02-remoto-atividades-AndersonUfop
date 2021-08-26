@@ -1,4 +1,4 @@
-@extends('principal')
+@extends('areaadministrativa')
 
 @section('conteudo')
 
@@ -6,37 +6,70 @@
 
     <h1 class="h1 my-3">Adicionar registros</h1>
 
-    <form method="post">
+    <form action="{{ route('registros.store') }}" method="post">
 
         @csrf
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="inputNomePessoa">Nome da pessoa</label>
-                <input type="text" name="pessoa_id" class="form-control" id="inputNomePessoa" placeholder="Nome">
+                <label for="selectNomePessoa">Nome da pessoa</label>
+                <select name="pessoa_id" class="form-control" id="selectNomePessoa" placeholder="Nome">
+                    <option selected disabled>Selecione uma opção</option>
+
+                    @foreach($pessoas as $p)
+                    <option value="{{ $p->id}}"> {{ $p->nome }} </option>
+                    @endforeach
+
+                </select>
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputUnidadeId">Unidade</label>
-                <input type="text" name="unidade_id" class="form-control" id="inputUnidadeId" placeholder="Unidade">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputVacinaId">Vacina</label>
-                <input type="text" name="vacina_id" class="form-control" id="inputVacinaId" placeholder="Vacina">
+            <div class="form-group col-md-2">
+                <label for="selectUnidadeId">Unidade</label>
+                <select name="unidade_id" class="form-control" id="selectUnidadeId">
+                    <option selected disabled>Selecione uma opção</option>
+
+                    @foreach($unidades as $u)
+                    <option value="{{ $u->id}}"> {{ $u->nome }} </option>
+                    @endforeach
+
+                </select>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputDose">Dose</label>
-                <input type="text" name="dose" class="form-control" id="inputDose" placeholder="Dose">
+            <div class="form-group col-md-4">
+                <label for="selectVacinaId">Vacina</label>
+                <select name="vacina_id" class="form-control" id="selectVacinaId">
+                    <option selected disabled>Selecione uma opção</option>
+
+                    @foreach($vacinas as $v)
+                    <option value="{{ $v->id}}"> {{ $v->nome }} </option>
+                    @endforeach
+
+                </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-2">
+                <label for="selectDose">Dose</label>
+                <select name="dose" class="form-control" id="selectDose">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option value="0">Dose única</option>
+                    <option value="1">Primeira Dose</option>
+                    <option value="2">Segunda Dose</option>
+                    <option value="3">Terceira Dose</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
                 <label for="inputData">Data</label>
                 <input type="date" name="data" class="form-control" id="inputDate" placeholder="Data">
             </div>
         </div>
+
+        <button type="submit" class="btn btn-primary my-3">Salvar</button>
     </form>
 
-    <button type="submit" class="btn btn-primary my-3">Salvar</button>
+
 
 </div>
 

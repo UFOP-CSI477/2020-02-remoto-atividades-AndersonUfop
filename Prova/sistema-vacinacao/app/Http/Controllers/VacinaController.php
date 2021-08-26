@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Vacina;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class VacinaController extends Controller
 {
     /**
@@ -14,7 +16,13 @@ class VacinaController extends Controller
      */
     public function index()
     {
-        return view('vacinas.index');
+        if (Auth::check()) {
+            $vacinas = Vacina::orderBy('nome')->get();
+            return view('vacinas.index', ['vacinas' => $vacinas]);
+        } else {
+            session()->flash('erro', 'Acesso restrito para administradores do sistema');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -24,7 +32,12 @@ class VacinaController extends Controller
      */
     public function create()
     {
-        return view('vacinas.create');
+        if (Auth::check()) {
+            return view('vacinas.create');
+        } else {
+            session()->flash('erro', 'Acesso restrito para administradores do sistema');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -35,7 +48,10 @@ class VacinaController extends Controller
      */
     public function store(Request $request)
     {
+        Vacina::create($request->all());
+        session()->flash('mensagem', 'Vacina cadastrada com sucesso.');
 
+        return redirect()->route('vacinas.index');
     }
 
     /**
@@ -46,40 +62,6 @@ class VacinaController extends Controller
      */
     public function show(Vacina $vacina)
     {
-        return view('vacinas.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vacina  $vacina
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vacina $vacina)
-    {
-        return view('vacinas.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Vacina  $vacina
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vacina $vacina)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Vacina  $vacina
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vacina $vacina)
-    {
-        //
+        return view('vacinas.show', ['vacina' => $vacina]);
     }
 }

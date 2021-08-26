@@ -18,11 +18,17 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\VacinaController;
 
-Route::get('/', function () {
-    return view('principal');
-})->name('principal');
+Route::get('/', 'App\Http\Controllers\RegistroController@relatorio')->name('areageral');
 
-Route::resource('/pessoas', PessoaController::class);
-Route::resource('/registros', RegistroController::class);
-Route::resource('/unidades', UnidadeController::class);
-Route::resource('/vacinas', VacinaController::class);
+Route::get('/adm', function () {
+    return view('areaadministrativa');
+})->name('areaadm')->middleware('auth');
+
+Route::resource('/pessoas', PessoaController::class)->middleware('auth');
+Route::resource('/registros', RegistroController::class)->middleware('auth');
+Route::resource('/unidades', UnidadeController::class)->middleware('auth');
+Route::resource('/vacinas', VacinaController::class)->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

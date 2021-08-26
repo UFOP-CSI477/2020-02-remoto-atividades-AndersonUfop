@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Vacina extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome', 'fabricante', 'doses'];
+
+    public function registros() {
+        return $this->hasMany(Registro::class);
+    }
 }

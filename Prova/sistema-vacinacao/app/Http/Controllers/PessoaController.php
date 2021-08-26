@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
@@ -14,40 +16,15 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        return view('pessoas.index');
+        if (Auth::check()) {
+            $pessoas = Pessoa::orderBy('nome')->get();
+            return view('pessoas.index', ['pessoas' => $pessoas]);
+        } else {
+            session()->flash('erro', 'Acesso restrito para administradores do sistema');
+            return redirect()->route('login');
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('pessoas.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pessoa $pessoa)
-    {
-        return view('pessoas.show');
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +34,12 @@ class PessoaController extends Controller
      */
     public function edit(Pessoa $pessoa)
     {
-        return view('pessoas.edit');
+        if (Auth::check()) {
+            return view('pessoas.edit', ['pessoa' => $pessoa]);
+        } else {
+            session()->flash('erro', 'Acesso restrito para administradores do sistema');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -69,17 +51,12 @@ class PessoaController extends Controller
      */
     public function update(Request $request, Pessoa $pessoa)
     {
-        return view('edit.blade.php');
+        $pessoa->fill($request->all());
+        $pessoa->save();
+        session()->flash('mensagem', 'Pessoa editada com sucesso.');
+
+
+        return redirect()->route('pessoas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pessoa $pessoa)
-    {
-        //
-    }
 }

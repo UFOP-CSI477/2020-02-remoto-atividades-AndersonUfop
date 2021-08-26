@@ -1,4 +1,4 @@
-@extends('principal')
+@extends('areaadministrativa')
 
 @section('conteudo')
 
@@ -6,7 +6,7 @@
 
     <h1 class="h1 my-3">Adicionar unidade</h1>
 
-    <form method="post">
+    <form action="{{ route('unidades.store') }}" method="post">
 
         @csrf
 
@@ -28,9 +28,11 @@
                 <input type="text" name="cidade" class="form-control" id="inputCidade" placeholder="Cidade">
             </div>
         </div>
+
+        <button type="submit" class="btn btn-primary my-3">Salvar</button>
     </form>
 
-    <button type="submit" class="btn btn-primary my-3">Salvar</button>
+
 
 </div>
 
